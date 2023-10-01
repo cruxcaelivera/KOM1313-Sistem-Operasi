@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+
+/*
+void foo(int sig) {
+	printf("got signal %d\n", sig); // print signum
+	signal(SIGINT, SIG_DFL); // back to default
+}
+int main() {
+	signal(SIGINT, foo);
+	while (1) {
+		puts("hello");
+		sleep(1);
+	}
+}
+// Praktikum Sistem 
+*/
+
+
+int main()
+
+{
+	pid_t child = fork();
+	if (child == 0) {
+	while (1) {
+		puts("Its_Me_Hannnn");
+		sleep(1);
+	}
+	} else {
+		sleep(4);
+		kill(child, SIGSTOP); // terminate
+		sleep(3);
+		kill(child, SIGCONT);
+		sleep(2);
+		kill(child, SIGTERM);
+	}
+	return 0;
+}
+
+
+/*
+void ding(int sig) { puts("ding!"); }
+int main()
+{
+	if (fork() == 0) {
+		
+		sleep(5);
+		kill(getppid(), SIGALRM);
+	} else {
+		//
+		puts("waiting...");
+		pause();
+		signal(SIGALRM, ding);
+	}
+	return 0;
+}
+
+*/
