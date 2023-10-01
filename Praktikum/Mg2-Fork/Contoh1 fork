@@ -1,0 +1,11 @@
+//Fork.c
+
+#include <stdio.h>
+#include <unistd.h>
+
+int main()
+{
+	fork();
+	puts("hello");
+	return 0;
+}
