@@ -1,0 +1,842 @@
+man printf
+PRINTF(1)                    	User Commands                   	PRINTF(1)
+
+NAME
+   	printf - format and print data
+
+SYNOPSIS
+   	printf FORMAT [ARGUMENT]...
+   	printf OPTION
+
+DESCRIPTION
+   	Print ARGUMENT(s) according to FORMAT, or execute according to OPTION:
+
+   	--help display this help and exit
+
+   	--version
+          	output version information and exit
+
+   	FORMAT controls the output as in C printf.  Interpreted sequences are:
+
+   	\" 	double quote
+
+   	\\ 	backslash
+
+Ketik /ignore, fungsinya seperti CTRL + F dan akan menghighlight kata ignore. 
+Ketik /b, akan menghighlight huruf b di semua kata
+Pencet q untuk keluar
+Pencet n untuk pencarian ke bawah
+Pencet shift + N untuk pencarian ke atas
+
+student@lab2-24:~$ man printf 3
+No manual entry for 3
+(Alternatively, what manual page do you want from section 3?)
+
+student@lab2-24:~$ man 3 printf (Menampilkan bagian 3 dalam printf)
+PRINTF(3)              	Linux Programmer's Manual             	PRINTF(3)
+
+NAME
+   	printf,   fprintf,   dprintf,  sprintf,  snprintf,  vprintf,  vfprintf,
+   	vdprintf, vsprintf, vsnprintf - formatted output conversion
+
+SYNOPSIS
+   	#include <stdio.h>
+
+   	int printf(const char *format, ...);
+   	int fprintf(FILE *stream, const char *format, ...);
+   	int dprintf(int fd, const char *format, ...);
+   	int sprintf(char *str, const char *format, ...);
+   	int snprintf(char *str, size_t size, const char *format, ...);
+
+   	#include <stdarg.h>
+
+   	int vprintf(const char *format, va_list ap);
+   	int vfprintf(FILE *stream, const char *format, va_list ap);
+   	int vdprintf(int fd, const char *format, va_list ap);
+   	int vsprintf(char *str, const char *format, va_list ap);
+   	int vsnprintf(char *str, size_t size, const char *format, va_list ap);
+
+which
+Mencari lokasi file program.
+which COMMAND
+student@lab2-24:~$ which printf
+/usr/bin/printf
+
+less /etc/os-release
+NAME="Ubuntu"
+VERSION="18.04.6 LTS (Bionic Beaver)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 18.04.6 LTS"
+VERSION_ID="18.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=bionic
+UBUNTU_CODENAME=bionic
+/etc/os-release (END)
+
+locate
+Mencari file berdasarkan namanya.
+locate [OPTION] 'PATTERN'
+•	-c: count; tampilkan jumlah file yang ditemukan
+•	-i: ignore-case
+
+student@lab1-46:~$ locate file.txt
+/home/student/file.txt
+
+student@lab1-46:~$ locate -i example (Mencari file dengan kata kunci "example", tanpa memperdulikan huruf besar atau kecil (case-insensitive).)
+student@lab1-46:~$ locate -c pattern (Perintah di atas akan menampilkan jumlah file yang cocok dengan pola "pattern".)
+756
+
+find
+Mencari file pada sebuah hierarki direktori.
+find [PATH] [TEST]...
+•	-name 'PATTERN' 
+•	-iname 'PATTERN' 
+•	-size [+-]N[kMG]
+•	-atime [+-]N 
+•	-mtime [+-]N 
+•	-empty 
+•	-type [dfl] 
+
+find /path/to/search -name 'file.txt' (Mencari file yang bernama 'file.txt' di dalam direktori `/path/to/search` dan semua sub-direktori di dalamnya.)
+find /path/to/search -iname 'example.txt' (Mencari file dengan nama 'example.txt', tanpa memperhatikan huruf besar atau kecil.)
+find /path/to/search -size +1M (Mencari file dengan ukuran lebih besar dari 1 Megabyte di dalam direktori `/path/to/search`.)
+find /path/to/search -atime -7 (Mencari file yang diakses dalam 7 hari terakhir di dalam direktori `/path/to/search`.)
+find /path/to/search -mtime -7 (Mencari file yang dimodifikasi dalam 7 hari terakhir di dalam direktori `/path/to/search`.)
+find /path/to/search -type d -empty (Perintah ini akan mencari direktori yang tidak memiliki file di dalamnya (Direktori kosong).)
+find /path/to/search -type f (Perintah di atas akan mencari file reguler di dalam direktori `/path/to/search`.)
+student@lab1-46:~$ find /home/student -name 'file.txt'
+/home/student/file.txt
+student@lab1-46:~$ find /home/student -iname 'file.txt'
+/home/student/file.txt 
+student@lab1-46:~$ find /home/student -size +1M
+
+student@lab1-46:~$ find /home/student -atime -1
+student@lab1-46:~$ find /home/student -mtime -1
+
+student@lab1-46:~$ find /home/student -type d -empty
+
+student@lab1-46:~$ find /home/student -type f
+
+xargs
+Mengubah tiap baris masukan menjadi argumen suatu perintah.
+... | xargs COMMAND
+Input dikonversi menjadi argument bagi perintah selanjutnya
+Tampilkan file dengan pola tertentu, lalu hasilnya dihapus
+find . -name "*.log" | xargs rm (File dengan ekstensi .log)
+Contoh
+# temukan semua file backup (.bak), lalu hapus
+find . -name '*.bak' | xargs rm
+
+pager (less)
+Menampilkan file teks per halaman layar.
+pager [FILE]...
+•	q: quit; keluar
+•	/: pencarian kata
+o	n: next; lanjutkan pencarian kata
+o	N: next-reverse; lanjutkan pencarian kata mundur
+
+student@lab1-46:~$ less file.txt
+
+
+
+editor (nano)
+Membuat dan mengedit file teks.
+editor [OPTION] [FILE]...
+•	-i: indent; indentasi otomatis
+•	-u: undo; aktifkan fitur undo
+•	^O: write-out; simpan file
+•	^X: exit
+
+student@lab1-46:~$ nano file.txt
+
+
+Referensi Singkat
+•	Karakter
+. : karakter apapun selain newline
+[abc] : karakter a, b, atau c
+[^abc] : bukan karakter a, b, atau c
+[a-g] : karakter antara a sampai g
+•	Kelas karakter
+\w : kata, [A-Za-z0-9_]
+\d : digit, [0-9]
+\s : whitespace
+•	Anchor
+^ : awal baris
+$ : akhir baris
+Referensi Singkat
+•	Jumlah
+* : 0 atau lebih
++ : 1 atau lebih
+? : 0 atau 1
+{3} : tepat 3
+{3,} : 3 atau lebih
+{3,5} : antara 3 sampai 5
+•	Grup
+(...) : membuat grup
+\n : referensi balik grup ke-n
+
+Pemrosesan Teks
+cat
+Menggabungkan file dan menampilkan isinya ke layar.
+cat [FILE]...
+
+student@lab2-24:~$ cat /etc/os-release (Langsung menampilkan di terminal)
+NAME="Ubuntu"
+VERSION="18.04.6 LTS (Bionic Beaver)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 18.04.6 LTS"
+VERSION_ID="18.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=bionic
+UBUNTU_CODENAME=bionic
+
+CTRL + S file pada folder txt server pak Auriza 172.18.14.15/~auriza
+student@lab2-24:~$ cat unixv.txt
+UNICS (Version Zero)    PDP-7    Summer    1969
+Fifth Edition UNIX    PDP-11/40    June    1974
+Sixth Edition UNIX    PDP-11/45    May    1975
+Seventh Edition UNIX    PDP-11/70    January    1979
+Research UNIX 8    VAX-11/780   	 1981
+AT&T UNIX System III    PDP-11/70    Fall    1982
+AT&T UNIX System V    PDP-11/70   	 1983
+AT&T UNIX System V    3b2/400   	 1984
+2.11 BSD    PDP-11/70    January    1991
+
+student@lab2-24:~$ echo hello > 1.txt
+student@lab2-24:~$ echo world > 2.txt
+student@lab2-24:~$ echo hola > 3.txt
+student@lab2-24:~$ echo el mundo > 4.txt
+student@lab2-24:~$ cat 1.txt 2.txt 3.txt 4.txt
+hello
+world
+hola
+el mundo
+student@lab2-24:~$ cat 1.txt 2.txt 3.txt 4.txt > gabung.txt
+student@lab2-24:~$ cat gabung.txt
+hello
+world
+hola
+el mundo
+
+student@lab2-24:~$ cat 1.txt
+hello
+
+split
+Memecah file menjadi beberapa bagian.
+split [OPTION] FILE [PREFIX]
+•	-b: bytes; pecah per sekian byte
+•	-l: lines; pecah per sekian baris
+student@lab2-24:~$ split -b 5 gabung.txt hasil
+
+student@lab2-24:~$ ls hasil*
+hasilaa  hasilab  hasilac  hasilad  hasilae  hasilaf
+
+student@lab2-24:~$ ls hasil* -lh
+-rw-rw-r-- 1 student student 5 Okt 31 16:11 hasilaa
+-rw-rw-r-- 1 student student 5 Okt 31 16:11 hasilab
+-rw-rw-r-- 1 student student 5 Okt 31 16:11 hasilac
+-rw-rw-r-- 1 student student 5 Okt 31 16:11 hasilad
+-rw-rw-r-- 1 student student 5 Okt 31 16:11 hasilae
+-rw-rw-r-- 1 student student 1 Okt 31 16:11 hasilaf (Sisanya)
+
+student@lab2-24:~$ cat hasil*
+hello
+world
+hola
+el mundo
+
+student@lab2-24:~$ cat hasilaa
+
+hellostudent@lab2-24:~$ cat hasilab
+
+worlstudent@lab2-24:~$rm hasil*
+
+student@lab2-24:~$
+
+student@lab2-24:~$ split -l 1 gabung.txt baris
+
+student@lab2-24:~$ cat barisaa
+hello
+
+student@lab2-24:~$ cat barisab
+world
+
+student@lab2-24:~$ cat barisac
+hola
+
+student@lab2-24:~$ cat barisad
+el mundo
+
+student@lab2-24:~$ cat baris*
+hello
+world
+hola
+el mundo
+
+student@lab2-24:~$ cat unixv.txt
+UNICS (Version Zero)    PDP-7    Summer    1969
+Fifth Edition UNIX    PDP-11/40    June    1974
+Sixth Edition UNIX    PDP-11/45    May    1975
+Seventh Edition UNIX    PDP-11/70    January    1979
+Research UNIX 8    VAX-11/780   	 1981
+AT&T UNIX System III    PDP-11/70    Fall    1982
+AT&T UNIX System V    PDP-11/70   	 1983
+AT&T UNIX System V    3b2/400   	 1984
+2.11 BSD    PDP-11/70    January    1991
+
+head
+Menampilkan bagian awal file (default: 10 baris).
+head [OPTION] [FILE]
+•	-c: chars; tampilkan sekian karakter pertama
+•	-n: lines; tampilkan sekian baris pertama
+student@lab2-24:~$ head -n 3 unixv.txt
+UNICS (Version Zero)    PDP-7    Summer    1969
+Fifth Edition UNIX    PDP-11/40    June    1974
+Sixth Edition UNIX    PDP-11/45    May    1975
+
+tail
+Menampilkan bagian akhir file (default: 10 baris).
+tail [OPTION] [FILE]
+•	-c: chars; tampilkan sekian karakter terakhir
+•	-n: lines; tampilkan sekian baris terakhir
+student@lab2-24:~$ tail -n 3 unixv.txt
+AT&T UNIX System V    PDP-11/70   	 1983
+AT&T UNIX System V    3b2/400   	 1984
+2.11 BSD    PDP-11/70    January    1991
+
+student@lab2-24:~$ nano numbers.txt
+student@lab2-24:~$ less numbers.txt
+
+sort
+Mengurutkan baris teks pada file.
+sort [OPTION] [FILE]
+•	-n: numeric; urutkan secara numerik
+•	-r: reverse; urutkan terbalik
+•	-k: key; urutkan berdasarkan kolom ke-sekian
+•	-t: karakter pemisah antarkolom
+
+student@lab2-24:~$ sort numbers.txt
+
+1
+1
+1
+1
+11
+12
+123
+123
+123
+123
+123
+13
+14
+14
+2
+3
+4
+
+student@lab2-24:~$ sort -n numbers.txt
+1
+1
+1
+1
+2
+3
+4
+11
+12
+13
+14
+14
+123
+123
+123
+123
+123
+
+student@lab2-24:~$ sort -nr numbers.txt
+123
+123
+123
+123
+123
+14
+14
+13
+12
+11
+4
+3
+2
+1
+1
+1
+1
+
+student@lab2-24:~$ sort -n -r numbers.txt
+123
+123
+123
+123
+123
+14
+14
+13
+12
+11
+4
+3
+2
+1
+1
+1
+1
+
+student@lab2-24:~$ sort -rn numbers.txt
+123
+123
+123
+123
+123
+14
+14
+13
+12
+11
+4
+3
+2
+1
+1
+1
+1
+
+student@lab2-24:~$ less numbers.txt
+
+uniq
+Menghilangkan baris teks yang berulang.
+uniq [OPTION] [FILE]
+•	-c: count; tampilkan jumlah kemunculan
+•	-i: ignore-case
+student@lab2-24:~$ uniq numbers.txt
+1
+2
+11
+1
+123
+1
+3
+13
+1
+14
+12
+4
+123
+
+student@lab2-24:~$ sort numbers.txt
+
+1
+1
+1
+1
+11
+12
+123
+123
+123
+123
+123
+13
+14
+14
+2
+3
+4
+
+student@lab2-24:~$ sort -n numbers.txt
+1
+1
+1
+1
+2
+3
+4
+11
+12
+13
+14
+14
+123
+123
+123
+123
+123
+
+student@lab2-24:~$ sort -n numbers.txt | uniq
+
+1
+2
+3
+4
+11
+12
+13
+14
+123
+
+student@lab2-24:~$ sort -n numbers.txt | uniq -c
+  	2
+  	4 1
+  	1 2
+  	1 3
+  	1 4
+  	1 11
+  	1 12
+  	1 13
+  	2 14
+  	5 123
+
+student@lab2-24:~$ echo hello world
+hello world
+
+tr
+Translasi karakter dari set pertama ke set kedua.
+tr [OPTION] SET1 [SET2]
+•	-d: delete; hapus karakter pada SET1
+•	-s: squeeze; hapus karakter yang berulang pada SET1
+student@lab2-24:~$ echo hello world | tr a-z A-Z
+HELLO WORLD
+
+student@lab2-24:~$ echo hello world | tr a-z 0-25
+55555 55555
+
+student@lab2-24:~$ echo hello world | tr a-z n-za-m
+uryyb jbeyq
+
+student@lab2-24:~$ echo hello world | tr -d l
+
+heo word
+
+student@lab2-24:~$ echo hello world | tr -d aiueo
+hll wrld
+
+student@lab2-24:~$ echo hello world | tr -s a-z
+helo world
+
+student@lab2-24:~$ echo hello world | tr -c aiueo x
+xexxoxxoxxxxstudent@lab2-24:~$ echo hello world | tr -c a-z x
+helloxworldxstudent@lab2-24:~$ echo hello world | tr -c a-z[:space:] x
+hello world
+
+student@lab2-24:~$ echo nomor telp 082112950159  | tr -c a-z[:space:] x
+nomor telp xxxxxxxxxxxx
+
+student@lab2-24:~$ less unixv.txt
+
+grep
+Mencetak baris teks yang cocok dengan suatu pola.
+grep [OPTION] 'PATTERN' FILE
+•	-c: count; tampilkan jumlah baris
+•	-i: ignore-case
+•	-r: rekursif
+•	-v: invert; kebalikan dari pola yang diberikan
+•	-E: extended regex
+student@lab2-24:~$ grep "AT&T" unixv.txt
+AT&T UNIX System III    PDP-11/70    Fall    1982
+AT&T UNIX System V    PDP-11/70   	 1983
+AT&T UNIX System V    3b2/400   	 1984
+
+student@lab2-24:~$ grep -i "at&t" unixv.txt
+AT&T UNIX System III    PDP-11/70    Fall    1982
+AT&T UNIX System V    PDP-11/70   	 1983
+AT&T UNIX System V    3b2/400   	 1984
+
+student@lab2-24:~$ grep -iv "at&t" unixv.txt
+UNICS (Version Zero)    PDP-7    Summer    1969
+Fifth Edition UNIX    PDP-11/40    June    1974
+Sixth Edition UNIX    PDP-11/45    May    1975
+Seventh Edition UNIX    PDP-11/70    January    1979
+Research UNIX 8    VAX-11/780   	 1981
+2.11 BSD    PDP-11/70    January    1991
+
+student@lab2-24:~$ grep -r "INT_MAX" /usr/include/
+/usr/include/libpng16/pngconf.h:#if INT_MIN == -32768 && INT_MAX == 32767
+
+student@lab2-24:~$ grep -r "INT_MAX" /usr/include/ |  less
+/usr/include/libpng16/pngconf.h:#if INT_MIN == -32768 && INT_MAX == 32767
+/usr/include/libpng16/pngconf.h:#if UINT_MAX == 65535
+/usr/include/libpng16/pngconf.h:#if INT_MIN < -2147483646 && INT_MAX > 2147483646
+/usr/include/libpng16/pngconf.h:#if UINT_MAX > 4294967294U
+/usr/include/libpng16/png.h:#if INT_MAX >= 0x8000 /* else this might break */
+/usr/include/stdlib.h:/* The largest number rand will return (same as INT_MAX).  */
+/usr/include/linux/ethtool.h:#include <limits.h> /* for INT_MAX */
+/usr/include/linux/ethtool.h: * @speed: Low bits of the speed, 1Mb units, 0 to INT_MAX or SPEED_UNKNOWN
+/usr/include/linux/ethtool.h: * @speed_hi: High bits of the speed, 1Mb units, 0 to INT_MAX or SPEED_UNKNOWN
+/usr/include/linux/ethtool.h:/* The forced speed, in units of 1Mb. All values 0 to INT_MAX are legal.
+/usr/include/linux/ethtool.h:   return speed <= INT_MAX || speed == SPEED_UNKNOWN;
+/usr/include/linux/sem.h:#define SEMMSL  32000       	/* <= INT_MAX max num of semaphores per id */
+/usr/include/linux/sem.h:#define SEMMNS  (SEMMNI*SEMMSL) /* <= INT_MAX max # of semaphores in system */
+/usr/include/linux/usb/ch9.h:#define USB_ENDPOINT_MAX_ADJUSTABLE    	0x80
+/usr/include/linux/usb/ch9.h:#define USB_ENDPOINT_MAXP_MASK 	0x07ff
+:
+
+sed
+Stream editor, manipulasi baris teks dengan regular expression.
+sed [OPTION] 's/SEARCH/REPLACE/' [FILE]
+•	-e: execute; tambahkan perintah untuk dieksekusi
+•	-i: in-place; edit file langsung
+•	-E: extended regex
+
+sed 's/old_text/new_text/' file.txt
+Perintah di atas akan mencari `old_text` dalam `file.txt` dan menggantinya dengan `new_text`.
+
+sed -i 's/old_text/new_text/' file.txt
+ Dengan opsi `-i`, `sed` akan langsung mengedit file `file.txt` dengan melakukan penggantian `old_text` menjadi `new_text`. Harap berhati-hati saat menggunakan opsi ini karena perubahan bersifat permanen.
+
+sed -E 's/([0-9]+) dollars/\1 USD/' file.txt
+`-E` memungkinkan penggunaan regular expression yang diperluas. Ekspresi ini mencari pola seperti "123 dollars" dan menggantinya dengan "123 USD".
+
+sed -e 's/old_text/new_text/' -e 's/another_text/yet_another_text/' file.txt
+Memungkinkan untuk melakukan beberapa operasi dengan menggunakan beberapa perintah `-e`.
+
+
+
+student@lab2-24:~$ less unixv.txt
+
+cut
+Mengambil karakter/kolom tertentu dari tiap baris teks.
+cut OPTION [FILE]
+•	-c: char; cetak karakter ke-sekian
+•	-f: field; cetak kolom ke-sekian
+•	-d: delimiter; pemisah antarkolom
+student@lab2-24:~$ cut -f2 unixv.txt
+PDP-7
+PDP-11/40
+PDP-11/45
+PDP-11/70
+VAX-11/780
+PDP-11/70
+PDP-11/70
+3b2/400
+PDP-11/70
+
+student@lab2-24:~$ cut -f2,3 unixv.txt
+PDP-7    Summer
+PDP-11/40    June
+PDP-11/45    May
+PDP-11/70    January
+VAX-11/780    
+PDP-11/70    Fall
+PDP-11/70    
+3b2/400    
+PDP-11/70    January
+
+student@lab2-24:~$ cut -f2-4 unixv.txt
+PDP-7    Summer    1969
+PDP-11/40    June    1974
+PDP-11/45    May    1975
+PDP-11/70    January    1979
+VAX-11/780   	 1981
+PDP-11/70    Fall    1982
+PDP-11/70   	 1983
+3b2/400   	 1984
+PDP-11/70    January    1991
+
+student@lab2-24:~$ cut -f4 unixv.txt
+1969
+1974
+1975
+1979
+1981
+1982
+1983
+1984
+1991
+
+student@lab2-24:~$ cat unixv.txt | tr '\t' ,
+UNICS (Version Zero),PDP-7,Summer,1969
+Fifth Edition UNIX,PDP-11/40,June,1974
+Sixth Edition UNIX,PDP-11/45,May,1975
+Seventh Edition UNIX,PDP-11/70,January,1979
+Research UNIX 8,VAX-11/780,,1981
+AT&T UNIX System III,PDP-11/70,Fall,1982
+AT&T UNIX System V,PDP-11/70,,1983
+AT&T UNIX System V,3b2/400,,1984
+2.11 BSD,PDP-11/70,January,1991
+
+student@lab2-24:~$ cat unixv.txt | tr '\t' , > unixv.csv
+student@lab2-24:~$ cut -f2 -d, unixv.csv | head -n3
+PDP-7
+PDP-11/40
+PDP-11/45
+
+student@lab2-24:~$ cat numbers.txt
+1
+2
+11
+1
+123
+123
+123
+1
+3
+13
+1
+14
+14
+12
+4
+123
+123
+
+paste
+Menggabungkan tiap baris dari beberapa file per kolom.
+paste [OPTION] [FILE...]
+•	-d: delimiter; pemisah antarkolom
+•	-s: serial; gabungkan isi file menjadi sebaris
+student@lab2-24:~$ paste numbers.txt
+1
+2
+11
+1
+123
+123
+123
+1
+3
+13
+1
+14
+14
+12
+4
+123
+123
+
+student@lab2-24:~$ paste numbers.txt numbers.txt numbers.txt
+1    1    1
+2    2    2
+11    11    11
+1    1    1
+123    123    123
+123    123    123
+123    123    123
+1    1    1
+3    3    3
+13    13    13
+1    1    1
+14    14    14
+14    14    14
+12    12    12
+4    4    4
+123    123    123
+123    123    123
+
+student@lab2-24:~$ paste -s numbers.txt
+1    2    11    1    123    123    123    1    3    13    114    14    12    4    123    123	
+
+student@lab2-24:~$ paste -sd, numbers.txt
+1,2,11,1,123,123,123,1,3,13,1,14,14,12,4,123,123,,
+
+diff
+Membandingkan antara dua file per baris.
+diff [OPTION] FILE1 FILE2
+•	-u: unified; keluaran beserta konteks
+•	-y: side-by-side; keluaran dua kolom
+student@lab2-24:~$ diff -u unixv.txt unixv2.txt
+--- unixv.txt    2023-10-31 16:03:28.131454010 +0700
++++ unixv2.txt    2023-10-31 16:41:55.203042711 +0700
+@@ -7,3 +7,5 @@
+ AT&T UNIX System V    PDP-11/70   	 1983
+ AT&T UNIX System V    3b2/400   	 1984
+ 2.11 BSD    PDP-11/70    January    1991
++Linux Intelx86    September    1991
++
+
+join
+Menggabungkan baris dari dua file berdasarkan satu kolom join.
+join [OPTION] FILE1 FILE2
+•	-1: nomor kolom join untuk FILE1
+•	-2: nomor kolom join untuk FILE2
+•	-t: karakter pemisah antarkolom
+Dua file teks, `file1.txt` dan `file2.txt`, dan kita ingin menggabungkan baris dari kedua file berdasarkan nilai kolom yang sama.
+
+Isi `file1.txt`:
+```
+101 John
+102 Alice
+103 Bob
+104 Emily
+```
+
+Isi `file2.txt`:
+```
+101 Red
+102 Blue
+103 Green
+105 Yellow
+```
+
+join -1 1 -2 1 file1.txt file2.txt
+
+Perintah di atas akan menggunakan kolom pertama dari `file1.txt` dan `file2.txt` sebagai kolom penghubung. Hasilnya akan menjadi:
+
+```
+101 John Red
+102 Alice Blue
+103 Bob Green
+```
+
+Keterangan:
+- `-1 1`: Menunjukkan kolom pertama dari `file1.txt`.
+- `-2 1`: Menunjukkan kolom pertama dari `file2.txt`.
+- Hasil join akan menampilkan baris yang memiliki nilai yang sama di kolom pertama di kedua file.
+
+
+
+student@lab2-24:~$ less unixv.txt
+student@lab2-24:~$ cp unixv.txt unixv2.txt
+student@lab2-24:~$ nano unixv2.txt
+student@lab2-24:~$ diff unixv.txt unixv2.txt
+9a10,11
+> Linux Intelx86    September    1991
+
+student@lab2-24:~$ diff -u unixv.txt unixv2.txt
+--- unixv.txt    2023-10-31 16:03:28.131454010 +0700
++++ unixv2.txt    2023-10-31 16:41:55.203042711 +0700
+@@ -7,3 +7,5 @@
+ AT&T UNIX System V    PDP-11/70   	 1983
+ AT&T UNIX System V    3b2/400   	 1984
+ 2.11 BSD    PDP-11/70    January    1991
++Linux Intelx86    September    1991
++
+
+student@lab2-24:~$ diff -y unixv.txt unixv2.txt
+UNICS (Version Zero)    PDP-7    Summer    1969   		 UNICS (Version Zero)    PDP-7    Summer    1969
+Fifth Edition UNIX    PDP-11/40    June    1974   	 Fifth Edition UNIX    PDP-11/40    June    1974
+Sixth Edition UNIX    PDP-11/45    May    1975   	 Sixth Edition UNIX    PDP-11/45    May    1975
+Seventh Edition UNIX    PDP-11/70    January    1979   	 Seventh Edition UNIX    PDP-11/70    January    1979
+Research UNIX 8    VAX-11/780   	 1981   		 Research UNIX 8VAX-11/780   	 1981
+AT&T UNIX System III    PDP-11/70    Fall    1982   	 AT&T UNIX System III    PDP-11/70    Fall    1982
+AT&T UNIX System V    PDP-11/70   	 1983   	 AT&T UNIX System V    PDP-11/70   	 1983
+AT&T UNIX System V    3b2/400   	 1984   		 AT&T UNIX System V    3b2/400   	 1984
+2.11 BSD    PDP-11/70    January    1991   		 2.11 BSD    PDP-11/70    January    1991
+   						   	>    Linux Intelx86    September    1991
+   	
+wc
+Mencetak jumlah baris, kata, dan karakter dari suatu file.
+wc [OPTION] [FILE...]
+•	-c: char; cetak jumlah karakter
+•	-l: line; cetak jumlah baris
+•	-w: word; cetak jumlah kata 	
+student@lab2-24:~$ wc -cwl unixv.txt
+  9  53 334 unixv.txt
+ 
