@@ -1,0 +1,204 @@
+#14-misc
+Kompresi File
+tar
+Menggabung beberapa file ke dalam satu file arsip (tape archive).
+tar [OPTION] [FILE...]
+•	-c: create; buat arsip baru
+•	-x: extract; ekstrak arsip
+•	-f: file; gunakan file berikut
+•	-z: zip; gunakan kompresi gzip
+•	-C: chdir; ekstrak ke direktori berikut
+gzip
+Mengompres file.
+gzip [FILE...]
+gunzip
+Mengekstrak file.
+gunzip [FILE...]
+tar.gz
+ \
+\centering\tiny (sumber: https://commons.wikimedia.org/wiki/File%3ATargzip.svg)
+\normalsize
+# compress
+tar -c FILE... | gzip > ARCHIVE.tar.gz
+
+# extract
+gunzip < ARCHIVE.tar.gz | tar -x
+tar.gz
+ \
+\centering\tiny (sumber: https://commons.wikimedia.org/wiki/File%3ATargzip.svg)
+\normalsize
+# compress
+tar -czf ARCHIVE.tar.gz FILE...
+
+# extract
+tar -xzf ARCHIVE.tar.gz
+zip
+Membungkus dan mengkompresi file.
+zip [OPTION] ARCHIVE FILE...
+•	-e: encrypt; kunci dengan password
+•	-r: recursive; direktori seisinya
+unzip
+Mengekstrak file arsip ZIP.
+unzip ARCHIVE [-d DIR]
+•	-d: directory; ekstrak ke direktori berikut
+Konversi File
+convert
+Konversi citra: format, ukuran, efek, dan sebagainya.
+convert INFILE [OPTION] OUTFILE
+•	-blur WIDTHxHEIGHT: menyamarkan detail
+•	-canny WIDTHxHEIGHT: deteksi tepi
+•	-equalize : ekualisasi histogram
+•	-negate : negatif
+•	-normalize : normalisasi warna
+•	-paint RADIUS : efek lukisan minyak
+•	-resize WIDTHxHEIGHT: mengubah ukuran
+________________________________________
+\small \centering
+convert rpi.jpg -canny 2x2 -negate rpi-edge.png
+
+convert rpi.jpg -paint 5 rpi-paint.jpg
+ {width=45%}  {width=45%}\
+ffmpeg
+Konversi audio dan video.
+ffmpeg -i INFILE [OPTION] OUTFILE
+•	-b: bitrate
+•	-c: codec
+•	-ss: seek start; waktu awal
+•	-to: waktu akhir
+________________________________________
+# cut video from 2:00 to 4:00
+ffmpeg -i IN.mp4 -c copy -ss 2:00 -to 4:00 OUT.mp4
+
+# extract audio from video (MP4 -> M4A)
+ffmpeg -i IN.mp4 -vn -c:a copy OUT.m4a
+
+# extract audio from video (MP4 -> MP3)
+ffmpeg -i IN.mp4 -c:a mp3 OUT.mp3
+pandoc
+Konversi Markdown ke format lain (HTML, LaTeX, PDF).
+pandoc [OPTION] [INFILE...] -o OUTFILE
+•	-s: standalone; dokumen HTML utuh
+•	-t: to; format keluaran
+________________________________________
+# HTML
+pandoc file.md -o file.html -s
+
+# PDF
+pandoc file.md -o file.pdf
+
+# HTML slide
+pandoc slide.md -t slidy  -o slide.html -s
+
+# PDF slide
+pandoc slide.md -t beamer -o slide.pdf
+tesseract
+Konversi citra ke teks (optical character recognition).
+tesseract [OPTION] INFILE OUTFILE
+•	-l: language; gunakan bahasa berikut
+________________________________________
+\centering  {width=30%}\
+\tiny(https://raw.githubusercontent.com/auriza/os-lab/master/img/shalat.jpg) \normalsize
+tesseract shalat.jpg stdout
+# Jagalah shalat wajib dan (terutama) shalat ‘Ashr
+# quran. com/2/238
+
+tesseract -l ara shalat.jpg stdout
+\textarabic{حافظوا على الصلوات}
+\textarabic{والصلاة الوسطى}
+espeak
+Konversi teks ke suara (speech synthesizer).
+espeak [OPTION] [WORDS]
+•	-p: pitch; ketebalan suara (0--99)
+•	-s: speed; kecepatan kata per menit
+•	-v: voice; jenis suara (en, id, fr, ...)
+________________________________________
+# default English voice
+espeak "Hello world"
+
+# Indonesian voice
+espeak -v id "Institut Pertanian Bogor"
+
+# create audiobook
+man gittutorial | espeak --stdout | ffmpeg -i - git.mp3
+dot
+Konversi teks ke graf.
+dot [OPTION] [FILE]
+•	-Tpng: format keluaran PNG
+•	-Tsvg: format keluaran SVG
+________________________________________
+echo "digraph unix {
+    node [shape=box]
+    UNIX -> {SysV BSD}
+    SysV -> {AIX HPUX Solaris}
+    BSD  -> {FreeBSD MacOSX}
+    UNIX -> Linux [style=dashed]
+    {rank=same Linux MacOSX}
+}" | dot -Tpng > unix.png
+\begingroup\centering  {width=60%}
+\endgroup
+________________________________________
+ \
+Info Sistem
+lscpu
+Menampilkan informasi tentang arsitektur CPU.
+lscpu
+lshw
+Menampilkan informasi konfigurasi perangkat keras.
+lshw [OPTION]
+•	-short: format pendek
+•	-html: format HTML
+lspci
+Menampilkan informasi perangkat PCI.
+lspci [OPTION]
+•	-k: kernel; nama driver kernel
+•	-v: verbose; info detail
+lsusb
+Menampilkan informasi perangkat USB.
+lsusb [OPTION]
+•	-t: tree; pohon hierarki
+•	-v: verbose; info detail
+lsblk
+Menampilkan informasi perangkat blok.
+lsblk [OPTION]
+•	-m: mode; pemilik dan mode permission
+•	-t: topology; topologi perangkat blok
+lslocks
+Menampilkan daftar kunci yang sedang dipegang.
+lslocks [OPTION]
+•	-p: PID; proses dengan PID berikut saja
+lsof
+Menampilkan daftar file yang sedang dibuka.
+lsof [OPTION] [FILENAME]
+•	-p: PID; proses dengan PID berikut saja
+•	-u: user; proses dari user berikut saja
+•	-i: Internet socket
+•	-U: UNIX socket
+df
+Menampilkan sisa ruang disk.
+df [OPTION]
+•	-a: all; semua filesystem
+•	-h: human-readable; format ukuran
+•	-i: inode; info inode
+•	-T: type; jenis filesystem
+du
+Menampilkan penggunaan disk.
+du [OPTION] [FILE]
+•	-d: depth; kedalaman direktori
+•	-h: human-readable; format ukuran
+•	-s: summary; total ukuran
+•	--inodes: info pemakaian inode
+free
+Menampilkan besar memori yang kosong dan terpakai.
+free [OPTION]
+•	-h: human-readable; format ukuran
+vmstat
+Menampilkan statistik virtual memory.
+vmstat [OPTION] [DELAY]
+•	-d: disk; statistik disk
+•	-s: stat; statistik memori
+•	-w: wide; mode tampilan lebar
+•	-S M: satuan dalam MiB
+sensors
+Menampilkan info sensor.
+sensors
+
