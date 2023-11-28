@@ -3800,4 +3800,85 @@ sensors
 Menampilkan info sensor.
 sensors
 
+Tuliskan perintah sesuai permintaan soal, selalu gunakan 1 spasi untuk memisahkan antar-parameter
+
+1. Pindah ke direktori home kamu
+cd ~
+
+2. Tampilkan path direktori sekarang
+pwd
+
+3. Buat satu direktori bernama test
+mkdir test
+
+4. Pindah ke direktori test
+cd test
+
+5. Salin file /etc/issue ke direktori ini
+cp /etc/issue .
+
+6. Ubah nama file issue menjadi edisi!
+mv issue edisi!
+
+7. tampilkan list isi direktori ini dengan format panjang!
+ls -l
+
+8. Pindah ke direktori parent!
+cd ..
+
+9. Hapus direktori test seisinya!
+rm -r test
+
+10. Jalankan sleep 300 pada background dengan nilai awal nice 5
+sleep 300 &
+
+11. Tampilkan daftar proses dengan format panjang (-l)
+ps -l
+
+12. Tampilkan daftar job!
+jobs
+
+13. Kirim sinyal STOP ke proses tersebut! (Gunakan nomor job)
+kill -STOP %1
+
+14. Lanjutkan proses tersebut pada background! (Gunakan nomor job)
+bg %1
+
+15. Kirim sinyal XCPU ke proses tersebut! (Gunakan nomor job)
+kill -XCPU %1
+
+16. Cetak pa$$wd, lalu redirect keluarannya ke file rhs.txt
+cat /etc/passwd > rhs.txt
+
+17. Ubah permission file rhs.txt agar tidak bisa dibaca oleh orang lain (Other)!
+chmod go-rwx rhs.txt
+
+18. Buat symlink direktori /usr/include ke direktori ini!
+ln -s /usr/include .
+
+19. Tampilkan list isi direktori ini dengan format panjang!
+ls -l
+
+20. Gunakan locate untuk mencari file bernama stdio.h
+locate stdio.h
+
+21. Gunakan find untuk mencari file di /usr/include yang namanya diawali pthread!
+find /usr/include -name 'pthread*'
+
+22. Gunakan wc untuk menghitung jumlah baris pada file /usr/include/stdio.h!
+wc -l /usr/include/stdio.h
+
+23. Gunakan cat untuk menampilkan isi file /etc/passwd!
+- Lanjutkan dengan pipe, gunakan cut untuk mengambil kolom ke-7 (delimiter ':')!
+- Lanjutkan dengan pipe, urutkan!
+- Lanjutkan dengan pipe, hilangkan baris yang duplikat!
+cat /etc/passwd | cut -d':' -f7 | sort | uniq
+
+24. Gunakan grep untuk mencari baris dengan kata mysql di file /etc/services!
+- Lanjutkan dengan pipe, hilangkan baris dengan kata proxy!
+- Lanjutkan dengan pipe, gunakan cut untuk mengambil kolom ke-3!
+- Lanjutkan dengan pipe, ambil baris pertama saja!
+grep 'mysql' /etc/services | grep -v 'proxy' | cut -d' ' -f3 | head -n 1
+
+
 https://github.com/dinafadila/sistem-operasi
