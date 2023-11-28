@@ -3818,7 +3818,7 @@ cd test
 cp /etc/issue .
 
 6. Ubah nama file issue menjadi edisi!
-mv issue edisi!
+mv issue edisicat
 
 7. tampilkan list isi direktori ini dengan format panjang!
 ls -l
@@ -3848,7 +3848,7 @@ bg %1
 kill -XCPU %1
 
 16. Cetak pa$$wd, lalu redirect keluarannya ke file rhs.txt
-cat /etc/passwd > rhs.txt
+cat /etc/passwd > rhs.txt 
 
 17. Ubah permission file rhs.txt agar tidak bisa dibaca oleh orang lain (Other)!
 chmod go-rwx rhs.txt
@@ -3879,6 +3879,22 @@ cat /etc/passwd | cut -d':' -f7 | sort | uniq
 - Lanjutkan dengan pipe, gunakan cut untuk mengambil kolom ke-3!
 - Lanjutkan dengan pipe, ambil baris pertama saja!
 grep 'mysql' /etc/services | grep -v 'proxy' | cut -d' ' -f3 | head -n 1
+
+25. Tampilkan kalender, lalu redirect keluarannya ke file cal.txt!
+cal > cal.txt
+
+26. Salin file /etc/shells ke direktori ini!
+cp
+
+27. Ubah nama file shells menjadi sh
+mv shells sh
+
+28. Pindah ke direktori temp
+cd temp
+
+29. Ubah permission file rhs.txt agar tidak bisa dibaca oleh orang lain (Other)!
+chmod a+r cal.txt 
+chmod o+w cal.tx
 
 Latihan UASP
 Kisi-kisi SO Praktikum
