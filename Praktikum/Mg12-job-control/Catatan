@@ -1,0 +1,832 @@
+#12-job-control
+nice
+Menjalankan program dengan prioritas nice2 tertentu (default: 10).
+nice [-n NICE] COMMAND
+renice
+Mengubah prioritas proses yang sudah berjalan.
+renice [-n] NICE PID
+timeout
+Menjalankan program dengan batasan waktu tertentu.
+timeout DURATION COMMAND
+prlimit
+Mengatur batas penggunaan resource proses.
+prlimit [OPTION] COMMAND
+•	-t: time; waktu CPU (detik)
+•	-s: stack; ukuran stack (byte)
+•	-v: virtual memory; ukuran memori (byte)
+•	-n: number of open files
+time
+Menjalankan program dan menampilkan penggunaan waktu CPU.
+/usr/bin/time [OPTION] COMMAND
+•	-p: portable; format standar POSIX
+•	-v: verbose; format lengkap
+
+at
+Menjadwalkan job untuk dijalankan kemudian.
+at HH:MM [YYYY-MM-DD]
+•	-l: list; tampilkan daftar antrian job
+•	-r: remove; hapus job dari antrian
+
+ps
+Menampilkan cuplikan informasi proses yang sedang berjalan.
+ps [OPTION]
+•	-A: all; tampilkan semua proses
+•	-F: full; tampilkan format lengkap
+•	-L: light-weight process; tampilkan info thread
+
+student@lab2-36:~$ ps
+  PID TTY      	TIME CMD
+ 2126 pts/1	00:00:00 bash
+ 2949 pts/1	00:00:00 ps
+
+
+student@lab2-36:~$ ps -A
+  PID TTY      	TIME CMD
+	1 ?    	00:00:00 systemd
+	2 ?    	00:00:00 kthreadd
+	3 ?    	00:00:00 kworker/0:0
+	4 ?    	00:00:00 kworker/0:0H
+	5 ?    	00:00:00 kworker/u8:0
+	6 ?    	00:00:00 mm_percpu_wq
+	7 ?    	00:00:00 ksoftirqd/0
+	8 ?    	00:00:00 rcu_sched
+	9 ?    	00:00:00 rcu_bh
+dst.
+
+student@lab1-46:~$ ps -A
+	PID TTY      	TIME CMD
+  	1 ?    	00:00:02 systemd
+  	2 ?    	00:00:00 kthreadd
+  	3 ?    	00:00:00 rcu_gp
+  	4 ?    	00:00:00 rcu_par_gp
+  	5 ?    	00:00:00 slub_flushwq
+dst
+  11332 pts/0	00:00:00 ps
+
+student@lab2-36:~$ ps -F
+UID    	PID  PPID  C	SZ   RSS PSR STIME TTY      	TIME CMD
+student   2126  2104  0  5681  5140   0 15:47 pts/1	00:00:00 bash
+student   2952  2126  0  9919  3696   3 15:49 pts/1	00:00:00 ps -F
+
+student@lab2-36:~$ ps -AF
+UID    	PID  PPID  C	SZ   RSS PSR STIME TTY      	TIME CMD
+root     	1 	0  0 56318  8940   3 15:44 ?    	00:00:00 /sbin/init splas
+root     	2 	0  0 	0 	0   2 15:44 ?    	00:00:00 [kthreadd]
+dst
+
+student@lab1-46:~$ ps -L
+	PID 	LWP TTY      	TIME CMD
+  11143   11143 pts/0	00:00:00 bash
+  11343   11343 pts/0	00:00:00 ps
+
+pstree
+Menampilkan pohon proses.
+pstree [OPTION] [PID,USER]
+•	-n: numeric; urutkan berdasarkan PID
+•	-p: tampilkan PID
+student@lab2-36:~$ pstree
+systemd─┬─ModemManager───2*[{ModemManager}]
+    	├─NetworkManager───2*[{NetworkManager}]
+    	├─Thunar
+    	├─accounts-daemon───2*[{accounts-daemon}]
+    	├─acpid
+    	├─anacron───sh───run-parts───logrotate───logrotate───sh───invoke-rc.d──+++
+    	├─apache2───5*[apache2]
+    	├─avahi-daemon───avahi-daemon
+    	├─cron
+    	├─cups-browsed───2*[{cups-browsed}]
+    	├─cupsd
+    	├─dbus-daemon
+    	├─gnome-keyring-d───3*[{gnome-keyring-d}]
+    	├─irqbalance───{irqbalance}
+    	├─java───42*[{java}]
+    	├─2*[kerneloops]
+    	├─lightdm─┬─Xorg───6*[{Xorg}]
+    	│     	├─lightdm─┬─sh─┬─ssh-agent
+    	│     	│     	│	└─xfce4-session─┬─applet.py───{applet.py}
+    	│     	│     	│                	├─light-locker───3*[{light-loc+
+    	│     	│     	│                	├─polkit-gnome-au───2*[{polkit+
+    	│     	│     	│                	├─socat───sh
+    	│     	│     	│                	└─2*[{xfce4-session}]
+    	│     	│     	└─2*[{lightdm}]
+    	│     	└─2*[{lightdm}]
+    	├─mongod───22*[{mongod}]
+    	├─networkd-dispat───{networkd-dispat}
+    	├─packagekitd───2*[{packagekitd}]
+    	├─polkitd───2*[{polkitd}]
+    	├─postgres───6*[postgres]
+    	├─pulseaudio───2*[{pulseaudio}]
+    	├─rc.local───socat───sh
+    	├─rsyslogd───3*[{rsyslogd}]
+    	├─rtkit-daemon───2*[{rtkit-daemon}]
+    	├─sshd
+    	├─systemd─┬─(sd-pam)
+    	│     	├─at-spi-bus-laun─┬─dbus-daemon
+    	│     	│             	└─3*[{at-spi-bus-laun}]
+    	│     	├─at-spi2-registr───2*[{at-spi2-registr}]
+    	│     	├─dbus-daemon
+    	│     	├─dconf-service───2*[{dconf-service}]
+    	│     	├─gvfs-afc-volume───3*[{gvfs-afc-volume}]
+    	│     	├─gvfs-goa-volume───2*[{gvfs-goa-volume}]
+    	│     	├─gvfs-gphoto2-vo───2*[{gvfs-gphoto2-vo}]
+    	│     	├─gvfs-mtp-volume───2*[{gvfs-mtp-volume}]
+    	│     	├─gvfs-udisks2-vo───2*[{gvfs-udisks2-vo}]
+    	│     	├─gvfsd─┬─gvfsd-trash───2*[{gvfsd-trash}]
+    	│     	│   	└─2*[{gvfsd}]
+    	│     	├─gvfsd-fuse───5*[{gvfsd-fuse}]
+    	│     	├─gvfsd-metadata───2*[{gvfsd-metadata}]
+    	│     	├─indicator-messa───3*[{indicator-messa}]
+    	│     	├─tumblerd───4*[{tumblerd}]
+    	│     	├─xfce4-notifyd───2*[{xfce4-notifyd}]
+    	│     	└─xfconfd
+    	├─systemd-journal
+    	├─systemd-logind
+    	├─systemd-network
+    	├─systemd-resolve
+    	├─systemd-timesyn───{systemd-timesyn}
+    	├─systemd-udevd
+    	├─thermald───{thermald}
+    	├─udisksd───4*[{udisksd}]
+    	├─unattended-upgr───{unattended-upgr}
+    	├─upowerd───2*[{upowerd}]
+    	├─whoopsie───2*[{whoopsie}]
+    	├─wpa_supplicant
+    	├─xfce4-panel─┬─panel-1-whisker─┬─firefox─┬─Isolated Web Co───20*[{Isol+
+    	│         	│             	│     	├─Isolated Web Co───21*[{Isol+
+    	│         	│             	│     	├─Privileged Cont───19*[{Priv+
+    	│         	│             	│     	├─RDD Process───3*[{RDD Proce+
+    	│         	│             	│     	├─Socket Process───5*[{Socket+
+    	│         	│             	│     	├─Utility Process───3*[{Utili+
+    	│         	│             	│     	├─Web Content───15*[{Web Cont+
+    	│         	│             	│     	├─2*[Web Content───16*[{Web C+
+    	│         	│             	│     	├─WebExtensions───19*[{WebExt+
+    	│         	│             	│     	└─105*[{firefox}]
+    	│         	│             	└─2*[{panel-1-whisker}]
+    	│         	├─panel-4-systray
+    	│         	├─panel-5-notific───2*[{panel-5-notific}]
+    	│         	├─panel-6-indicat───2*[{panel-6-indicat}]
+    	│         	├─panel-7-statusn───2*[{panel-7-statusn}]
+    	│         	├─panel-8-power-m───2*[{panel-8-power-m}]
+    	│         	├─panel-9-pulseau───2*[{panel-9-pulseau}]
+    	│         	└─{xfce4-panel}
+    	├─xfce4-power-man───2*[{xfce4-power-man}]
+    	├─xfce4-terminal─┬─bash───pstree
+    	│            	└─2*[{xfce4-terminal}]
+    	├─xfdesktop───2*[{xfdesktop}]
+    	├─xfsettingsd───2*[{xfsettingsd}]
+    	└─xfwm4
+
+student@lab2-36:~$ pstree -n
+systemd─┬─systemd-journal
+    	├─systemd-udevd
+    	├─systemd-network
+    	├─systemd-resolve
+    	├─systemd-timesyn───{systemd-timesyn}
+    	├─thermald───{thermald}
+    	├─networkd-dispat───{networkd-dispat}
+    	├─dbus-daemon
+    	├─NetworkManager───2*[{NetworkManager}]
+    	├─rsyslogd───3*[{rsyslogd}]
+    	├─wpa_supplicant
+    	├─irqbalance───{irqbalance}
+    	├─systemd-logind
+    	├─acpid
+    	├─udisksd───4*[{udisksd}]
+    	├─anacron───sh───run-parts───mlocate───flock───updatedb.mlocat
+    	├─cron
+    	├─avahi-daemon───avahi-daemon
+    	├─ModemManager───2*[{ModemManager}]
+    	├─accounts-daemon───2*[{accounts-daemon}]
+    	├─cups-browsed───2*[{cups-browsed}]
+    	├─polkitd───2*[{polkitd}]
+    	├─java───42*[{java}]
+    	├─unattended-upgr───{unattended-upgr}
+    	├─mongod───22*[{mongod}]
+    	├─lightdm─┬─2*[{lightdm}]
+    	│     	├─Xorg───6*[{Xorg}]
+    	│     	└─lightdm─┬─2*[{lightdm}]
+    	│               	└─sh─┬─ssh-agent
+    	│                    	└─xfce4-session─┬─2*[{xfce4-session}]
+    	│                                    	├─socat───sh
+    	│                                    	├─polkit-gnome-au───2*[{polkit+
+    	│                                    	├─applet.py───{applet.py}
+    	│                                    	└─light-locker───3*[{light-loc+
+    	├─sshd
+    	├─postgres───6*[postgres]
+    	├─whoopsie───2*[{whoopsie}]
+    	├─rc.local───socat───sh
+    	├─2*[kerneloops]
+    	├─apache2───5*[apache2]
+    	├─systemd─┬─(sd-pam)
+    	│     	├─dbus-daemon
+    	│     	├─xfconfd
+    	│     	├─at-spi-bus-laun─┬─3*[{at-spi-bus-laun}]
+    	│     	│             	└─dbus-daemon
+    	│     	├─at-spi2-registr───2*[{at-spi2-registr}]
+    	│     	├─dconf-service───2*[{dconf-service}]
+    	│     	├─gvfsd─┬─2*[{gvfsd}]
+    	│     	│   	└─gvfsd-trash───2*[{gvfsd-trash}]
+    	│     	├─gvfsd-fuse───5*[{gvfsd-fuse}]
+    	│     	├─tumblerd───4*[{tumblerd}]
+    	│     	├─xfce4-notifyd───2*[{xfce4-notifyd}]
+    	│     	├─gvfs-udisks2-vo───2*[{gvfs-udisks2-vo}]
+    	│     	├─indicator-messa───3*[{indicator-messa}]
+    	│     	├─gvfs-gphoto2-vo───2*[{gvfs-gphoto2-vo}]
+    	│     	├─gvfs-afc-volume───3*[{gvfs-afc-volume}]
+    	│     	├─gvfs-mtp-volume───2*[{gvfs-mtp-volume}]
+    	│     	├─gvfs-goa-volume───2*[{gvfs-goa-volume}]
+    	│     	└─gvfsd-metadata───2*[{gvfsd-metadata}]
+    	├─gnome-keyring-d───3*[{gnome-keyring-d}]
+    	├─xfwm4
+    	├─xfce4-panel─┬─panel-1-whisker─┬─2*[{panel-1-whisker}]
+    	│         	│             	└─firefox─┬─107*[{firefox}]
+    	│         	│                       	├─Socket Process───5*[{Socket+
+    	│         	│                       	├─Privileged Cont───19*[{Priv+
+    	│         	│                       	├─WebExtensions───19*[{WebExt+
+    	│         	│                       	├─Isolated Web Co───20*[{Isol+
+    	│         	│                       	├─Isolated Web Co───22*[{Isol+
+    	│         	│                       	├─RDD Process───3*[{RDD Proce+
+    	│         	│                       	├─Utility Process───3*[{Utili+
+    	│         	│                       	└─3*[Web Content───15*[{Web C+
+    	│         	├─{xfce4-panel}
+    	│         	├─panel-4-systray
+    	│         	├─panel-5-notific───2*[{panel-5-notific}]
+    	│         	├─panel-6-indicat───2*[{panel-6-indicat}]
+    	│         	├─panel-7-statusn───2*[{panel-7-statusn}]
+    	│         	├─panel-8-power-m───2*[{panel-8-power-m}]
+    	│         	└─panel-9-pulseau───2*[{panel-9-pulseau}]
+    	├─Thunar
+    	├─xfdesktop───2*[{xfdesktop}]
+    	├─xfsettingsd───2*[{xfsettingsd}]
+    	├─packagekitd───2*[{packagekitd}]
+    	├─xfce4-power-man───2*[{xfce4-power-man}]
+    	├─pulseaudio───2*[{pulseaudio}]
+    	├─rtkit-daemon───2*[{rtkit-daemon}]
+    	├─upowerd───2*[{upowerd}]
+    	├─xfce4-terminal─┬─3*[{xfce4-terminal}]
+    	│            	├─bash
+    	│            	└─bash───pstree
+    	└─cupsd───dbus
+
+student@lab2-36:~$ pstree -p
+systemd(1)─┬─ModemManager(703)─┬─{ModemManager}(774)
+       	│               	└─{ModemManager}(777)
+       	├─NetworkManager(679)─┬─{NetworkManager}(809)
+       	│                 	└─{NetworkManager}(811)
+       	├─Thunar(1587)
+       	├─accounts-daemon(704)─┬─{accounts-daemon}(755)
+       	│                  	└─{accounts-daemon}(760)
+       	├─acpid(687)
+       	├─anacron(690)───sh(3057)───run-parts(3058)───mlocate(3240)───flock(+
+       	├─apache2(1010)─┬─apache2(3201)
+       	│           	├─apache2(3202)
+       	│           	├─apache2(3203)
+       	│           	├─apache2(3204)
+       	│           	└─apache2(3205)
+       	├─avahi-daemon(695)───avahi-daemon(753)
+       	├─cron(692)
+       	├─cups-browsed(754)─┬─{cups-browsed}(843)
+       	│               	└─{cups-browsed}(844)
+       	├─cupsd(3219)───dbus(3220)
+       	├─dbus-daemon(636)
+       	├─gnome-keyring-d(1358)─┬─{gnome-keyring-d}(1359)
+       	│                   	├─{gnome-keyring-d}(1360)
+       	│                   	└─{gnome-keyring-d}(1576)
+       	├─irqbalance(685)───{irqbalance}(716)
+       	├─java(830)─┬─{java}(925)
+       	│       	├─{java}(949)
+       	│       	├─{java}(950)
+       	│       	├─{java}(951)
+       	│       	├─{java}(952)
+       	│       	├─{java}(1097)
+       	│       	├─{java}(1098)
+       	│       	├─{java}(1099)
+       	│       	├─{java}(1101)
+       	│       	├─{java}(1102)
+       	│       	├─{java}(1103)
+       	│       	├─{java}(1104)
+       	│       	├─{java}(1105)
+       	│       	├─{java}(1106)
+       	│       	├─{java}(1163)
+       	│       	├─{java}(1164)
+       	│       	├─{java}(1165)
+       	│       	├─{java}(1166)
+       	│       	├─{java}(1167)
+       	│       	├─{java}(1168)
+       	│       	├─{java}(1169)
+       	│       	├─{java}(1170)
+       	│       	├─{java}(1171)
+       	│       	├─{java}(1199)
+       	│       	├─{java}(1240)
+       	│       	├─{java}(1255)
+       	│       	├─{java}(1276)
+       	│       	├─{java}(1302)
+       	│       	├─{java}(1308)
+       	│       	├─{java}(1309)
+       	│       	├─{java}(1310)
+       	│       	├─{java}(1311)
+       	│       	├─{java}(1312)
+       	│       	├─{java}(1313)
+       	│       	├─{java}(1316)
+       	│       	├─{java}(1319)
+       	│       	├─{java}(1322)
+       	│       	├─{java}(1323)
+       	│       	├─{java}(1324)
+       	│       	├─{java}(1325)
+       	│       	├─{java}(1326)
+       	│       	└─{java}(3187)
+       	├─kerneloops(966)
+       	├─kerneloops(968)
+       	├─lightdm(842)─┬─Xorg(869)─┬─{Xorg}(1092)
+       	│          	│       	├─{Xorg}(1093)
+       	│          	│       	├─{Xorg}(1094)
+       	│          	│       	├─{Xorg}(1095)
+       	│          	│       	├─{Xorg}(1096)
+       	│          	│       	└─{Xorg}(1116)
+       	│          	├─lightdm(1251)─┬─sh(1369)─┬─ssh-agent(1482)
+       	│          	│           	│      	└─xfce4-session(1507)─┬─ap+
+       	│          	│           	│                            	├─li+
+       	│          	│           	│                            	├─po+
+       	│          	│           	│                            	├─so+
+       	│          	│           	│                            	├─{x+
+       	│          	│           	│                            	└─{x+
+       	│          	│           	├─{lightdm}(1330)
+       	│          	│           	└─{lightdm}(1331)
+       	│          	├─{lightdm}(852)
+       	│          	└─{lightdm}(854)
+       	├─mongod(834)─┬─{mongod}(1083)
+       	│         	├─{mongod}(1084)
+       	│         	├─{mongod}(1119)
+       	│         	├─{mongod}(1120)
+       	│         	├─{mongod}(1121)
+       	│         	├─{mongod}(1148)
+       	│         	├─{mongod}(1149)
+       	│         	├─{mongod}(1150)
+       	│         	├─{mongod}(1151)
+       	│         	├─{mongod}(1152)
+       	│         	├─{mongod}(1153)
+       	│         	├─{mongod}(1154)
+       	│         	├─{mongod}(1175)
+       	│         	├─{mongod}(1180)
+       	│         	├─{mongod}(1183)
+       	│         	├─{mongod}(1184)
+       	│         	├─{mongod}(1185)
+       	│         	├─{mongod}(1186)
+       	│         	├─{mongod}(1187)
+       	│         	├─{mongod}(1188)
+       	│         	├─{mongod}(1189)
+       	│         	└─{mongod}(1190)
+       	├─networkd-dispat(633)───{networkd-dispat}(780)
+       	├─packagekitd(1769)─┬─{packagekitd}(1807)
+       	│               	└─{packagekitd}(1808)
+       	├─polkitd(761)─┬─{polkitd}(767)
+       	│          	└─{polkitd}(769)
+       	├─postgres(915)─┬─postgres(1086)
+       	│           	├─postgres(1087)
+       	│           	├─postgres(1088)
+       	│           	├─postgres(1089)
+       	│           	├─postgres(1090)
+       	│           	└─postgres(1091)
+       	├─pulseaudio(1848)─┬─{pulseaudio}(1943)
+       	│              	└─{pulseaudio}(1946)
+       	├─rc.local(958)───socat(972)───sh(1011)
+       	├─rsyslogd(681)─┬─{rsyslogd}(711)
+       	│           	├─{rsyslogd}(712)
+       	│           	└─{rsyslogd}(713)
+       	├─rtkit-daemon(1850)─┬─{rtkit-daemon}(1851)
+       	│                	└─{rtkit-daemon}(1852)
+       	├─sshd(850)
+       	├─systemd(1341)─┬─(sd-pam)(1342)
+       	│           	├─at-spi-bus-laun(1825)─┬─dbus-daemon(1830)
+       	│           	│                   	├─{at-spi-bus-laun}(1826)
+       	│           	│                   	├─{at-spi-bus-laun}(1827)
+       	│           	│                   	└─{at-spi-bus-laun}(1829)
+       	│           	├─at-spi2-registr(1833)─┬─{at-spi2-registr}(1835)
+       	│           	│                   	└─{at-spi2-registr}(1836)
+       	│           	├─dbus-daemon(1392)
+       	│           	├─dconf-service(1859)─┬─{dconf-service}(1873)
+       	│           	│                 	└─{dconf-service}(1874)
+       	│           	├─gvfs-afc-volume(1968)─┬─{gvfs-afc-volume}(1969)
+       	│           	│                   	├─{gvfs-afc-volume}(1970)
+       	│           	│                   	└─{gvfs-afc-volume}(1972)
+       	│           	├─gvfs-goa-volume(1977)─┬─{gvfs-goa-volume}(1978)
+       	│           	│                   	└─{gvfs-goa-volume}(1979)
+       	│           	├─gvfs-gphoto2-vo(1964)─┬─{gvfs-gphoto2-vo}(1965)
+       	│           	│                   	└─{gvfs-gphoto2-vo}(1967)
+       	│           	├─gvfs-mtp-volume(1973)─┬─{gvfs-mtp-volume}(1974)
+       	│           	│                   	└─{gvfs-mtp-volume}(1976)
+       	│           	├─gvfs-udisks2-vo(1955)─┬─{gvfs-udisks2-vo}(1961)
+       	│           	│                   	└─{gvfs-udisks2-vo}(1962)
+       	│           	├─gvfsd(1860)─┬─gvfsd-trash(1984)─┬─{gvfsd-trash}(19+
+       	│           	│         	│               	└─{gvfsd-trash}(19+
+       	│           	│         	├─{gvfsd}(1861)
+       	│           	│         	└─{gvfsd}(1862)
+       	│           	├─gvfsd-fuse(1865)─┬─{gvfsd-fuse}(1867)
+       	│           	│              	├─{gvfsd-fuse}(1868)
+       	│           	│              	├─{gvfsd-fuse}(1870)
+       	│           	│              	├─{gvfsd-fuse}(1871)
+       	│           	│              	└─{gvfsd-fuse}(1872)
+       	│           	├─gvfsd-metadata(1989)─┬─{gvfsd-metadata}(1990)
+       	│           	│                  	└─{gvfsd-metadata}(1991)
+       	│           	├─indicator-messa(1956)─┬─{indicator-messa}(1957)
+       	│           	│                   	├─{indicator-messa}(1959)
+       	│           	│                   	└─{indicator-messa}(1960)
+       	│           	├─tumblerd(1893)─┬─{tumblerd}(1900)
+       	│           	│            	├─{tumblerd}(1901)
+       	│           	│            	├─{tumblerd}(1981)
+       	│           	│            	└─{tumblerd}(1982)
+       	│           	├─xfce4-notifyd(1895)─┬─{xfce4-notifyd}(1897)
+       	│           	│                 	└─{xfce4-notifyd}(1899)
+       	│           	└─xfconfd(1542)
+       	├─systemd-journal(276)
+       	├─systemd-logind(686)
+       	├─systemd-network(329)
+       	├─systemd-resolve(615)
+       	├─systemd-timesyn(618)───{systemd-timesyn}(737)
+       	├─systemd-udevd(313)
+       	├─thermald(631)───{thermald}(779)
+       	├─udisksd(689)─┬─{udisksd}(757)
+       	│          	├─{udisksd}(759)
+       	│          	├─{udisksd}(781)
+       	│          	└─{udisksd}(805)
+       	├─unattended-upgr(831)───{unattended-upgr}(953)
+       	├─upowerd(1894)─┬─{upowerd}(1902)
+       	│           	└─{upowerd}(1903)
+       	├─whoopsie(955)─┬─{whoopsie}(1063)
+       	│           	└─{whoopsie}(1064)
+       	├─wpa_supplicant(684)
+       	├─xfce4-panel(1585)─┬─panel-1-whisker(1921)─┬─firefox(2140)─┬─Isolat+
+       	│               	│                   	│           	├─Isolat+
+       	│               	│                   	│           	├─Privil+
+       	│               	│                   	│           	├─RDD Pr+
+       	│               	│                   	│           	├─Socket+
+       	│               	│                   	│           	├─Utilit+
+       	│               	│                   	│           	├─Web Co+
+       	│               	│                   	│           	├─Web Co+
+       	│               	│                   	│           	├─Web Co+
+       	│               	│                   	│           	├─WebExt+
+       	│               	│                   	│           	├─{firef+
+       	│               	│                   	├─{panel-1-whisker}(1944+
+       	│               	│                   	└─{panel-1-whisker}(1945+
+       	│               	├─panel-4-systray(1924)
+       	│               	├─panel-5-notific(1925)─┬─{panel-5-notific}(1932+
+       	│               	│                   	└─{panel-5-notific}(1933+
+       	│               	├─panel-6-indicat(1926)─┬─{panel-6-indicat}(1939+
+       	│               	│                   	└─{panel-6-indicat}(1940+
+       	│               	├─panel-7-statusn(1927)─┬─{panel-7-statusn}(1935+
+       	│               	│                   	└─{panel-7-statusn}(1937+
+       	│               	├─panel-8-power-m(1928)─┬─{panel-8-power-m}(1930+
+       	│               	│                   	└─{panel-8-power-m}(1931+
+       	│               	├─panel-9-pulseau(1929)─┬─{panel-9-pulseau}(1936+
+       	│               	│                   	└─{panel-9-pulseau}(1938+
+       	│               	└─{xfce4-panel}(1923)
+       	├─xfce4-power-man(1843)─┬─{xfce4-power-man}(1844)
+       	│                   	└─{xfce4-power-man}(1845)
+       	├─xfce4-terminal(2104)─┬─bash(2126)
+       	│                  	├─bash(3270)───pstree(3284)
+       	│                  	├─{xfce4-terminal}(2105)
+       	│                  	├─{xfce4-terminal}(2106)
+       	│                  	└─{xfce4-terminal}(3269)
+       	├─xfdesktop(1589)─┬─{xfdesktop}(1702)
+       	│             	└─{xfdesktop}(1703)
+       	├─xfsettingsd(1604)─┬─{xfsettingsd}(1890)
+       	│               	└─{xfsettingsd}(1891)
+       	└─xfwm4(1581)
+
+top, htop
+Memonitor proses secara interaktif.
+htop [OPTION]
+•	-u USER: tampilkan proses milik USER
+•	-p PID: tampilkan proses PID
+: Atribut proses1
+Atribut Keterangan
+PID ID proses USER pemilik proses PR, NI prioritas, nilai nice VIRT ukuran memori virtual RES ukuran memori residen (fisik) SHR ukuran memori shared S status proses - R: running - S: sleeping - D: waiting for disk - T: stopped
+
+student@lab2-36:~$ top
+
+Perintah `top` akan menampilkan daftar proses secara dinamis dengan informasi seperti penggunaan CPU, penggunaan memori, ID proses (PID), waktu aktif, dan lainnya.
+
+student@lab2-36:~$ htop (Versi yang ditingkatkan dari `top`, dengan antarmuka yang lebih interaktif dan lebih banyak opsi yang tersedia.)
+
+
+student@lab2-36:~$ htop -u (Opsi `-u` pada `htop` akan menampilkan hanya proses-proses yang dimiliki oleh pengguna yang ditentukan.)
+
+htop: option requires an argument -- 'u'
+
+student@lab2-36:~$ htop -u g6401211110
+Error: invalid user "g6401211110".
+
+student@lab2-36:~$ htop -p PID (Opsi `-p` pada `htop` memungkinkan Anda untuk menampilkan informasi khusus tentang proses dengan PID tertentu.)
+
+student@lab2-36:~$ htop -u USER
+Error: invalid user "USER".
+
+
+pidof
+Mendapatkan PID dari nama program yang sedang berjalan.
+pidof PROGRAM
+student@lab2-36:~$ pidof bash
+3783 3270 2126
+
+student@lab2-36:~$ pidof chrome
+
+student@lab1-46:~$ pidof firefox (Perintah `pidof` digunakan udntuk mendapatkan PID (Process ID) dari sebuah program yang sedang berjalan)
+11368 6718 6674 6649 6581 6497 2465 2213 2165 2130 2051 2029 1841
+
+
+pgrep
+Mendapatkan PID dari nama program yang sedang berjalan.
+pgrep [OPTION] PROGRAM...
+•	-u USER: pilih proses milik USER
+•	-g GROUP: pilih proses milik GROUP
+•	-l: tampilkan nama proses
+student@lab2-36:~$ pgrep -u student
+1341
+1342
+1358
+1369
+1392
+1482
+1507
+1542
+1581
+1585
+1587
+1589
+1604
+1760
+1775
+1824
+1825
+1830
+1833
+1837
+1843
+1848
+1849
+1859
+1860
+1865
+1895
+1921
+1924
+1925
+1926
+1927
+1928
+1929
+1955
+1956
+1964
+1968
+1973
+1977
+1984
+1989
+2104
+2126
+2140
+2211
+2266
+2305
+2757
+2792
+2834
+2837
+2979
+3005
+3034
+3270
+3783
+
+student@lab2-36:~$ pgrep -u student | wc
+ 	58  	58 	290
+student@lab2-36:~$ pgrep -u student chrome
+
+student@lab2-36:~$ pgrep -l student
+
+student@lab2-36:~$ pgrep -l firefox
+2140 firefox
+
+kill
+Mengirim sinyal ke proses (default: SIGTERM).
+kill [OPTION] PID...
+•	-INT
+•	-KILL
+•	-STOP
+•	-CONT
+student@lab2-36:~$ geany &
+[1] 4033
+
+student@lab2-36:~$ geany &
+[2] 4050
+[1]   Done                	geany
+student@lab2-36:~$ kill 4050
+
+student@lab2-36:~$ geany &
+[3] 4071
+[2]   Done                	geany
+
+pkill
+Mengirim sinyal ke proses (default: SIGTERM) berdasarkan namanya.
+pkill [OPTION] PROGRAM...
+•	-INT
+•	-KILL
+•	-STOP
+•	-CONT
+•	-u USER: pilih proses milik USER
+•	-g GROUP: pilih proses milik GROUP
+student@lab2-36:~$ pkill geany
+
+student@lab2-36:~$ geany &
+[4] 4107
+[3]   Done                	geany
+
+student@lab2-36:~$ pkill geany
+
+student@lab2-36:~$ geany *
+
+student@lab2-36:~$ geany &
+[3] 4071
+[2]   Done                	geany
+
+student@lab2-36:~$ pkill geany
+
+student@lab2-36:~$ geany &
+[4] 4107
+[3]   Done                	geany
+
+student@lab2-36:~$ pkill geany
+
+student@lab2-36:~$ geany *
+[4]+  Done                	geany
+
+student@lab2-36:~$ geany &
+[1] 4163
+
+student@lab2-36:~$ pkill -KILL geany
+
+student@lab2-36:~$ geany &
+[2] 4189
+[1]   Killed              	geany
+
+student@lab2-36:~$ pkill -STOP geany
+[2]+  Stopped             	geany
+
+student@lab2-36:~$ pkill geany
+
+student@lab2-36:~$ geany &
+[3] 4243
+
+student@lab2-36:~$ pkill geany
+
+student@lab2-36:~$ pkill genay
+[3]-  Done                	geany
+
+student@lab2-36:~$ pkill geany
+
+student@lab2-36:~$ pkill -CONT geany
+
+pmap
+Menampilkan memory map sebuah proses.
+pmap [OPTION] PID
+•	-x: tampilkan format extended
+•	-p: tampilkan path lengkap file
+student@lab2-36:~$ pmap -x PID
+
+00007f7c741d4000   2048K ----- libc-2.27.so
+00007f7c743d4000 	16K r---- libc-2.27.so
+00007f7c743d8000  	8K rw--- libc-2.27.so
+00007f7c743da000 	16K rw---   [ anon ]
+00007f7c743de000 	12K r-x-- libdl-2.27.so
+00007f7c743e1000   2044K ----- libdl-2.27.so
+00007f7c745e0000  	4K r---- libdl-2.27.so
+00007f7c745e1000  	4K rw--- libdl-2.27.so
+00007f7c745e2000	152K r-x-- libtinfo.so.5.9
+00007f7c74608000   2044K ----- libtinfo.so.5.9
+00007f7c74807000 	16K r---- libtinfo.so.5.9
+00007f7c7480b000  	4K rw--- libtinfo.so.5.9
+00007f7c7480c000	164K r-x-- ld-2.27.so
+00007f7c749bb000	280K rw---   [ anon ]
+00007f7c74a2e000 	28K r--s- gconv-modules.cache
+00007f7c74a35000  	4K r---- ld-2.27.so
+00007f7c74a36000  	4K rw--- ld-2.27.so
+00007f7c74a37000  	4K rw---   [ anon ]
+00007ffee0a78000	132K rw---   [ stack ]
+00007ffee0bdb000 	12K r----   [ anon ]
+00007ffee0bde000  	8K r-x--   [ anon ]
+ffffffffff600000  	4K r-x--   [ anon ]
+ total        	22988K
+(END)
+
+lsof
+Menampilkan daftar file yang sedang dibuka oleh proses.
+lsof [-p PID] [FILENAME...]
+
+student@lab2-36:~$ lsof -p $$
+COMMAND  PID	USER   FD   TYPE DEVICE SIZE/OFF 	NODE NAME
+bash	4703 student  cwd	DIR	8,1 	4096 42991633 /home/student
+bash	4703 student  255u   CHR  136,1  	0t0    	4 /dev/pts/1
+student@lab2-36:~$
+
+student@lab2-36:~$ nice sleep 100 &
+[1] 4834
+student@lab2-36:~$ htop -p 4758
+student@lab2-36:~$ htop -p 4866 -p 4834
+
+student@lab2-36:~$ nice sleep 100 &
+[2] 4908
+[1]   Done                	nice -n 19 sleep 50
+student@lab2-36:~$ renice 15 4908
+4908 (process ID) old priority 10, new priority 15
+student@lab2-36:~$ renice 12 4908
+renice: failed to set priority for 4908 (process ID): Permission denied
+student@lab2-36:~$ timeout 5 geany
+
+strace
+Menelusuri system call dan sinyal proses.
+strace [OPTION] COMMAND
+•	-c: count; tampilkan ringkasan
+•	-f: fork; telusuri juga proses child
+•	-t: time; tampilkan waktu, gunakan -tt untuk mikrodetik
+•	-e SET: telusuri syscall tertentu saja
+o	SET: file, process, network, signal, ipc, desc, memory
+student@lab2-36:~$ strace -c echo hello
+hello
+% time 	seconds  usecs/call 	calls	errors syscall
+------ ----------- ----------- --------- --------- ----------------
+  0.00	0.000000       	0     	1       	read
+  0.00	0.000000       	0     	1       	write
+  0.00	0.000000       	0     	5       	close
+  0.00	0.000000       	0     	4       	fstat
+  0.00	0.000000       	0     	6       	mmap
+  0.00	0.000000       	0     	4       	mprotect
+  0.00	0.000000       	0     	1       	munmap
+  0.00	0.000000       	0     	3       	brk
+  0.00	0.000000       	0     	3     	3 access
+  0.00	0.000000       	0     	1       	execve
+  0.00	0.000000       	0     	1       	arch_prctl
+  0.00	0.000000       	0     	3       	openat
+------ ----------- ----------- --------- --------- ----------------
+100.00	0.000000                	33     	3 total
+
+
+objdump
+Menampilkan informasi dari file objek.
+objdump [OPTION] FILE
+•	-d: disassemble segmen text
+•	-D: dissasseble semua segmen
+•	-M intel: mode sintaks Intel
+student@lab2-36:~$ which echo
+/bin/echo
+student@lab2-36:~$ objdump /bin/echo
+
+Job
+Job
+Job: kumpulan proses yang berjalan bersama dalam satu shell.
+
+Proses Background
+Untuk menjalankan proses di background, tambahkan tanda & pada akhir perintah.
+COMMAND... &
+jobs
+Menampilkan daftar job yang sedang aktif.
+jobs
+fg
+Memindahkan job ke foreground.
+fg %JOB
+bg
+Memindahkan job ke background.
+bg %JOB
+
+student@lab2-36:~$ man time
+student@lab2-36:~$ jobs
+student@lab2-36:~$ fg
+bash: fg: current: no such job
+student@lab2-36:~$ bg
+bash: bg: current: no such job
+student@lab2-36:~$ kill %i
+bash: kill: %i: no such job
+
+sleep 1000 
+stop 
+bg %i
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
