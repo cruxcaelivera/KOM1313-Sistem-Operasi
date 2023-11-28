@@ -3880,5 +3880,82 @@ cat /etc/passwd | cut -d':' -f7 | sort | uniq
 - Lanjutkan dengan pipe, ambil baris pertama saja!
 grep 'mysql' /etc/services | grep -v 'proxy' | cut -d' ' -f3 | head -n 1
 
+Latihan UASP
+Kisi-kisi SO Praktikum
+pindah ke direktori home anda
+cd ~
+
+buat satu folder kosong 'test'
+mkdir test
+
+masuk ke direktori 'test'
+cd test
+
+tampilkan path direktori saat ini
+pwd
+
+buat file kosong bernama 'empty.txt'
+touch empty.txt
+
+copy file '/etc/timezone' ke direktori ini
+cp /etc/timezone
+
+ubah nama file 'timezone' menjadi 'tz.txt'
+mv timezone tz.txt
+
+list isi direktori ini
+ls
+
+pindah ke direktori parent
+cd ..
+
+hapus direktori 'test' seisinya
+rm -rf test
+
+temukan file dengan nama 'fdisk' memakai locate
+locate fdisk (gpt) atau locate –i fdisk 
+
+temukan file dengan nama 'fdisk' memakai find
+find -name fdisk atau find / -name 'fdisk' (gpt)
+
+temukan file pada home anda yang ukurannya > 200 MB
+find ~ -size +200M
+
+temukan file pada home anda yang diubah < 3 hari
+find ~ -mtime -3
+
+temukan file pada home anda yang diakses > 30 hari
+find ~ -atime +30
+
+tampilkan 5 baris pertama keluaran perintah last
+last | head -n 5
+
+tampilkan dua baris terakhir file '/etc/passwd'
+cat /etc/passwd | tail -n 2 atau tail -2 /etc/passwd (gpt)
+
+cari file di '/usr/include' yang memuat kata 'sem_post'
+grep -rnw '/usr/include/' -e 'sem_post' atau grep -rl 'sem_post' /usr/include (gpt) atau grep -r "sem_post" /usr/include
+
+tampilkan kolom 1 dan 5 dari file '/etc/passwd'
+cut -f 1,5 /etc/passwd -d ':' atau awk -F: '{print $1, $5}' /etc/passwd (gpt) atau cut -f 1,5 -d ':' /etc/passwd
+
+tampilkan isi file '/etc/motd' dalam huruf kapital
+cat /etc/motd | tr a-z A-Z atau cat /etc/motd | tr "[a-z]" "[A-Z]" (gpt) atau cat /etc/motd | tr 'a-z' 'A-Z'
+
+jalankan cat /dev/random > rand.txt di background
+cat /dev/random > rand.txt &
+
+tampilkan daftar job
+jobs
+jobs -p # Untuk menampilkan sesuai PID
+
+kirim sinyal STOP ke job tersebut
+kill -STOP 25384 # (Angka sesuai PID output di jobs) atau kill -STOP %1 (GPT)
+
+lanjutkan job tersebut di background
+kill -CONT 25384 # (Angka sesuai PID output di jobs) atau bg %1 (GPT) atau bg 1
+
+kirim sinyal TERM ke job tersebut
+kill -TERM 25384 # (Angka sesuai PID output di jobs)
 
 https://github.com/dinafadila/sistem-operasi
