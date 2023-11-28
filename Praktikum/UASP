@@ -1,0 +1,3802 @@
+#8-intro-cli
+Mg8
+
+[OPTION] Diisikan dengan poin dari perintah 
+USER Dalam hal ini NIM
+
+ssh
+Login ke komputer remote.
+ssh [OPTION] USER@HOST
+•	-X: X forwarding untuk aplikasi GUI
+student@lab2-31:~$ ssh g6401211110@172.18.14.15
+The authenticity of host '172.18.14.15 (172.18.14.15)' can't be established.
+ECDSA key fingerprint is SHA256:SnyLwXnr16DeLmNZ2m63eVUQYEnhYxy5ErZCZZYjHzU.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '172.18.14.15' (ECDSA) to the list of known hosts.
+g6401211110@172.18.14.15's password: 211110
+Welcome to Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-213-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management: 	https://landscape.canonical.com
+ * Support:    	https://ubuntu.com/advantage
+
+Expanded Security Maintenance for Infrastructure is not enabled.
+
+5 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+112 additional security updates can be applied with ESM Infra.
+Learn more about enabling ESM Infra service for Ubuntu 18.04 at
+https://ubuntu.com/18-04
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+Last login: Tue Oct 17 15:27:22 2023 from 172.18.31.104, 172.18.16.231
+
+echo
+Menampilkan satu baris teks.
+echo [OPTION] [STRING]
+•	-n: tanpa newline di akhir
+g6401211110@r1:~$ echo teks
+teks
+g6401211110@r1:~$ echo -n "Hello, World!"
+Hello, World!g6401211110@r1:~$
+
+hostname
+Menampilkan nama host sistem.
+hostname [OPTION]
+•	-I: tampilkan alamat IP
+
+g6401211110@r1:~$ hostname -I
+172.18.14.15
+g6401211110@r1:~$ hostname --
+r1
+g6401211110@r1:~$ hostname (atau hostname –)
+r1
+
+uname
+Menampilkan informasi kernel sistem.
+uname [OPTION]
+•	-a: all; semua info
+g6401211110@r1:~$ uname
+Linux
+g6401211110@r1:~$ uname -a
+Linux r1 4.15.0-213-generic #224-Ubuntu SMP Mon Jun 19 13:30:12 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+
+uptime
+Menampilkan berapa lama sistem sudah berjalan.
+uptime
+g6401211110@r1:~$ uptime
+ 15:52:43 up 17 days, 23:18, 88 users,  load average: 0,07, 0,26, 0,19
+
+date
+Mencetak tanggal dan waktu sistem.
+date [+FORMAT]
+g6401211110@r1:~$ date (Tanggal dan Waktu lengkap)
+Sel Okt 17 15:53:21 WIB 2023
+g6401211110@r1:~$ date +%F (Tanggal dalam format YYYY-MM-DD)
+2023-10-17
+g6401211110@r1:~$ date +%H (Menampilkan jam)
+15
+g6401211110@r1:~$ date +%M (Menampilkan menit)
+53
+g6401211110@r1:~$ date +%D (Menampilkan dalam format MM/DD/YY)
+10/17/23
+
+cal
+Menampilkan kalender.
+cal [[MONTH] YEAR]
+
+g6401211110@r1:~$ cal
+	Oktober 2023 	 
+Mi Se Se Ra Ka Ju Sa  
+ 1  2  3  4  5  6  7  
+ 8  9 10 11 12 13 14  
+15 16 17 18 19 20 21  
+22 23 24 25 26 27 28  
+29 30 31         	 
+                 	 
+g6401211110@r1:~$ cal 2024
+                        	2024
+  	Januari           	Februari           	Maret     	 
+Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  
+	1  2  3  4  5  6           	1  2  3              	1  2  
+ 7  8  9 10 11 12 13   4  5  6  7  8  9 10   3  4  5  6  7  8  9  
+14 15 16 17 18 19 20  11 12 13 14 15 16 17  10 11 12 13 14 15 16  
+21 22 23 24 25 26 27  18 19 20 21 22 23 24  17 18 19 20 21 22 23  
+28 29 30 31       	25 26 27 28 29    	24 25 26 27 28 29 30  
+                                        	31               	 
+
+   	April              	Mei               	Juni     	 
+Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  
+	1  2  3  4  5  6        	1  2  3  4                 	1  
+ 7  8  9 10 11 12 13   5  6  7  8  9 10 11   2  3  4  5  6  7  8  
+14 15 16 17 18 19 20  12 13 14 15 16 17 18   9 10 11 12 13 14 15  
+21 22 23 24 25 26 27  19 20 21 22 23 24 25  16 17 18 19 20 21 22  
+28 29 30          	26 27 28 29 30 31 	23 24 25 26 27 28 29  
+                                        	30               	 
+
+    	Juli            	Agustus          	September   	 
+Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  
+	1  2  3  4  5  6           	1  2  3   1  2  3  4  5  6  7  
+ 7  8  9 10 11 12 13   4  5  6  7  8  9 10   8  9 10 11 12 13 14  
+14 15 16 17 18 19 20  11 12 13 14 15 16 17  15 16 17 18 19 20 21  
+21 22 23 24 25 26 27  18 19 20 21 22 23 24  22 23 24 25 26 27 28  
+28 29 30 31       	25 26 27 28 29 30 31  29 30            	 
+                                                             	 
+
+  	Oktober           	November          	Desember   	 
+Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  
+   	1  2  3  4  5              	1  2   1  2  3  4  5  6  7  
+ 6  7  8  9 10 11 12   3  4  5  6  7  8  9   8  9 10 11 12 13 14  
+13 14 15 16 17 18 19  10 11 12 13 14 15 16  15 16 17 18 19 20 21  
+20 21 22 23 24 25 26  17 18 19 20 21 22 23  22 23 24 25 26 27 28  
+27 28 29 30 31    	24 25 26 27 28 29 30  29 30 31         	 
+                                                             	 
+g6401211110@r1:~$ cal 2 2024
+   Februari 2024 	 
+Mi Se Se Ra Ka Ju Sa  
+         	1  2  3  
+ 4  5  6  7  8  9 10  
+11 12 13 14 15 16 17  
+18 19 20 21 22 23 24  
+25 26 27 28 29   	 
+              
+
+Akun
+whoami
+Menampilkan nama user efektif.
+whoami
+ 	 
+g6401211110@r1:~$ whoami
+g6401211110
+
+who
+Menampilkan siapa yang sedang login.
+who [OPTION]
+•	-q: quantity; jumlah user yang sedang login
+•	-w: write status untuk pesan (+, -, ?)
+
+g6401211110@r1:~$ who
+g6401211032 pts/0    	2023-10-17 15:26 (172.18.31.104, 172.18.16.249)
+auriza   pts/3    	2023-10-17 15:28 (172.18.31.104, 114.124.176.56)
+g6401211115 pts/72   	2023-10-17 15:54 (172.18.16.110)
+
+g6401211110@r1:~$ who -q
+g6401211032 auriza g6401211110 g6401211059 g6401211094 g6401211044 g6401201109 g6401211097 g6401211038 g6401201025 g6401211045 g6401211118 g6401211114 g6401211075 g6401211085 g6401211146 g6401211085 g6401211019 g6401211139 g6401211086 g6401211117 g6401211048 g6401201025 g6401211036 g6401211087 g6401211112 g6401211045 g6401211016 g6401211029 g6401211111 g6401211114 g6401211021 g6401211074 g6401211001 g6401211017 g6401211038 g6401211114 g6401211078 g6401211037 g6401211044 g6401211013 g6401211041 g6401211113 g6401211005 g6401211060 g6401211001 g6401211062 g6401211005 g6401211098 g6401211119 g6401211036 g6401211068 g6401211032 g6401211059 g6401211142 g6401211065 g6401211096 g6401211031 g6401211061 g6401211063 g6401211072 g6401211014 g6401211110 g6401211034 g6401201109 g6401211049 g6401211057 g6401211056 g6401211081 g6401211101 g6401211146 g6401211033 g6401211130 g6401211068 g6401211103 g6401211015 g6401211098 g6401201109 g6401201112 g6401211094 g6401211116 g6401211084 g6401211091 g6401211038 g6401211089 g6401211077 g6401211002 g6401211118 g6401211115
+# users=89
+
+g6401211110@r1:~$ who -w
+g6401211032 - pts/0    	2023-10-17 15:26 (172.18.31.104, 172.18.16.249)
+auriza   - pts/3    	2023-10-17 15:28 (172.18.31.104, 114.124.176.56)
+g6401211114 + pts/36   	2023-10-17 15:49 (172.18.16.146)
+g6401211118 - pts/77   	2023-10-17 15:51 (172.18.31.104, 172.18.16.142)
+g6401211115 + pts/72   	2023-10-17 15:54 (172.18.16.110)
+*angka dibelakang pts berbeda
+
+w
+Menampilkan siapa yang sedang login dan apa yang dijalankannya.
+w [USER]
+
+g6401211110@r1:~$ w g6401211110
+ 15:57:41 up 17 days, 23:23, 89 users,  load average: 0,16, 0,20, 0,18
+USER 	TTY  	FROM         	LOGIN@   IDLE   JCPU   PCPU WHAT
+g6401211 pts/4	172.18.31.104,-  15:27   29:49   0.04s  0.03s -bash
+g6401211 pts/69   172.18.16.231	15:43	5.00s  0.08s  0.01s w g6401211110
+
+g6401211110@r1:~$ w
+ 15:57:48 up 17 days, 23:23, 89 users,  load average: 0,13, 0,20, 0,18
+USER 	TTY  	FROM         	LOGIN@   IDLE   JCPU   PCPU WHAT
+g6401211 pts/0	172.18.31.104,-  15:26   24:35   0.05s  0.03s -bash
+auriza   pts/3	172.18.31.104,-  15:28   20.00s  0.11s  0.09s -bash
+g6401211 pts/30   172.18.16.138	15:40   16.00s  0.07s  0.01s mail
+g6401201 pts/1	172.18.14.15 	13:49	1:53m  0.11s  0.01s mail auriza
+g6401211 pts/35   172.18.16.132	15:47	4.00s  0.06s  0.01s sshd: g64012110
+g6401211 pts/43   172.18.16.113	15:41	2:55   0.04s  0.02s ssh -X g6401211
+g6401211 pts/57   172.18.31.104,-  15:43   36.00s  0.08s  0.04s ssh g6401211098
+g6401211 pts/56   172.18.16.217	15:43	4.00s  0.06s  0.02s sshd: g64012110
+g6401211 pts/69   172.18.16.231	15:43	0.00s  0.08s  0.01s w
+
+last
+Menampilkan daftar waktu user terakhir kali login.
+last
+
+g6401211110@r1:~$ last
+g6401211 pts/91   	10.1.193.82  	Tue Oct 17 15:57   still logged in
+g6401211 pts/77   	172.18.31.104, 1 Tue Oct 17 15:51   still logged in
+g6401211 pts/4    	172.18.16.138	Mon Oct 16 16:19 - 16:22  (00:03)
+g6401211 pts/7    	172.18.16.138	Mon Oct 16 16:18 - 16:22  (00:04)
+
+wtmp begins Sun Oct  1 11:12:32 2023
+
+passwd
+Mengganti password login.
+passwd
+
+g6401211110@r1:~$ passwd
+Changing password for g6401211110.
+(current) UNIX password:
+Enter new UNIX password:
+Retype new UNIX password:
+Password unchanged
+
+Enter new UNIX password:
+Retype new UNIX password:
+Bad: new and old password are too similar
+
+Enter new UNIX password:
+Retype new UNIX password:
+Sorry, passwords do not match
+
+passwd: Authentication token manipulation error
+passwd: password unchanged
+g6401211110@r1:~$
+
+adduser
+Menambah user baru, atau menambahkan user ke grup tertentu.
+sudo adduser USER
+sudo adduser USER GROUP
+
+g6401211110@r1:~$ sudo adduser USER
+[sudo] password for g6401211110:
+g6401211110 is not in the sudoers file.  This incident will be reported.
+
+g6401211110@r1:~$ sudo adduser USER GROUP
+[sudo] password for g6401211110:
+g6401211110 is not in the sudoers file.  This incident will be reported.
+
+deluser
+Menghapus user dari sistem.
+sudo deluser USER
+•	--remove-home: hapus direktori home
+
+g6401211110@r1:~$ sudo deluser USER
+[sudo] password for g6401211110:
+g6401211110 is not in the sudoers file.  This incident will be reported.
+
+write
+Mengirim pesan ke user lain yang sedang login.
+write USER [TTY]
+
+g6401211110@r1:~$ write g6401211110 tty2
+write: g6401211110 is not logged in on tty2
+
+tty2 = User yang sedang login di terminal tty2
+
+g6401211110@r1:~$ write g6401211059
+halo
+test
+
+mesg
+Mengontrol akses masuk pesan ke terminal anda (ya/tidak).
+mesg [y|n]
+
+g6401211110@r1:~$ mesg n
+g6401211110@r1:~$ write g6401211110
+write: write: you have write permission turned off.
+
+write: g6401211110 has messages disabled
+g6401211110@r1:~$ mesg y
+g6401211110@r1:~$ write g6401211110
+
+Message from g6401211110@r1 on pts/1 at 16:24 ...
+
+mail
+Membaca atau mengirim email ke user lain.
+mail [USER...]
+
+g6401211110@r1:~$ mail g6401211110
+Cc:  
+Subject: Test
+Hello World (CTRL + D)
+
+g6401211110@r1:~$ mail
+"/var/mail/g6401211110": 1 message 1 new
+>N   1 Ronald Abner   	Sel Nov  7 16:25  13/395   Test
+? print 1
+Return-Path: <g6401211110@r1>
+X-Original-To: g6401211110@r1
+Delivered-To: g6401211110@r1
+Received: by r1 (Postfix, from userid 1034)
+    id 875A248009D; Tue,  7 Nov 2023 16:25:26 +0700 (WIB)
+To: <g6401211110@r1>
+Subject: Test
+X-Mailer: mail (GNU Mailutils 3.4)
+Message-Id: <20231107092526.875A248009D@r1>
+Date: Tue,  7 Nov 2023 16:25:26 +0700 (WIB)
+From: Ronald Abner <g6401211110@r1>
+
+Hello World
+? reply 1
+To: g6401211110@r1
+Subject: Re: Test
+
+Hello too
+? delete 1
+New mail has arrived.
+? quit
+Saved 1 message in /home/g6401211110/mbox
+Held 1 message in /var/mail/g6401211110
+g6401211110@r1:~$ mail
+"/var/mail/g6401211110": 1 message 1 unread
+>U   1 Ronald Abner   	Sel Nov  7 16:25  19/585   Re: Test
+? print 1
+Return-Path: <g6401211110@r1>
+X-Original-To: g6401211110@r1
+Delivered-To: g6401211110@r1
+Received: by r1 (Postfix, from userid 1034)
+    id 9F12C48009D; Tue,  7 Nov 2023 16:25:50 +0700 (WIB)
+To: <g6401211110@r1>
+Subject: Re: Test
+In-Reply-To: Your message of Tue,  7 Nov 2023 16:25:26 +0700 (WIB)
+    <20231107092526.875A248009D@r1>
+References: <20231107092526.875A248009D@r1>
+X-Mailer: mail (GNU Mailutils 3.4)
+Message-Id: <20231107092550.9F12C48009D@r1>
+Date: Tue,  7 Nov 2023 16:25:50 +0700 (WIB)
+From: Ronald Abner <g6401211110@r1>
+X-IMAPbase: 1699349131 2
+Status: O
+X-UID: 1
+
+Hello too
+
+
+^Cg6401211110@r1:~$ mail g6401211098
+Cc:
+Subject: bebas apa aja
+isi email
+^C
+(Interrupt -- one more to kill letter)
+
+^Cg6401211110@r1:~$ mail
+Cannot open mailbox /var/mail/g6401211110: Permission denied
+No mail for g6401211110
+
+g6401211110@r1:~$ mail
+Cannot open mailbox /var/mail/g6401211110: Permission denied
+No mail for g6401211110
+
+g6401211110@r1:~$ mail
+Cannot open mailbox /var/mail/g6401211110: Permission denied
+No mail for g6401211110
+
+g6401211110@r1:~$ mail g6401211021
+Cc: faiz
+Subject: faiz
+raja treding
+^C
+(Interrupt -- one more to kill letter)
+
+g6401211110@r1:~$ mail g6401211021
+Cc: faiz
+Subject: faiz
+raja treding
+
+g6401211110@r1:~$ mail
+"/var/mail/g6401211110": 1 message 1 new
+>N   1 Mail Delivery Syst Sel Okt 17 16:05  71/2020  Undelivered Mail Returned
+? print 1
+Return-Path: <>
+X-Original-To: g6401211110@r1
+Delivered-To: g6401211110@r1
+Received: by r1 (Postfix)
+    id CDFA348009D; Tue, 17 Oct 2023 16:05:01 +0700 (WIB)
+Date: Tue, 17 Oct 2023 16:05:01 +0700 (WIB)
+From: MAILER-DAEMON@r1 (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: g6401211110@r1
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+    boundary="CCBE448009C.1697533501/r1"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20231017090501.CDFA348009D@r1>
+
+This is a MIME-encapsulated message.
+
+--CCBE448009C.1697533501/r1
+Content-Description: Notification
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+This is the mail system at host r1.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+               	The mail system
+
+<faiz@r1>: unknown user: "faiz"
+
+--CCBE448009C.1697533501/r1
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; r1
+X-Postfix-Queue-ID: CCBE448009C
+X-Postfix-Sender: rfc822; g6401211110@r1
+Arrival-Date: Tue, 17 Oct 2023 16:05:01 +0700 (WIB)
+
+Final-Recipient: rfc822; faiz@r1
+Original-Recipient: rfc822;faiz@r1
+Action: failed
+Status: 5.1.1
+Diagnostic-Code: X-Postfix; unknown user: "faiz"
+
+--CCBE448009C.1697533501/r1
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 8bit
+
+Return-Path: <g6401211110@r1>
+Received: by r1 (Postfix, from userid 1034)
+    id CCBE448009C; Tue, 17 Oct 2023 16:05:01 +0700 (WIB)
+To: <g6401211021@r1>
+Cc: <faiz@r1>
+Subject: faiz
+X-Mailer: mail (GNU Mailutils 3.4)
+Message-Id: <20231017090501.CCBE448009C@r1>
+Date: Tue, 17 Oct 2023 16:05:01 +0700 (WIB)
+From: Ronald Abner <g6401211110@r1>
+
+raja treding
+
+--CCBE448009C.1697533501/r1--
+?
+Saved 1 message in /home/g6401211110/mbox
+Held 0 messages in /var/mail/g6401211110
+
+g6401211110@r1:~$ uname -a
+Linux r1 4.15.0-213-generic #224-Ubuntu SMP Mon Jun 19 13:30:12 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+
+g6401211110@r1:~$ mail auriza
+Cc: Praktikum Minggu ke-8 Sistem Operasi
+Subject: G6401211110
+Terimakasih bapak
+Cannot parse address `Praktikum Minggu ke-8 Sistem Operasi' (while expanding `Praktikum Minggu ke-8 Sistem Operasi'): Malformed email address
+
+g6401211110@r1:~$ mail auriza
+Cc:
+Subject: G6401211110
+Selamat sore bapak, maaf telah mengganggu waktunya.
+
+g6401211110@r1:~$ Oerjebak
+Oerjebak: command not found
+g6401211110@r1:~$ mail
+No mail for g6401211110
+
+g6401211110@r1:~$ mail
+"/var/mail/g6401211110": 1 message 1 new
+>N   1 Muhamad Yasir Buan Sel Okt 17 16:13  14/433   sdadnadjkna
+? 1
+Return-Path: <g6401211032@r1>
+X-Original-To: g6401211110@r1
+Delivered-To: g6401211110@r1
+Received: by r1 (Postfix, from userid 1013)
+    id 44A4648009C; Tue, 17 Oct 2023 16:13:14 +0700 (WIB)
+To: <g6401211110@r1>
+Cc: <bacoott@r1>
+Subject: sdadnadjkna
+X-Mailer: mail (GNU Mailutils 3.4)
+Message-Id: <20231017091314.44A4648009C@r1>
+Date: Tue, 17 Oct 2023 16:13:14 +0700 (WIB)
+From: Muhamad Yasir Buana Dyva <g6401211032@r1>
+
+asdaskjndasdn
+?
+Saved 1 message in /home/g6401211110/mbox
+Held 0 messages in /var/mail/g6401211110
+
+g6401211110@r1:~$ ^C
+g6401211110@r1:~$ ^C
+g6401211110@r1:~$
+
+send mail
+\scriptsize
+pi@raspi:~ $ mail user
+Cc:
+Subject: Test
+Hello world!
+[Ctrl+D]
+::: ::: {.column width="67%"}
+print, reply, delete mail
+\scriptsize
+user@raspi:~ $ mail
+"/var/mail/user": 1 message 1 new
+>N   1 pi@raspi   Tue Nov  6 14:54  15/422   Test
+
+? print 1
+Subject: Test
+From: pi@raspi
+
+Hello world!
+
+? reply 1
+Hello too.
+[Ctrl+D]
+
+? delete 1
+
+? quit
+::: ::::::
+Lain-Lain
+poweroff
+Mematikan (shutdown) sistem.
+sudo poweroff
+reboot
+Me-restart sistem.
+sudo reboot
+Shortcut
+Tab
+auto-completion
+Up, Down
+mengakses riwayat perintah
+Ctrl+D
+mengakhiri teks (EOF)
+Ctrl+C
+mengakhiri proses
+Ctrl+L
+membersihkan layar
+Ctrl+W
+menghapus satu kata ke belakang
+ 
+#9-File
+
+ 
+student@lab2-46:~$ ls
+ baru.txt                 	Downloads   Pictures  	R
+'Cisco Packet Tracer 7.3.0'   hello.c 	pt        	rstudio
+ Desktop                  	Music   	Public    	Templates
+ Documents                	new.txt 	public_html   Videos
+
+pwd
+Mencetak nama direktori saat ini.
+pwd
+
+student@lab2-46:~$ pwd
+/home/student
+
+
+student@lab2-27:~$ ls
+'Cisco Packet Tracer 7.3.0'   Downloads   pt        	Templates
+ Desktop                  	Music   	Public    	Videos
+ Documents                	Pictures	public_html
+
+cd
+Mengganti direktori (default ke direktori home).
+cd [DIR]
+
+~$ berarti berada di direktori home pengguna “student”
+
+student@lab2-27:~$ cd /
+
+/$ berarti berada di direktori root 
+
+student@lab2-27:/$ ls
+bin	etc         	lib 	lost+found  proc  snap  	tmp  	vmlinuz.old
+boot   home        	lib32   media   	root  srv   	usr
+cdrom  initrd.img  	lib64   mnt     	run   swapfile  var
+dev	initrd.img.old  libx32  opt     	sbin  sys   	vmlinuz
+
+
+file
+Menentukan jenis file.
+file FILE...
+
+student@lab2-27:/$ file vmlinuz
+vmlinuz: symbolic link to boot/vmlinuz-4.15.0-213-generic
+
+student@lab2-27:/$ ls
+bin	etc         	lib 	lost+found  proc  snap  	tmp  	vmlinuz.old
+boot   home        	lib32   media   	root  srv   	usr
+cdrom  initrd.img  	lib64   mnt     	run   swapfile  var
+dev	initrd.img.old  libx32  opt     	sbin  sys   	vmlinuz
+
+student@lab2-46:/$ cd ~ (Kembali ke direktori home)
+
+student@lab2-46:~$ cd Desktop (Masuk ke direktori Desktop)
+
+student@lab2-46:~/Desktop$ cd / (Masuk ke direktori root)
+
+student@lab2-46:/$ cd ~ (Kembali ke direktori home)
+
+student@lab2-46:~$ ls
+ baru.txt                 	Downloads   Pictures  	R
+'Cisco Packet Tracer 7.3.0'   hello.c 	pt        	rstudio
+ Desktop                  	Music   	Public    	Templates
+ Documents                	new.txt 	public_html   Videos
+
+student@lab2-27:/$ file swapfile
+swapfile: regular file, no read permission
+
+student@lab2-27:/$ pwd
+/
+
+student@lab2-27:/$ cd home
+
+student@lab2-27:/home$ pwd (Berada dalam direktori home)
+/home
+
+student@lab2-27:/home$ cd
+
+student@lab2-27:~$ pwd (Berada dalam direktori home pengguna “student”)
+/home/student
+ls
+Menampilkan daftar isi direktori.
+ls [OPTION] [FILE]
+•	-a: all; tampilkan semua
+•	-l: long; format panjang
+•	-h: human-readable; format ukuran
+•	-i: inode; cetak nomor inode file
+
+student@lab2-46:~$ ls
+ baru.txt                 	Downloads   Pictures  	R
+'Cisco Packet Tracer 7.3.0'   hello.c 	pt        	rstudio
+ Desktop                  	Music   	Public    	Templates
+ Documents                	new.txt 	public_html   Videos
+
+student@lab2-46:~$ ls -a Downloads (Semua isi direktori downloads)
+ .                                  	'UNIX_badge(1).png'
+ ..                                 	'UNIX_badge(2).png'
+ 1.txt                              	'UNIX_badge(3).png'
+ 2.txt                              	'UNIX_badge(4).png'
+ 3.txt                              	'UNIX_badge(5).png'
+ 4.txt                               	UNIX_badge.png
+'Faisal Maulana.fig'                 	unixv2.txt
+'G6401211011_Muhamad Surya Fauzan.png'   unixv.csv
+ gabung.txt                          	unixv.txt
+ numbers.txt
+
+student@lab2-46:~$ ls -h Downloads
+ 1.txt   4.txt                               	gabung.txt	unixv.csv
+ 2.txt  'Faisal Maulana.fig'                 	numbers.txt   unixv.txt
+ 3.txt  'G6401211011_Muhamad Surya Fauzan.png'   unixv2.txt
+
+student@lab2-46:~$ ls -l Downloads
+total 4028
+-rw-rw-r-- 1 student student   	6 Okt 31 16:09  1.txt
+-rw-rw-r-- 1 student student   	6 Okt 31 16:09  2.txt
+-rw-rw-r-- 1 student student   	5 Okt 31 16:10  3.txt
+-rw-rw-r-- 1 student student   	9 Okt 31 16:10  4.txt
+-rw-rw-r-- 1 student student 3943010 Okt 28 10:41 'Faisal Maulana.fig'
+-rw-rw-r-- 1 student student  141586 Nov  2 14:30 'G6401211011_Muhamad Surya Fauzan.png'
+-rw-rw-r-- 1 student student  	26 Okt 31 16:11  gabung.txt
+-rw-rw-r-- 1 student student  	53 Okt 31 16:17  numbers.txt
+-rw-rw-r-- 1 student student 	365 Okt 31 16:42  unixv2.txt
+-rw-rw-r-- 1 student student 	334 Okt 31 16:35  unixv.csv
+-rw-rw-r-- 1 student student 	334 Okt 31 16:04  unixv.txt
+
+student@lab2-46:~$ ls -i Downloads
+7743932  1.txt                              	7735609  gabung.txt
+7744650  2.txt                              	7744601  numbers.txt
+7744649  3.txt                              	7744658  unixv2.txt
+7744654  4.txt                              	7744659  unixv.csv
+7743324 'Faisal Maulana.fig'                	7744646  unixv.txt
+7747708 'G6401211011_Muhamad Surya Fauzan.png'
+
+mkdir
+Membuat direktori.
+mkdir [OPTION] DIR
+•	-p: parent; buat direktori parent jika diperlukan
+
+student@lab2-46:~$ mkdir nama_direktori
+student@lab2-46:~$ mkdir nama_direktori
+mkdir: cannot create directory ‘nama_direktori’: File exists
+
+ 
+Harus touch dulu baru bisa menggunakan perintah cp
+
+tree
+Menampilkan isi direktori dalam format tree.
+tree [OPTION] [DIR...]
+•	-L N: level kedalaman direktori
+•	-h: human-readable; format ukuran
+
+student@lab2-46:~/so$ tree
+.
+├── baru.txt
+└── so
+
+0 directories, 2 files
+
+student@lab2-46:~$ tree
+.
+├── baru.txt
+├── Cisco Packet Tracer 7.3.0
+│   └── ptsaplayer-log-1698903580772.txt
+├── Desktop
+├── Documents
+│   ├── 9a.c
+│   ├── flip vertikal
+│   ├── flip vertikal.c
+│   ├── frekuensi bilangan
+│   ├── frekuensi bilangan.c
+│   ├── jkdb.c
+│   ├── Merge
+│   ├── Merge.c
+│   ├── Untitled 1.odt
+│   └── UTSP1.c
+├── Downloads
+│   ├── 1.txt
+│   ├── 2.txt
+│   ├── 3.txt
+│   ├── 4.txt
+│   ├── Faisal Maulana.fig
+│   ├── G6401211011_Muhamad Surya Fauzan.png
+│   ├── gabung.txt
+│   ├── numbers.txt
+│   ├── unixv2.txt
+│   ├── unixv.csv
+│   └── unixv.txt
+├── hello.c
+├── Music
+├── new.txt
+├── Pictures
+│   └── G6401211011_Muhamad Surya Fauzan.png
+├── pt
+│   ├── extensions
+│   ├── logs
+│   │   ├── pt_11.02.2023_12.39.38.189.log
+│   │   ├── pt_11.02.2023_12.39.59.822.log
+│   │   └── pt_11.02.2023_12.41.21.605.log
+│   ├── nets
+│   ├── PT.conf
+│   ├── saves
+│   ├── templates
+│   └── uuid
+├── Public
+├── public_html
+├── R
+│   └── x86_64-pc-linux-gnu-library
+│   	└── 3.6
+├── rstudio
+├── so
+│   ├── baru.txt
+│   └── so
+├── Templates
+│   ├── OpenDocument Spreadsheet.ods
+│   ├── OpenDocument Text.odt
+│   └── Plain Text.txt
+└── Videos
+
+19 directories, 38 files (Sulit membedakan mana direktori dan files tanpa mengetahui adanya format file)
+
+
+student@lab2-46:~$ mkdir baru
+
+student@lab2-46:~$ cd baru
+
+student@lab2-46:~/baru$ mkdir so
+
+cp
+Menyalin file dan direktori.
+cp [OPTION] SOURCE DEST
+cp [OPTION] SOURCES... DIR
+•	-r: recursive; salin direktori seisinya
+•	-f: force; tanpa konfirmasi jika overwrite
+•	-i: interactive; konfirmasi sebelum overwrite
+
+student@lab2-46:~/baru$ cp -r so baru (Didalam direktori so ada direktori baru), yaitu direktori yang sama isinya dengan direktori baru
+ 
+
+touch
+Meng-update waktu akses dan modifikasi suatu FILE. Jika FILE belum ada, maka touch akan membuat FILE kosong.
+touch FILE
+
+student@lab2-46:~/baru$ touch new.txt
+ 
+
+
+mv
+Memindahkan (mengganti nama) file.
+mv [OPTION] SOURCE DEST
+mv [OPTION] SOURCES... DIR
+•	-f: force; tanpa konfirmasi jika overwrite
+•	-i: interactive; konfirmasi sebelum overwrite
+
+student@lab2-46:~/baru$ mv new.txt so
+ 
+File new.txt sekarang ada di direktori so
+
+student@lab2-27:~$ ls -a
+ .                        	.ICEauthority   Templates
+ ..                       	.local      	.thumbnails
+ .bash_history            	.mozilla    	Videos
+ .bash_logout             	Music       	.vm
+ .bashrc                  	.packettracer   .vscode
+ .cache                   	Pictures    	.Xauthority
+'Cisco Packet Tracer 7.3.0'   .pki        	.Xdefaults
+ .config                  	.profile    	.xscreensaver
+ Desktop                  	pt          	.xsession-errors
+ Documents                	Public      	.xsession-errors.old
+ Downloads                	public_html
+ .gnupg                   	.ssh
+
+student@lab2-27:~$ ls
+'Cisco Packet Tracer 7.3.0'   Downloads   pt        	Templates
+ Desktop                  	Music   	Public    	Videos
+ Documents                	Pictures	public_html
+
+student@lab2-27:~$ ls -a
+ .                        	.ICEauthority   Templates
+ ..                       	.local      	.thumbnails
+ .bash_history            	.mozilla    	Videos
+ .bash_logout             	Music       	.vm
+ .bashrc                  	.packettracer   .vscode
+ .cache                   	Pictures    	.Xauthority
+'Cisco Packet Tracer 7.3.0'   .pki        	.Xdefaults
+ .config                  	.profile    	.xscreensaver
+ Desktop                  	pt          	.xsession-errors
+ Documents                	Public      	.xsession-errors.old
+ Downloads                	public_html
+ .gnupg                   	.ssh
+
+student@lab2-27:~$ ls -l
+total 44
+drwxrwxr-x 2 student student 4096 Okt 19 13:21 'Cisco Packet Tracer 7.3.0'
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Desktop
+drwxr-xr-x 2 student student 4096 Okt 18 15:59  Documents
+drwxr-xr-x 3 student student 4096 Okt 18 14:46  Downloads
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Music
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Pictures
+drwxrwxr-x 6 student student 4096 Okt 19 13:23  pt
+drwxr-xr-x 2 student student 4096 Okt 13 15:18  Public
+drwxr-xr-x 2 student student 4096 Okt 13 15:18  public_html
+drwxr-xr-x 2 student student 4096 Okt 17 15:12  Templates
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Videos
+
+student@lab2-27:~$ ls -h
+'Cisco Packet Tracer 7.3.0'   Downloads   pt        	Templates
+ Desktop                  	Music   	Public    	Videos
+ Documents                	Pictures	public_html
+
+student@lab2-27:~$ ls -lh
+total 44K
+drwxrwxr-x 2 student student 4,0K Okt 19 13:21 'Cisco Packet Tracer 7.3.0'
+drwxr-xr-x 2 student student 4,0K Okt 17 15:11  Desktop
+drwxr-xr-x 2 student student 4,0K Okt 18 15:59  Documents
+drwxr-xr-x 3 student student 4,0K Okt 18 14:46  Downloads
+drwxr-xr-x 2 student student 4,0K Okt 17 15:11  Music
+drwxr-xr-x 2 student student 4,0K Okt 17 15:11  Pictures
+drwxrwxr-x 6 student student 4,0K Okt 19 13:23  pt
+drwxr-xr-x 2 student student 4,0K Okt 13 15:18  Public
+drwxr-xr-x 2 student student 4,0K Okt 13 15:18  public_html
+drwxr-xr-x 2 student student 4,0K Okt 17 15:12  Templates
+drwxr-xr-x 2 student student 4,0K Okt 17 15:11  Videos
+
+student@lab2-27:~$ ls -i
+1442217 'Cisco Packet Tracer 7.3.0'  1310787  Music 	1310753  public_html
+1310783  Desktop                 	1310788  Pictures  1310785  Templates
+1310786  Documents               	1442207  pt    	1310789  Videos
+1310784  Downloads               	1310754  Public
+
+student@lab2-27:~$ cd Documents
+
+student@lab2-27:~/Documents$ ls
+'G1401221035 NO 1.c'          	'G1401221035 NO 2 revisi lagi'
+'G1401221035 no 2 afi.c'      	'G1401221035 NO 2 revisi LAGI 6.c'
+'G1401221035 NO 2.c'          	'G1401221035 NO 2 revisi lagi.c'
+'G1401221035 NO 2 revisi.c'   	'G1401221035 no 2 revisi lagi ke 3.c'
+'G1401221035 NO 2 revisi ke 4.c'  'G1401221035 NO 2 revisi lagi lagi.c'
+'G1401221035 no 2 revisi ke 5.c'
+
+student@lab2-27:~/Documents$ cd .. (Kembali ke direktori di atasnya, yaitu direktori home)
+
+student@lab2-27:~$ ls
+'Cisco Packet Tracer 7.3.0'   Downloads   pt        	Templates
+ Desktop                  	Music   	Public    	Videos
+ Documents                	Pictures	public_html
+
+student@lab2-27:~$ touch baru.txt
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents   Pictures   public_html
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	Templates
+ Desktop                  	Music   	Public 	Videos
+
+student@lab2-27:~$ ls -l
+total 44
+-rw-rw-r-- 1 student student	0 Okt 24 15:59  baru.txt
+drwxrwxr-x 2 student student 4096 Okt 19 13:21 'Cisco Packet Tracer 7.3.0'
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Desktop
+drwxr-xr-x 2 student student 4096 Okt 18 15:59  Documents
+drwxr-xr-x 3 student student 4096 Okt 18 14:46  Downloads
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Music
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Pictures
+drwxrwxr-x 6 student student 4096 Okt 19 13:23  pt
+drwxr-xr-x 2 student student 4096 Okt 13 15:18  Public
+drwxr-xr-x 2 student student 4096 Okt 13 15:18  public_html
+drwxr-xr-x 2 student student 4096 Okt 17 15:12  Templates
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Videos
+
+student@lab2-27:~$ ls -l baru.txt
+-rw-rw-r-- 1 student student 0 Okt 24 15:59 baru.txt
+
+student@lab2-27:~$ touch baru.txt
+
+student@lab2-27:~$ ls -l baru.txt
+-rw-rw-r-- 1 student student 0 Okt 24 16:00 baru.txt
+student@lab2-27:~$ mkdir nama_direktori
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents   nama_direktori   Public    	Videos
+'Cisco Packet Tracer 7.3.0'   Downloads   Pictures     	public_html
+ Desktop                  	Music   	pt           	Templates
+
+student@lab2-27:~$ mkdir nama_direktori
+mkdir: cannot create directory ‘nama_direktori’: File exists
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents   nama_direktori   Public    	Videos
+'Cisco Packet Tracer 7.3.0'   Downloads   Pictures     	public_html
+ Desktop                  	Music   	pt           	Templates
+
+student@lab2-27:~$ mkdir nama direktori (Otomatis ada underline)
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents   nama_direktori   public_html
+'Cisco Packet Tracer 7.3.0'   Downloads   Pictures     	Templates
+ Desktop                  	Music   	pt           	Videos
+ direktori                	nama    	Public
+
+student@lab2-27:~$ mkdir "nama direktori"
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents  'nama direktori'   Public
+'Cisco Packet Tracer 7.3.0'   Downloads   nama_direktori	public_html
+ Desktop                  	Music   	Pictures      	Templates
+ direktori                	nama    	pt            	Videos
+
+rmdir
+Menghapus direktori kosong.
+rmdir [OPTION] DIR...
+•	-p: parent; hapus beserta direktori parent-nya
+
+student@lab2-27:~$ rmdir nama_direktori (Menghapus direktori nama_direktori)
+student@lab2-27:~$ ls
+ baru.txt                 	Documents  'nama direktori'   public_html
+'Cisco Packet Tracer 7.3.0'   Downloads   Pictures      	Templates
+ Desktop                  	Music   	pt            	Videos
+ direktori                	nama    	Public
+
+student@lab2-27:~$ rmdir nama direktori "nama direktori" (Menghapus direktori ‘nama direktori’)
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents   Pictures   public_html
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	Templates
+ Desktop                  	Music   	Public 	Videos
+
+student@lab2-27:~$ cp baru.txt so
+
+student@lab2-27:~$ cd so
+bash: cd: so: Not a directory
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents   Pictures   public_html   Videos
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	so
+ Desktop                  	Music   	Public 	Templates
+
+student@lab2-27:~$ cp baru.txt so
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents   Pictures   public_html   Videos
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	so
+ Desktop                  	Music   	Public 	Templates
+
+student@lab2-27:~$ mkdir si
+
+student@lab2-27:~$ cp index.html baru.txt si
+cp: cannot stat 'index.html': No such file or directory
+
+student@lab2-27:~$ cd so
+bash: cd: so: Not a directory
+
+student@lab2-27:~$ tree
+.
+├── baru.txt
+├── Cisco Packet Tracer 7.3.0
+│   ├── ptsaplayer-log-1697696027775.txt
+│   └── ptsaplayer-log-1697696477427.txt
+├── Desktop
+├── Documents
+│   ├── G1401221035 NO 1.c
+│   ├── G1401221035 no 2 afi.c
+│   ├── G1401221035 NO 2.c
+│   ├── G1401221035 NO 2 revisi.c
+│   ├── G1401221035 NO 2 revisi ke 4.c
+│   ├── G1401221035 no 2 revisi ke 5.c
+│   ├── G1401221035 NO 2 revisi lagi
+│   ├── G1401221035 NO 2 revisi LAGI 6.c
+│   ├── G1401221035 NO 2 revisi lagi.c
+│   ├── G1401221035 no 2 revisi lagi ke 3.c
+│   └── G1401221035 NO 2 revisi lagi lagi.c
+├── Downloads
+│   ├── G1401221035 NO 2 revisi.c
+│   └── G1401221035 NO 2 revisi_files
+│   	├── ace.js
+│   	├── final.js
+│   	├── jquery.min.js
+│   	├── logo.svg
+│   	├── mode-c_cpp.js
+│   	├── mousetrap.min.js
+│   	├── playground.css
+│   	├── play.svg
+│   	└── socket.io.min.js
+├── Music
+├── Pictures
+├── pt
+│   ├── extensions
+│   ├── logs
+│   │   ├── pt_10.19.2023_13.13.45.093.log
+│   │   ├── pt_10.19.2023_13.21.15.604.log
+│   │   └── pt_10.19.2023_13.23.48.874.log
+│   ├── PT.conf
+│   ├── saves
+│   ├── templates
+│   └── uuid
+├── Public
+├── public_html
+├── si
+│   └── baru.txt
+├── so
+├── Templates
+│   ├── OpenDocument Spreadsheet.ods
+│   ├── OpenDocument Text.odt
+│   └── Plain Text.txt
+└── Videos
+
+17 directories, 34 files
+
+student@lab2-27:~$ cd so/
+bash: cd: so/: Not a directory
+student@lab2-27:~$ cd /so
+bash: cd: /so: No such file or directory
+student@lab2-27:~$ cd so
+bash: cd: so: Not a directory
+
+student@lab2-27:~$ mkdir so
+mkdir: cannot create directory ‘so’: File exists
+student@lab2-27:~$ cd so
+bash: cd: so: Not a directory
+
+student@lab2-27:~$ mkdir baru
+
+student@lab2-27:~$ cp -r si baru
+student@lab2-27:~$ ls
+ baru                     	Desktop 		Music  	Public    	so
+ baru.txt                 	Documents   Pictures   public_html   Templates
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	si        	Videos
+student@lab2-27:~$ tree
+.
+├── baru
+│   └── si
+│   	└── baru.txt
+├── baru.txt
+├── Cisco Packet Tracer 7.3.0
+│   ├── ptsaplayer-log-1697696027775.txt
+│   └── ptsaplayer-log-1697696477427.txt
+├── Desktop
+├── Documents
+│   ├── G1401221035 NO 1.c
+│   ├── G1401221035 no 2 afi.c
+│   ├── G1401221035 NO 2.c
+│   ├── G1401221035 NO 2 revisi.c
+│   ├── G1401221035 NO 2 revisi ke 4.c
+│   ├── G1401221035 no 2 revisi ke 5.c
+│   ├── G1401221035 NO 2 revisi lagi
+│   ├── G1401221035 NO 2 revisi LAGI 6.c
+│   ├── G1401221035 NO 2 revisi lagi.c
+│   ├── G1401221035 no 2 revisi lagi ke 3.c
+│   └── G1401221035 NO 2 revisi lagi lagi.c
+├── Downloads
+│   ├── G1401221035 NO 2 revisi.c
+│   └── G1401221035 NO 2 revisi_files
+│   	├── ace.js
+│   	├── final.js
+│   	├── jquery.min.js
+│   	├── logo.svg
+│   	├── mode-c_cpp.js
+│   	├── mousetrap.min.js
+│   	├── playground.css
+│   	├── play.svg
+│   	└── socket.io.min.js
+├── Music
+├── Pictures
+├── pt
+│   ├── extensions
+│   ├── logs
+│   │   ├── pt_10.19.2023_13.13.45.093.log
+│   │   ├── pt_10.19.2023_13.21.15.604.log
+│   │   └── pt_10.19.2023_13.23.48.874.log
+│   ├── PT.conf
+│   ├── saves
+│   ├── templates
+│   └── uuid
+├── Public
+├── public_html
+├── si
+│   └── baru.txt
+├── so
+├── Templates
+│   ├── OpenDocument Spreadsheet.ods
+│   ├── OpenDocument Text.odt
+│   └── Plain Text.txt
+└── Videos
+
+19 directories, 35 files
+
+student@lab2-27:~$ ls
+ baru                     	Desktop 	Music  	Public    	so
+ baru.txt                 	Documents   Pictures   public_html   Templates
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	si        	Videos
+
+student@lab2-27:~$ mv baru.txt new.txt
+
+student@lab2-27:~$ ls
+ baru                     	Documents   new.txt	Public    	so
+'Cisco Packet Tracer 7.3.0'   Downloads   Pictures   public_html   Templates
+ Desktop                  	Music   	pt     	si        	Videos
+
+student@lab2-27:~$ mv new.txt si
+
+student@lab2-27:~$ tree
+.
+├── baru
+│   └── si
+│   	└── baru.txt
+├── Cisco Packet Tracer 7.3.0
+│   ├── ptsaplayer-log-1697696027775.txt
+│   └── ptsaplayer-log-1697696477427.txt
+├── Desktop
+├── Documents
+│   ├── G1401221035 NO 1.c
+│   ├── G1401221035 no 2 afi.c
+│   ├── G1401221035 NO 2.c
+│   ├── G1401221035 NO 2 revisi.c
+│   ├── G1401221035 NO 2 revisi ke 4.c
+│   ├── G1401221035 no 2 revisi ke 5.c
+│   ├── G1401221035 NO 2 revisi lagi
+│   ├── G1401221035 NO 2 revisi LAGI 6.c
+│   ├── G1401221035 NO 2 revisi lagi.c
+│   ├── G1401221035 no 2 revisi lagi ke 3.c
+│   └── G1401221035 NO 2 revisi lagi lagi.c
+├── Downloads
+│   ├── G1401221035 NO 2 revisi.c
+│   └── G1401221035 NO 2 revisi_files
+│   	├── ace.js
+│   	├── final.js
+│   	├── jquery.min.js
+│   	├── logo.svg
+│   	├── mode-c_cpp.js
+│   	├── mousetrap.min.js
+│   	├── playground.css
+│   	├── play.svg
+│   	└── socket.io.min.js
+├── Music
+├── Pictures
+├── pt
+│   ├── extensions
+│   ├── logs
+│   │   ├── pt_10.19.2023_13.13.45.093.log
+│   │   ├── pt_10.19.2023_13.21.15.604.log
+│   │   └── pt_10.19.2023_13.23.48.874.log
+│   ├── PT.conf
+│   ├── saves
+│   ├── templates
+│   └── uuid
+├── Public
+├── public_html
+├── si
+│   ├── baru.txt
+│   └── new.txt
+├── so
+├── Templates
+│   ├── OpenDocument Spreadsheet.ods
+│   ├── OpenDocument Text.odt
+│   └── Plain Text.txt
+└── Videos
+
+19 directories, 35 files
+
+student@lab2-27:~$ ls
+ baru                     	Documents   Pictures   public_html   Templates
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	si        	Videos
+ Desktop                  	Music   	Public 	so
+
+student@lab2-27:~$ rmdir si
+rmdir: failed to remove 'si': Directory not empty
+
+rm
+Menghapus file atau direktori.
+rm [OPTION] FILE...
+•	-r: recursive; hapus direktori seisinya
+•	-f: force; tanpa konfirmasi jika error
+•	-i: interactive; konfirmasi sebelum menghapus
+
+student@lab2-27:~$ rm -r si
+student@lab2-27:~$ ls
+ baru                     	Documents   Pictures   public_html   Videos
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	so
+ Desktop                  	Music   	Public 	Templates
+
+student@lab2-27:~$ rm baru/si/baru.txt
+
+student@lab2-27:~$ tree
+.
+├── baru
+│   └── si
+├── Cisco Packet Tracer 7.3.0
+│   ├── ptsaplayer-log-1697696027775.txt
+│   └── ptsaplayer-log-1697696477427.txt
+├── Desktop
+├── Documents
+│   ├── G1401221035 NO 1.c
+│   ├── G1401221035 no 2 afi.c
+│   ├── G1401221035 NO 2.c
+│   ├── G1401221035 NO 2 revisi.c
+│   ├── G1401221035 NO 2 revisi ke 4.c
+│   ├── G1401221035 no 2 revisi ke 5.c
+│   ├── G1401221035 NO 2 revisi lagi
+│   ├── G1401221035 NO 2 revisi LAGI 6.c
+│   ├── G1401221035 NO 2 revisi lagi.c
+│   ├── G1401221035 no 2 revisi lagi ke 3.c
+│   └── G1401221035 NO 2 revisi lagi lagi.c
+├── Downloads
+│   ├── G1401221035 NO 2 revisi.c
+│   └── G1401221035 NO 2 revisi_files
+│   	├── ace.js
+│   	├── final.js
+│   	├── jquery.min.js
+│   	├── logo.svg
+│   	├── mode-c_cpp.js
+│   	├── mousetrap.min.js
+│   	├── playground.css
+│   	├── play.svg
+│   	└── socket.io.min.js
+├── Music
+├── Pictures
+├── pt
+│   ├── extensions
+│   ├── logs
+│   │   ├── pt_10.19.2023_13.13.45.093.log
+│   │   ├── pt_10.19.2023_13.21.15.604.log
+│   │   └── pt_10.19.2023_13.23.48.874.log
+│   ├── PT.conf
+│   ├── saves
+│   ├── templates
+│   └── uuid
+├── Public
+├── public_html
+├── so
+├── Templates
+│   ├── OpenDocument Spreadsheet.ods
+│   ├── OpenDocument Text.odt
+│   └── Plain Text.txt
+└── Videos
+
+18 directories, 32 files
+student@lab2-27:~$ tree -L 2
+.
+├── baru
+│   └── si
+├── Cisco Packet Tracer 7.3.0
+│   ├── ptsaplayer-log-1697696027775.txt
+│   └── ptsaplayer-log-1697696477427.txt
+├── Desktop
+├── Documents
+│   ├── G1401221035 NO 1.c
+│   ├── G1401221035 no 2 afi.c
+│   ├── G1401221035 NO 2.c
+│   ├── G1401221035 NO 2 revisi.c
+│   ├── G1401221035 NO 2 revisi ke 4.c
+│   ├── G1401221035 no 2 revisi ke 5.c
+│   ├── G1401221035 NO 2 revisi lagi
+│   ├── G1401221035 NO 2 revisi LAGI 6.c
+│   ├── G1401221035 NO 2 revisi lagi.c
+│   ├── G1401221035 no 2 revisi lagi ke 3.c
+│   └── G1401221035 NO 2 revisi lagi lagi.c
+├── Downloads
+│   ├── G1401221035 NO 2 revisi.c
+│   └── G1401221035 NO 2 revisi_files
+├── Music
+├── Pictures
+├── pt
+│   ├── extensions
+│   ├── logs
+│   ├── PT.conf
+│   ├── saves
+│   ├── templates
+│   └── uuid
+├── Public
+├── public_html
+├── so
+├── Templates
+│   ├── OpenDocument Spreadsheet.ods
+│   ├── OpenDocument Text.odt
+│   └── Plain Text.txt
+└── Videos
+
+18 directories, 20 files
+
+student@lab2-27:~$ tree -L 1
+.
+├── baru
+├── Cisco Packet Tracer 7.3.0
+├── Desktop
+├── Documents
+├── Downloads
+├── Music
+├── Pictures
+├── pt
+├── Public
+├── public_html
+├── so
+├── Templates
+└── Videos
+
+12 directories, 1 file
+
+student@lab2-27:~$ cd so
+bash: cd: so: Not a directory
+
+student@lab2-27:~$ ls
+ baru                     	Documents   Pictures   public_html   Videos
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	so
+ Desktop                  	Music   	Public 	Templates
+
+student@lab2-27:~$ cd ..
+student@lab2-27:/home$ cd /
+student@lab2-27:/$ cd ~
+student@lab2-27:~$ cd .
+student@lab2-27:~$ cd
+student@lab2-27:~$ ls -a
+ .                        	.gnupg      	so
+ ..                       	.ICEauthority   .ssh
+ baru                     	.local      	Templates
+ .bash_history            	.mozilla    	.thumbnails
+ .bash_logout             	Music       	Videos
+ .bashrc                  	.packettracer   .vm
+ .cache                   	Pictures    	.vscode
+'Cisco Packet Tracer 7.3.0'   .pki        	.Xauthority
+ .config                  	.profile    	.Xdefaults
+ Desktop                  	pt          	.xscreensaver
+ Documents                	Public      	.xsession-errors
+ Downloads                	public_html 	.xsession-errors.old
+
+student@lab2-27:~$ cd so/
+bash: cd: so/: Not a directory
+
+student@lab2-27:~$ cd /
+student@lab2-27:/$ pwd
+/
+student@lab2-27:/$ ls
+bin	etc         	lib 	lost+found  proc  snap  	tmp  	vmlinuz.old
+boot   home        	lib32   media   	root  srv   	usr
+cdrom  initrd.img  	lib64   mnt     	run   swapfile  var
+dev	initrd.img.old  libx32  opt     	sbin  sys   	vmlinuz
+
+ 
+student@lab2-27:/$ cd /etc
+
+student@lab2-27:/etc$ cd ../home/
+
+student@lab2-27:/home$ cd
+
+student@lab2-27:~$ cd ../../etc
+student@lab2-27:/etc$ ssh g6401211110@172.18.14.15
+g6401211110@172.18.14.15's password:
+Welcome to Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-213-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management: 	https://landscape.canonical.com
+ * Support:    	https://ubuntu.com/advantage
+
+Expanded Security Maintenance for Infrastructure is not enabled.
+
+6 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+124 additional security updates can be applied with ESM Infra.
+Learn more about enabling ESM Infra service for Ubuntu 18.04 at
+https://ubuntu.com/18-04
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+No mail.
+Last login: Tue Oct 17 15:43:53 2023 from 172.18.16.231
+
+g6401211110@r1:~$ ls
+dead.letter  latest.tar.gz  latest.tar.gz.1  latest.tar.gz.2  mbox  public_html
+
+g6401211110@r1:~$ mkdir public_html
+mkdir: cannot create directory ‘public_html’: File exists
+g6401211110@r1:~$ cd public_html/
+g6401211110@r1:~/public_html$ touch index.html
+g6401211110@r1:~/public_html$ nano index.html
+g6401211110@r1:~/public_html$ ^C
+g6401211110@r1:~/public_html$ echo Ronald Abner > index.html
+g6401211110@r1:~/public_html$ echo G6401211110 >> index.html
+g6401211110@r1:~/public_html$ cat index.html
+Ronald Abner
+G6401211110
+
+g6401211110@r1:~/public_html$
+
+Lewat nano → nano index.html 
+Bebas mengetik, contoh 
+
+<h1> Ronald Abner </h1>
+<h2> G6401211110 </h2>
+
+
+Lalu CTRL + O, ENTER
+ 
+#10-permission-pipe
+/newline
+n
+/slash
+c menggunakan stdio.h
+c++ menggunakan c++
+Banyak permission denied karena tidak bisa masuk ke direktori
+Membuang error ke dev/null
+
+Menghapus baru.txt dengan xargs
+
+vi jangan dicoba
+
+sort membandingkan secara alfa numerik (digit pertama dulu, lalu digit kedua, dst)
+
+a-z n-za-m digeser 13
+a adalah penambahan dari baris 9 jadi baris 10
+ 
+chown
+Mengubah kepemilikan suatu file.
+chown [OPTION] OWNER[:GROUP] FILE
+•	-R: recursive; ubah direktori seisinya
+
+student@lab1-46:~$ chown student file.txt
+
+ 
+
+
+
+g6401211110@r1:~/public_html$ ls -l
+total 8
+-rw-rw-r-- 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+chmod
+Mengubah mode permission suatu file.
+chmod [OPTION] MODE FILE...
+•	-R: recursive; ubah direktori seisinya
+Format chmod
+•	Format mode simbolis:
+o	[ugoa][+-=][rwx]
+•	Format mode oktal:
+o	4 (read) + 2 (write) + 1 (exec)
+g6401211110@r1:~/public_html$ chmod 777 index.html
+g6401211110@r1:~/public_html$ ls -l
+total 8
+-rwxrwxrwx 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+g6401211110@r1:~/public_html$ ls
+index.html  wordpress
+
+g6401211110@r1:~/public_html$ ls -l
+total 8
+-rwxrwxrwx 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+g6401211110@r1:~/public_html$ chmod ugo-r index.html
+g6401211110@r1:~/public_html$ ls -l
+total 8
+--wx-wx-wx 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+g6401211110@r1:~/public_html$ chmod ugo+r index.html
+g6401211110@r1:~/public_html$ ls -l
+total 8
+-rwxrwxrwx 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+g6401211110@r1:~/public_html$ mkdir baru
+g6401211110@r1:~/public_html$ ls -l
+total 12
+drwxrwxr-x 2 g6401211110 g6401211110 4096 Okt 24 16:37 baru
+-rwxrwxrwx 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+g6401211110@r1:~/public_html$ chmod 700 baru
+g6401211110@r1:~/public_html$ ls -l
+total 12
+drwx------ 2 g6401211110 g6401211110 4096 Okt 24 16:37 baru
+-rwxrwxrwx 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+g6401211110@r1:~/public_html$ chmod 505
+chmod: missing operand after ‘505’
+Try 'chmod --help' for more information.
+
+g6401211110@r1:~/public_html$ chmod 505 baru/
+g6401211110@r1:~/public_html$ ls -l
+total 12
+dr-x---r-x 2 g6401211110 g6401211110 4096 Okt 24 16:37 baru
+-rwxrwxrwx 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+g6401211110@r1:~/public_html$
+g6401211110@r1:~/public_html$ ls -l
+total 8
+-rw-rw-r-- 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+g6401211110@r1:~/public_html$ chmod 777 index.html
+g6401211110@r1:~/public_html$ ls -l
+total 8
+-rwxrwxrwx 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+g6401211110@r1:~/public_html$ ls
+index.html  wordpress
+
+g6401211110@r1:~/public_html$ ls -l
+total 8
+-rwxrwxrwx 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+g6401211110@r1:~/public_html$ chmod ugo-r index.html
+g6401211110@r1:~/public_html$ ls -l
+total 8
+--wx-wx-wx 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+g6401211110@r1:~/public_html$ chmod ugo+r index.html
+g6401211110@r1:~/public_html$ ls -l
+total 8
+-rwxrwxrwx 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+g6401211110@r1:~/public_html$ mkdir baru
+g6401211110@r1:~/public_html$ ls -l
+total 12
+drwxrwxr-x 2 g6401211110 g6401211110 4096 Okt 24 16:37 baru
+-rwxrwxrwx 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+g6401211110@r1:~/public_html$ chmod 700 baru
+g6401211110@r1:~/public_html$ ls -l
+total 12
+drwx------ 2 g6401211110 g6401211110 4096 Okt 24 16:37 baru
+-rwxrwxrwx 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+g6401211110@r1:~/public_html$ chmod 505
+chmod: missing operand after ‘505’
+Try 'chmod --help' for more information.
+
+g6401211110@r1:~/public_html$ chmod 505 baru/
+g6401211110@r1:~/public_html$ ls -l
+total 12
+dr-x---r-x 2 g6401211110 g6401211110 4096 Okt 24 16:37 baru
+-rwxrwxrwx 1 g6401211110 g6401211110   47 Okt 24 16:29 index.html
+drwxr-xr-x 5 g6401211110 g6401211110 4096 Okt  1 12:33 wordpress
+
+Versi Tambahan chmod
+student@lab1-46:~$ ls -l
+total 156
+drwxr-xr-x 2 student student  4096 Okt 16 15:33  Desktop
+drwxr-xr-x 4 student student  4096 Okt 30 16:05  Documents
+drwxr-xr-x 2 student student  4096 Nov  7 15:52  Downloads
+-rw-rw-r-- 1 student student 	0 Nov  9 14:19  file.txt
+-rw-rw-r-- 1 student student 65149 Nov  9 12:07 'komdat mg10.pkt'
+drwxr-xr-x 2 student student  4096 Okt 16 15:33  Music
+drwxr-xr-x 2 student student  4096 Nov  9 12:01  Pictures
+drwxrwxr-x 6 student student  4096 Nov  9 12:07  pt
+drwxrwxr-x 2 student student  4096 Okt 13 15:16  Public
+drwxrwxr-x 2 student student  4096 Okt 13 15:16  public_html
+drwxrwxr-x 3 student student  4096 Nov  3 10:31  R
+drwx------ 3 student student  4096 Okt 16 15:34  snap
+drwxr-xr-x 2 student student  4096 Okt 16 15:33  Templates
+-rwxrwxr-x 1 student student 16064 Okt 18 13:47  UTSP_02
+-rw-rw-r-- 1 student student   243 Okt 18 13:50  UTSP_02.c
+-rw-rw-r-- 1 student student  1768 Okt 18 13:26  UTSP_02.o
+-rwxrwxr-x 1 student student 16064 Okt 18 14:30  UTSP_03
+-rw-rw-r-- 1 student student   454 Okt 18 14:30  UTSP_03.c
+drwxr-xr-x 2 student student  4096 Okt 16 15:33  Videos
+student@lab1-46:~$ chmod 777 file.txt
+student@lab1-46:~$ ls -l
+total 156
+drwxr-xr-x 2 student student  4096 Okt 16 15:33  Desktop
+drwxr-xr-x 4 student student  4096 Okt 30 16:05  Documents
+drwxr-xr-x 2 student student  4096 Nov  7 15:52  Downloads
+-rwxrwxrwx 1 student student 	0 Nov  9 14:19  file.txt
+-rw-rw-r-- 1 student student 65149 Nov  9 12:07 'komdat mg10.pkt'
+drwxr-xr-x 2 student student  4096 Okt 16 15:33  Music
+drwxr-xr-x 2 student student  4096 Nov  9 12:01  Pictures
+drwxrwxr-x 6 student student  4096 Nov  9 12:07  pt
+drwxrwxr-x 2 student student  4096 Okt 13 15:16  Public
+drwxrwxr-x 2 student student  4096 Okt 13 15:16  public_html
+drwxrwxr-x 3 student student  4096 Nov  3 10:31  R
+drwx------ 3 student student  4096 Okt 16 15:34  snap
+drwxr-xr-x 2 student student  4096 Okt 16 15:33  Templates
+-rwxrwxr-x 1 student student 16064 Okt 18 13:47  UTSP_02
+-rw-rw-r-- 1 student student   243 Okt 18 13:50  UTSP_02.c
+-rw-rw-r-- 1 student student  1768 Okt 18 13:26  UTSP_02.o
+-rwxrwxr-x 1 student student 16064 Okt 18 14:30  UTSP_03
+-rw-rw-r-- 1 student student   454 Okt 18 14:30  UTSP_03.c
+drwxr-xr-x 2 student student  4096 Okt 16 15:33  Videos
+
+student@lab1-46:~$ ls -l
+-rwxrwxrwx 1 student student 	0 Nov  9 14:19  file.txt
+
+student@lab1-46:~$ chmod ugo-r file.txt
+student@lab1-46:~$ ls -l
+--wx-wx-wx 1 student student 	0 Nov  9 14:19  file.txt
+
+student@lab1-46:~$ chmod ugo+r file.txt
+student@lab1-46:~$ ls -l
+-rwxrwxrwx 1 student student 	0 Nov  9 14:19  file.txt
+
+student@lab1-46:~$ chmod 700 file.txt
+student@lab1-46:~$ ls -l
+-rwx------ 1 student student 	0 Nov  9 14:19  file.txt
+
+student@lab1-46:~$ chmod 505 file.txt
+student@lab1-46:~$ ls -l
+-r-x---r-x 1 student student 	0 Nov  9 14:19  file.txt
+
+student@lab1-46:~$ ls -l
+-r-x---r-x 1 student student 	0 Nov  9 14:19  file.txt
+
+student@lab1-46:~$ chmod 444 file.txt
+student@lab1-46:~$ ls -l
+
+-r--r--r-- 1 student student 	0 Nov  9 14:19  file.txt
+
+student@lab1-46:~$ chmod a=r file.txt
+student@lab1-46:~$ ls -l
+-r--r--r-- 1 student student 	0 Nov  9 14:19  file.txt
+
+student@lab1-46:~$ chmod 660 file.txt
+student@lab1-46:~$ ls -l
+-rw-rw---- 1 student student 	0 Nov  9 14:19  file.txt
+
+student@lab1-46:~$ chmod ug=rw,o= file.txt
+student@lab1-46:~$ ls -l
+-rw-rw---- 1 student student 	0 Nov  9 14:19  file.txt
+
+student@lab1-46:~$ chmod 755 file.txt
+student@lab1-46:~$ ls -l
+-rwxr-xr-x 1 student student 	0 Nov  9 14:19  file.txt
+
+student@lab1-46:~$ chmod u=rwx,go=rx file.txt
+student@lab1-46:~$ ls -l
+-rwxr-xr-x 1 student student 	0 Nov  9 14:19  file.txt
+
+ln
+Membuat link antar-file.
+ln [OPTION] TARGET LINK-NAME
+•	-s: symbolic; buat symlink
+ln file1.txt file-hardlink.txt (Membuat hard link antara `file1.txt` dan `file-hardlink.txt`. Perubahan yang terjadi pada salah satu file akan tercermin di file lainnya karena keduanya sebenarnya menunjuk ke blok data yang sama di sistem file.)
+ln -s /path/to/target/file file-symbolic-link (Membuat symbolic link dari `file-symbolic-link` ke `/path/to/target/file`. Symbolic link adalah tautan ke file atau direktori asli, mirip dengan shortcut di sistem Windows. Jika file asli dipindahkan, symlink akan tetap ada tetapi akan menunjuk ke lokasi yang tidak valid.)
+
+
+
+g6401211110@r1:~/public_html$
+
+
+	
+
+g6401211110@r1:/$ echo apa > hardlink.py
+-bash: hardlink.py: Permission denied
+
+g6401211110@r1:/$ cat hardlink.py
+cat: hardlink.py: No such file or directory
+
+g6401211110@r1:/$ cat hardlink2.py
+cat: hardlink2.py: No such file or directory
+
+g6401211110@r1:/$ echo "halo" | rev
+olah
+
+g6401211110@r1:/$ echo "7+2" | rev
+2+7
+
+Pipe
+•	Menyalurkan output proses menjadi input proses selanjutnya
+•	Berguna untuk membuat pipeline perintah
+student@lab1-46:~$ echo "halo" | rev
+olah
+student@lab1-46:~$ echo "2 + 5" | bc
+7
+student@lab1-46:~$ who | wc -l
+1
+
+student@lab1-46:~$ date < file.txt
+Kam 09 Nov 2023 03:26:36  WIB
+
+student@lab1-46:~$ rev < now.txt
+BIW  61:62:30 3202 voN 90 maK
+
+g6401211110@r1:/$ date
+Sel Okt 24 16:51:59 WIB 2023
+
+g6401211110@r1:/$ date < tanggal.txt
+-bash: tanggal.txt: No such file or directory
+
+g6401211110@r1:/$ date > tanggal.txt
+-bash: tanggal.txt: Permission denied
+
+g6401211110@r1:/$ ls
+bin	etc         	lib 	lost+found  proc  snap  	tmp  	vmlinuz.old
+boot   home        	lib32   media   	root  srv   	usr
+cdrom  initrd.img  	lib64   mnt     	run   swapfile  var
+dev	initrd.img.old  libx32  opt     	sbin  sys   	vmlinuz
+
+g6401211110@r1:/$ cat tanggal.txt
+cat: tanggal.txt: No such file or directory
+g6401211110@r1:/$ ^C
+g6401211110@r1:/$ ^C
+g6401211110@r1:/$
+ 
+#11-text-process
+man printf
+PRINTF(1)                    	User Commands                   	PRINTF(1)
+
+NAME
+   	printf - format and print data
+
+SYNOPSIS
+   	printf FORMAT [ARGUMENT]...
+   	printf OPTION
+
+DESCRIPTION
+   	Print ARGUMENT(s) according to FORMAT, or execute according to OPTION:
+
+   	--help display this help and exit
+
+   	--version
+          	output version information and exit
+
+   	FORMAT controls the output as in C printf.  Interpreted sequences are:
+
+   	\" 	double quote
+
+   	\\ 	backslash
+
+Ketik /ignore, fungsinya seperti CTRL + F dan akan menghighlight kata ignore. 
+Ketik /b, akan menghighlight huruf b di semua kata
+Pencet q untuk keluar
+Pencet n untuk pencarian ke bawah
+Pencet shift + N untuk pencarian ke atas
+
+student@lab2-24:~$ man printf 3
+No manual entry for 3
+(Alternatively, what manual page do you want from section 3?)
+
+student@lab2-24:~$ man 3 printf (Menampilkan bagian 3 dalam printf)
+PRINTF(3)              	Linux Programmer's Manual             	PRINTF(3)
+
+NAME
+   	printf,   fprintf,   dprintf,  sprintf,  snprintf,  vprintf,  vfprintf,
+   	vdprintf, vsprintf, vsnprintf - formatted output conversion
+
+SYNOPSIS
+   	#include <stdio.h>
+
+   	int printf(const char *format, ...);
+   	int fprintf(FILE *stream, const char *format, ...);
+   	int dprintf(int fd, const char *format, ...);
+   	int sprintf(char *str, const char *format, ...);
+   	int snprintf(char *str, size_t size, const char *format, ...);
+
+   	#include <stdarg.h>
+
+   	int vprintf(const char *format, va_list ap);
+   	int vfprintf(FILE *stream, const char *format, va_list ap);
+   	int vdprintf(int fd, const char *format, va_list ap);
+   	int vsprintf(char *str, const char *format, va_list ap);
+   	int vsnprintf(char *str, size_t size, const char *format, va_list ap);
+
+which
+Mencari lokasi file program.
+which COMMAND
+student@lab2-24:~$ which printf
+/usr/bin/printf
+
+less /etc/os-release
+NAME="Ubuntu"
+VERSION="18.04.6 LTS (Bionic Beaver)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 18.04.6 LTS"
+VERSION_ID="18.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=bionic
+UBUNTU_CODENAME=bionic
+/etc/os-release (END)
+
+locate
+Mencari file berdasarkan namanya.
+locate [OPTION] 'PATTERN'
+•	-c: count; tampilkan jumlah file yang ditemukan
+•	-i: ignore-case
+
+student@lab1-46:~$ locate file.txt
+/home/student/file.txt
+
+student@lab1-46:~$ locate -i example (Mencari file dengan kata kunci "example", tanpa memperdulikan huruf besar atau kecil (case-insensitive).)
+student@lab1-46:~$ locate -c pattern (Perintah di atas akan menampilkan jumlah file yang cocok dengan pola "pattern".)
+756
+
+find
+Mencari file pada sebuah hierarki direktori.
+find [PATH] [TEST]...
+•	-name 'PATTERN' 
+•	-iname 'PATTERN' 
+•	-size [+-]N[kMG]
+•	-atime [+-]N 
+•	-mtime [+-]N 
+•	-empty 
+•	-type [dfl] 
+
+find /path/to/search -name 'file.txt' (Mencari file yang bernama 'file.txt' di dalam direktori `/path/to/search` dan semua sub-direktori di dalamnya.)
+find /path/to/search -iname 'example.txt' (Mencari file dengan nama 'example.txt', tanpa memperhatikan huruf besar atau kecil.)
+find /path/to/search -size +1M (Mencari file dengan ukuran lebih besar dari 1 Megabyte di dalam direktori `/path/to/search`.)
+find /path/to/search -atime -7 (Mencari file yang diakses dalam 7 hari terakhir di dalam direktori `/path/to/search`.)
+find /path/to/search -mtime -7 (Mencari file yang dimodifikasi dalam 7 hari terakhir di dalam direktori `/path/to/search`.)
+find /path/to/search -type d -empty (Perintah ini akan mencari direktori yang tidak memiliki file di dalamnya (Direktori kosong).)
+find /path/to/search -type f (Perintah di atas akan mencari file reguler di dalam direktori `/path/to/search`.)
+student@lab1-46:~$ find /home/student -name 'file.txt'
+/home/student/file.txt
+student@lab1-46:~$ find /home/student -iname 'file.txt'
+/home/student/file.txt 
+student@lab1-46:~$ find /home/student -size +1M
+
+student@lab1-46:~$ find /home/student -atime -1
+student@lab1-46:~$ find /home/student -mtime -1
+
+student@lab1-46:~$ find /home/student -type d -empty
+
+student@lab1-46:~$ find /home/student -type f
+
+xargs
+Mengubah tiap baris masukan menjadi argumen suatu perintah.
+... | xargs COMMAND
+Input dikonversi menjadi argument bagi perintah selanjutnya
+Tampilkan file dengan pola tertentu, lalu hasilnya dihapus
+find . -name "*.log" | xargs rm (File dengan ekstensi .log)
+Contoh
+# temukan semua file backup (.bak), lalu hapus
+find . -name '*.bak' | xargs rm
+
+pager (less)
+Menampilkan file teks per halaman layar.
+pager [FILE]...
+•	q: quit; keluar
+•	/: pencarian kata
+o	n: next; lanjutkan pencarian kata
+o	N: next-reverse; lanjutkan pencarian kata mundur
+
+student@lab1-46:~$ less file.txt
+
+
+
+editor (nano)
+Membuat dan mengedit file teks.
+editor [OPTION] [FILE]...
+•	-i: indent; indentasi otomatis
+•	-u: undo; aktifkan fitur undo
+•	^O: write-out; simpan file
+•	^X: exit
+
+student@lab1-46:~$ nano file.txt
+
+
+Referensi Singkat
+•	Karakter
+. : karakter apapun selain newline
+[abc] : karakter a, b, atau c
+[^abc] : bukan karakter a, b, atau c
+[a-g] : karakter antara a sampai g
+•	Kelas karakter
+\w : kata, [A-Za-z0-9_]
+\d : digit, [0-9]
+\s : whitespace
+•	Anchor
+^ : awal baris
+$ : akhir baris
+Referensi Singkat
+•	Jumlah
+* : 0 atau lebih
++ : 1 atau lebih
+? : 0 atau 1
+{3} : tepat 3
+{3,} : 3 atau lebih
+{3,5} : antara 3 sampai 5
+•	Grup
+(...) : membuat grup
+\n : referensi balik grup ke-n
+
+Pemrosesan Teks
+cat
+Menggabungkan file dan menampilkan isinya ke layar.
+cat [FILE]...
+
+student@lab2-24:~$ cat /etc/os-release (Langsung menampilkan di terminal)
+NAME="Ubuntu"
+VERSION="18.04.6 LTS (Bionic Beaver)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 18.04.6 LTS"
+VERSION_ID="18.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=bionic
+UBUNTU_CODENAME=bionic
+
+CTRL + S file pada folder txt server pak Auriza 172.18.14.15/~auriza
+student@lab2-24:~$ cat unixv.txt
+UNICS (Version Zero)    PDP-7    Summer    1969
+Fifth Edition UNIX    PDP-11/40    June    1974
+Sixth Edition UNIX    PDP-11/45    May    1975
+Seventh Edition UNIX    PDP-11/70    January    1979
+Research UNIX 8    VAX-11/780   	 1981
+AT&T UNIX System III    PDP-11/70    Fall    1982
+AT&T UNIX System V    PDP-11/70   	 1983
+AT&T UNIX System V    3b2/400   	 1984
+2.11 BSD    PDP-11/70    January    1991
+
+student@lab2-24:~$ echo hello > 1.txt
+student@lab2-24:~$ echo world > 2.txt
+student@lab2-24:~$ echo hola > 3.txt
+student@lab2-24:~$ echo el mundo > 4.txt
+student@lab2-24:~$ cat 1.txt 2.txt 3.txt 4.txt
+hello
+world
+hola
+el mundo
+student@lab2-24:~$ cat 1.txt 2.txt 3.txt 4.txt > gabung.txt
+student@lab2-24:~$ cat gabung.txt
+hello
+world
+hola
+el mundo
+
+student@lab2-24:~$ cat 1.txt
+hello
+
+split
+Memecah file menjadi beberapa bagian.
+split [OPTION] FILE [PREFIX]
+•	-b: bytes; pecah per sekian byte
+•	-l: lines; pecah per sekian baris
+student@lab2-24:~$ split -b 5 gabung.txt hasil
+
+student@lab2-24:~$ ls hasil*
+hasilaa  hasilab  hasilac  hasilad  hasilae  hasilaf
+
+student@lab2-24:~$ ls hasil* -lh
+-rw-rw-r-- 1 student student 5 Okt 31 16:11 hasilaa
+-rw-rw-r-- 1 student student 5 Okt 31 16:11 hasilab
+-rw-rw-r-- 1 student student 5 Okt 31 16:11 hasilac
+-rw-rw-r-- 1 student student 5 Okt 31 16:11 hasilad
+-rw-rw-r-- 1 student student 5 Okt 31 16:11 hasilae
+-rw-rw-r-- 1 student student 1 Okt 31 16:11 hasilaf (Sisanya)
+
+student@lab2-24:~$ cat hasil*
+hello
+world
+hola
+el mundo
+
+student@lab2-24:~$ cat hasilaa
+
+hellostudent@lab2-24:~$ cat hasilab
+
+worlstudent@lab2-24:~$rm hasil*
+
+student@lab2-24:~$
+
+student@lab2-24:~$ split -l 1 gabung.txt baris
+
+student@lab2-24:~$ cat barisaa
+hello
+
+student@lab2-24:~$ cat barisab
+world
+
+student@lab2-24:~$ cat barisac
+hola
+
+student@lab2-24:~$ cat barisad
+el mundo
+
+student@lab2-24:~$ cat baris*
+hello
+world
+hola
+el mundo
+
+student@lab2-24:~$ cat unixv.txt
+UNICS (Version Zero)    PDP-7    Summer    1969
+Fifth Edition UNIX    PDP-11/40    June    1974
+Sixth Edition UNIX    PDP-11/45    May    1975
+Seventh Edition UNIX    PDP-11/70    January    1979
+Research UNIX 8    VAX-11/780   	 1981
+AT&T UNIX System III    PDP-11/70    Fall    1982
+AT&T UNIX System V    PDP-11/70   	 1983
+AT&T UNIX System V    3b2/400   	 1984
+2.11 BSD    PDP-11/70    January    1991
+
+head
+Menampilkan bagian awal file (default: 10 baris).
+head [OPTION] [FILE]
+•	-c: chars; tampilkan sekian karakter pertama
+•	-n: lines; tampilkan sekian baris pertama
+student@lab2-24:~$ head -n 3 unixv.txt
+UNICS (Version Zero)    PDP-7    Summer    1969
+Fifth Edition UNIX    PDP-11/40    June    1974
+Sixth Edition UNIX    PDP-11/45    May    1975
+
+tail
+Menampilkan bagian akhir file (default: 10 baris).
+tail [OPTION] [FILE]
+•	-c: chars; tampilkan sekian karakter terakhir
+•	-n: lines; tampilkan sekian baris terakhir
+student@lab2-24:~$ tail -n 3 unixv.txt
+AT&T UNIX System V    PDP-11/70   	 1983
+AT&T UNIX System V    3b2/400   	 1984
+2.11 BSD    PDP-11/70    January    1991
+
+student@lab2-24:~$ nano numbers.txt
+student@lab2-24:~$ less numbers.txt
+
+sort
+Mengurutkan baris teks pada file.
+sort [OPTION] [FILE]
+•	-n: numeric; urutkan secara numerik
+•	-r: reverse; urutkan terbalik
+•	-k: key; urutkan berdasarkan kolom ke-sekian
+•	-t: karakter pemisah antarkolom
+
+student@lab2-24:~$ sort numbers.txt
+
+1
+1
+1
+1
+11
+12
+123
+123
+123
+123
+123
+13
+14
+14
+2
+3
+4
+
+student@lab2-24:~$ sort -n numbers.txt
+1
+1
+1
+1
+2
+3
+4
+11
+12
+13
+14
+14
+123
+123
+123
+123
+123
+
+student@lab2-24:~$ sort -nr numbers.txt
+123
+123
+123
+123
+123
+14
+14
+13
+12
+11
+4
+3
+2
+1
+1
+1
+1
+
+student@lab2-24:~$ sort -n -r numbers.txt
+123
+123
+123
+123
+123
+14
+14
+13
+12
+11
+4
+3
+2
+1
+1
+1
+1
+
+student@lab2-24:~$ sort -rn numbers.txt
+123
+123
+123
+123
+123
+14
+14
+13
+12
+11
+4
+3
+2
+1
+1
+1
+1
+
+student@lab2-24:~$ less numbers.txt
+
+uniq
+Menghilangkan baris teks yang berulang.
+uniq [OPTION] [FILE]
+•	-c: count; tampilkan jumlah kemunculan
+•	-i: ignore-case
+student@lab2-24:~$ uniq numbers.txt
+1
+2
+11
+1
+123
+1
+3
+13
+1
+14
+12
+4
+123
+
+student@lab2-24:~$ sort numbers.txt
+
+1
+1
+1
+1
+11
+12
+123
+123
+123
+123
+123
+13
+14
+14
+2
+3
+4
+
+student@lab2-24:~$ sort -n numbers.txt
+1
+1
+1
+1
+2
+3
+4
+11
+12
+13
+14
+14
+123
+123
+123
+123
+123
+
+student@lab2-24:~$ sort -n numbers.txt | uniq
+
+1
+2
+3
+4
+11
+12
+13
+14
+123
+
+student@lab2-24:~$ sort -n numbers.txt | uniq -c
+  	2
+  	4 1
+  	1 2
+  	1 3
+  	1 4
+  	1 11
+  	1 12
+  	1 13
+  	2 14
+  	5 123
+
+student@lab2-24:~$ echo hello world
+hello world
+
+tr
+Translasi karakter dari set pertama ke set kedua.
+tr [OPTION] SET1 [SET2]
+•	-d: delete; hapus karakter pada SET1
+•	-s: squeeze; hapus karakter yang berulang pada SET1
+student@lab2-24:~$ echo hello world | tr a-z A-Z
+HELLO WORLD
+
+student@lab2-24:~$ echo hello world | tr a-z 0-25
+55555 55555
+
+student@lab2-24:~$ echo hello world | tr a-z n-za-m
+uryyb jbeyq
+
+student@lab2-24:~$ echo hello world | tr -d l
+
+heo word
+
+student@lab2-24:~$ echo hello world | tr -d aiueo
+hll wrld
+
+student@lab2-24:~$ echo hello world | tr -s a-z
+helo world
+
+student@lab2-24:~$ echo hello world | tr -c aiueo x
+xexxoxxoxxxxstudent@lab2-24:~$ echo hello world | tr -c a-z x
+helloxworldxstudent@lab2-24:~$ echo hello world | tr -c a-z[:space:] x
+hello world
+
+student@lab2-24:~$ echo nomor telp 082112950159  | tr -c a-z[:space:] x
+nomor telp xxxxxxxxxxxx
+
+student@lab2-24:~$ less unixv.txt
+
+grep
+Mencetak baris teks yang cocok dengan suatu pola.
+grep [OPTION] 'PATTERN' FILE
+•	-c: count; tampilkan jumlah baris
+•	-i: ignore-case
+•	-r: rekursif
+•	-v: invert; kebalikan dari pola yang diberikan
+•	-E: extended regex
+student@lab2-24:~$ grep "AT&T" unixv.txt
+AT&T UNIX System III    PDP-11/70    Fall    1982
+AT&T UNIX System V    PDP-11/70   	 1983
+AT&T UNIX System V    3b2/400   	 1984
+
+student@lab2-24:~$ grep -i "at&t" unixv.txt
+AT&T UNIX System III    PDP-11/70    Fall    1982
+AT&T UNIX System V    PDP-11/70   	 1983
+AT&T UNIX System V    3b2/400   	 1984
+
+student@lab2-24:~$ grep -iv "at&t" unixv.txt
+UNICS (Version Zero)    PDP-7    Summer    1969
+Fifth Edition UNIX    PDP-11/40    June    1974
+Sixth Edition UNIX    PDP-11/45    May    1975
+Seventh Edition UNIX    PDP-11/70    January    1979
+Research UNIX 8    VAX-11/780   	 1981
+2.11 BSD    PDP-11/70    January    1991
+
+student@lab2-24:~$ grep -r "INT_MAX" /usr/include/
+/usr/include/libpng16/pngconf.h:#if INT_MIN == -32768 && INT_MAX == 32767
+
+student@lab2-24:~$ grep -r "INT_MAX" /usr/include/ |  less
+/usr/include/libpng16/pngconf.h:#if INT_MIN == -32768 && INT_MAX == 32767
+/usr/include/libpng16/pngconf.h:#if UINT_MAX == 65535
+/usr/include/libpng16/pngconf.h:#if INT_MIN < -2147483646 && INT_MAX > 2147483646
+/usr/include/libpng16/pngconf.h:#if UINT_MAX > 4294967294U
+/usr/include/libpng16/png.h:#if INT_MAX >= 0x8000 /* else this might break */
+/usr/include/stdlib.h:/* The largest number rand will return (same as INT_MAX).  */
+/usr/include/linux/ethtool.h:#include <limits.h> /* for INT_MAX */
+/usr/include/linux/ethtool.h: * @speed: Low bits of the speed, 1Mb units, 0 to INT_MAX or SPEED_UNKNOWN
+/usr/include/linux/ethtool.h: * @speed_hi: High bits of the speed, 1Mb units, 0 to INT_MAX or SPEED_UNKNOWN
+/usr/include/linux/ethtool.h:/* The forced speed, in units of 1Mb. All values 0 to INT_MAX are legal.
+/usr/include/linux/ethtool.h:   return speed <= INT_MAX || speed == SPEED_UNKNOWN;
+/usr/include/linux/sem.h:#define SEMMSL  32000       	/* <= INT_MAX max num of semaphores per id */
+/usr/include/linux/sem.h:#define SEMMNS  (SEMMNI*SEMMSL) /* <= INT_MAX max # of semaphores in system */
+/usr/include/linux/usb/ch9.h:#define USB_ENDPOINT_MAX_ADJUSTABLE    	0x80
+/usr/include/linux/usb/ch9.h:#define USB_ENDPOINT_MAXP_MASK 	0x07ff
+:
+
+sed
+Stream editor, manipulasi baris teks dengan regular expression.
+sed [OPTION] 's/SEARCH/REPLACE/' [FILE]
+•	-e: execute; tambahkan perintah untuk dieksekusi
+•	-i: in-place; edit file langsung
+•	-E: extended regex
+
+sed 's/old_text/new_text/' file.txt
+Perintah di atas akan mencari `old_text` dalam `file.txt` dan menggantinya dengan `new_text`.
+
+sed -i 's/old_text/new_text/' file.txt
+ Dengan opsi `-i`, `sed` akan langsung mengedit file `file.txt` dengan melakukan penggantian `old_text` menjadi `new_text`. Harap berhati-hati saat menggunakan opsi ini karena perubahan bersifat permanen.
+
+sed -E 's/([0-9]+) dollars/\1 USD/' file.txt
+`-E` memungkinkan penggunaan regular expression yang diperluas. Ekspresi ini mencari pola seperti "123 dollars" dan menggantinya dengan "123 USD".
+
+sed -e 's/old_text/new_text/' -e 's/another_text/yet_another_text/' file.txt
+Memungkinkan untuk melakukan beberapa operasi dengan menggunakan beberapa perintah `-e`.
+
+
+
+student@lab2-24:~$ less unixv.txt
+
+cut
+Mengambil karakter/kolom tertentu dari tiap baris teks.
+cut OPTION [FILE]
+•	-c: char; cetak karakter ke-sekian
+•	-f: field; cetak kolom ke-sekian
+•	-d: delimiter; pemisah antarkolom
+student@lab2-24:~$ cut -f2 unixv.txt
+PDP-7
+PDP-11/40
+PDP-11/45
+PDP-11/70
+VAX-11/780
+PDP-11/70
+PDP-11/70
+3b2/400
+PDP-11/70
+
+student@lab2-24:~$ cut -f2,3 unixv.txt
+PDP-7    Summer
+PDP-11/40    June
+PDP-11/45    May
+PDP-11/70    January
+VAX-11/780    
+PDP-11/70    Fall
+PDP-11/70    
+3b2/400    
+PDP-11/70    January
+
+student@lab2-24:~$ cut -f2-4 unixv.txt
+PDP-7    Summer    1969
+PDP-11/40    June    1974
+PDP-11/45    May    1975
+PDP-11/70    January    1979
+VAX-11/780   	 1981
+PDP-11/70    Fall    1982
+PDP-11/70   	 1983
+3b2/400   	 1984
+PDP-11/70    January    1991
+
+student@lab2-24:~$ cut -f4 unixv.txt
+1969
+1974
+1975
+1979
+1981
+1982
+1983
+1984
+1991
+
+student@lab2-24:~$ cat unixv.txt | tr '\t' ,
+UNICS (Version Zero),PDP-7,Summer,1969
+Fifth Edition UNIX,PDP-11/40,June,1974
+Sixth Edition UNIX,PDP-11/45,May,1975
+Seventh Edition UNIX,PDP-11/70,January,1979
+Research UNIX 8,VAX-11/780,,1981
+AT&T UNIX System III,PDP-11/70,Fall,1982
+AT&T UNIX System V,PDP-11/70,,1983
+AT&T UNIX System V,3b2/400,,1984
+2.11 BSD,PDP-11/70,January,1991
+
+student@lab2-24:~$ cat unixv.txt | tr '\t' , > unixv.csv
+student@lab2-24:~$ cut -f2 -d, unixv.csv | head -n3
+PDP-7
+PDP-11/40
+PDP-11/45
+
+student@lab2-24:~$ cat numbers.txt
+1
+2
+11
+1
+123
+123
+123
+1
+3
+13
+1
+14
+14
+12
+4
+123
+123
+
+paste
+Menggabungkan tiap baris dari beberapa file per kolom.
+paste [OPTION] [FILE...]
+•	-d: delimiter; pemisah antarkolom
+•	-s: serial; gabungkan isi file menjadi sebaris
+student@lab2-24:~$ paste numbers.txt
+1
+2
+11
+1
+123
+123
+123
+1
+3
+13
+1
+14
+14
+12
+4
+123
+123
+
+student@lab2-24:~$ paste numbers.txt numbers.txt numbers.txt
+1    1    1
+2    2    2
+11    11    11
+1    1    1
+123    123    123
+123    123    123
+123    123    123
+1    1    1
+3    3    3
+13    13    13
+1    1    1
+14    14    14
+14    14    14
+12    12    12
+4    4    4
+123    123    123
+123    123    123
+
+student@lab2-24:~$ paste -s numbers.txt
+1    2    11    1    123    123    123    1    3    13    114    14    12    4    123    123	
+
+student@lab2-24:~$ paste -sd, numbers.txt
+1,2,11,1,123,123,123,1,3,13,1,14,14,12,4,123,123,,
+
+diff
+Membandingkan antara dua file per baris.
+diff [OPTION] FILE1 FILE2
+•	-u: unified; keluaran beserta konteks
+•	-y: side-by-side; keluaran dua kolom
+student@lab2-24:~$ diff -u unixv.txt unixv2.txt
+--- unixv.txt    2023-10-31 16:03:28.131454010 +0700
++++ unixv2.txt    2023-10-31 16:41:55.203042711 +0700
+@@ -7,3 +7,5 @@
+ AT&T UNIX System V    PDP-11/70   	 1983
+ AT&T UNIX System V    3b2/400   	 1984
+ 2.11 BSD    PDP-11/70    January    1991
++Linux Intelx86    September    1991
++
+
+join
+Menggabungkan baris dari dua file berdasarkan satu kolom join.
+join [OPTION] FILE1 FILE2
+•	-1: nomor kolom join untuk FILE1
+•	-2: nomor kolom join untuk FILE2
+•	-t: karakter pemisah antarkolom
+Dua file teks, `file1.txt` dan `file2.txt`, dan kita ingin menggabungkan baris dari kedua file berdasarkan nilai kolom yang sama.
+
+Isi `file1.txt`:
+```
+101 John
+102 Alice
+103 Bob
+104 Emily
+```
+
+Isi `file2.txt`:
+```
+101 Red
+102 Blue
+103 Green
+105 Yellow
+```
+
+join -1 1 -2 1 file1.txt file2.txt
+
+Perintah di atas akan menggunakan kolom pertama dari `file1.txt` dan `file2.txt` sebagai kolom penghubung. Hasilnya akan menjadi:
+
+```
+101 John Red
+102 Alice Blue
+103 Bob Green
+```
+
+Keterangan:
+- `-1 1`: Menunjukkan kolom pertama dari `file1.txt`.
+- `-2 1`: Menunjukkan kolom pertama dari `file2.txt`.
+- Hasil join akan menampilkan baris yang memiliki nilai yang sama di kolom pertama di kedua file.
+
+
+
+student@lab2-24:~$ less unixv.txt
+student@lab2-24:~$ cp unixv.txt unixv2.txt
+student@lab2-24:~$ nano unixv2.txt
+student@lab2-24:~$ diff unixv.txt unixv2.txt
+9a10,11
+> Linux Intelx86    September    1991
+
+student@lab2-24:~$ diff -u unixv.txt unixv2.txt
+--- unixv.txt    2023-10-31 16:03:28.131454010 +0700
++++ unixv2.txt    2023-10-31 16:41:55.203042711 +0700
+@@ -7,3 +7,5 @@
+ AT&T UNIX System V    PDP-11/70   	 1983
+ AT&T UNIX System V    3b2/400   	 1984
+ 2.11 BSD    PDP-11/70    January    1991
++Linux Intelx86    September    1991
++
+
+student@lab2-24:~$ diff -y unixv.txt unixv2.txt
+UNICS (Version Zero)    PDP-7    Summer    1969   		 UNICS (Version Zero)    PDP-7    Summer    1969
+Fifth Edition UNIX    PDP-11/40    June    1974   	 Fifth Edition UNIX    PDP-11/40    June    1974
+Sixth Edition UNIX    PDP-11/45    May    1975   	 Sixth Edition UNIX    PDP-11/45    May    1975
+Seventh Edition UNIX    PDP-11/70    January    1979   	 Seventh Edition UNIX    PDP-11/70    January    1979
+Research UNIX 8    VAX-11/780   	 1981   		 Research UNIX 8VAX-11/780   	 1981
+AT&T UNIX System III    PDP-11/70    Fall    1982   	 AT&T UNIX System III    PDP-11/70    Fall    1982
+AT&T UNIX System V    PDP-11/70   	 1983   	 AT&T UNIX System V    PDP-11/70   	 1983
+AT&T UNIX System V    3b2/400   	 1984   		 AT&T UNIX System V    3b2/400   	 1984
+2.11 BSD    PDP-11/70    January    1991   		 2.11 BSD    PDP-11/70    January    1991
+   						   	>    Linux Intelx86    September    1991
+   	
+wc
+Mencetak jumlah baris, kata, dan karakter dari suatu file.
+wc [OPTION] [FILE...]
+•	-c: char; cetak jumlah karakter
+•	-l: line; cetak jumlah baris
+•	-w: word; cetak jumlah kata 	
+student@lab2-24:~$ wc -cwl unixv.txt
+  9  53 334 unixv.txt
+ 
+#12-job-control
+nice
+Menjalankan program dengan prioritas nice2 tertentu (default: 10).
+nice [-n NICE] COMMAND
+renice
+Mengubah prioritas proses yang sudah berjalan.
+renice [-n] NICE PID
+timeout
+Menjalankan program dengan batasan waktu tertentu.
+timeout DURATION COMMAND
+prlimit
+Mengatur batas penggunaan resource proses.
+prlimit [OPTION] COMMAND
+•	-t: time; waktu CPU (detik)
+•	-s: stack; ukuran stack (byte)
+•	-v: virtual memory; ukuran memori (byte)
+•	-n: number of open files
+time
+Menjalankan program dan menampilkan penggunaan waktu CPU.
+/usr/bin/time [OPTION] COMMAND
+•	-p: portable; format standar POSIX
+•	-v: verbose; format lengkap
+
+at
+Menjadwalkan job untuk dijalankan kemudian.
+at HH:MM [YYYY-MM-DD]
+•	-l: list; tampilkan daftar antrian job
+•	-r: remove; hapus job dari antrian
+
+ps
+Menampilkan cuplikan informasi proses yang sedang berjalan.
+ps [OPTION]
+•	-A: all; tampilkan semua proses
+•	-F: full; tampilkan format lengkap
+•	-L: light-weight process; tampilkan info thread
+
+student@lab2-36:~$ ps
+  PID TTY      	TIME CMD
+ 2126 pts/1	00:00:00 bash
+ 2949 pts/1	00:00:00 ps
+
+
+student@lab2-36:~$ ps -A
+  PID TTY      	TIME CMD
+	1 ?    	00:00:00 systemd
+	2 ?    	00:00:00 kthreadd
+	3 ?    	00:00:00 kworker/0:0
+	4 ?    	00:00:00 kworker/0:0H
+	5 ?    	00:00:00 kworker/u8:0
+	6 ?    	00:00:00 mm_percpu_wq
+	7 ?    	00:00:00 ksoftirqd/0
+	8 ?    	00:00:00 rcu_sched
+	9 ?    	00:00:00 rcu_bh
+dst.
+
+student@lab1-46:~$ ps -A
+	PID TTY      	TIME CMD
+  	1 ?    	00:00:02 systemd
+  	2 ?    	00:00:00 kthreadd
+  	3 ?    	00:00:00 rcu_gp
+  	4 ?    	00:00:00 rcu_par_gp
+  	5 ?    	00:00:00 slub_flushwq
+dst
+  11332 pts/0	00:00:00 ps
+
+student@lab2-36:~$ ps -F
+UID    	PID  PPID  C	SZ   RSS PSR STIME TTY      	TIME CMD
+student   2126  2104  0  5681  5140   0 15:47 pts/1	00:00:00 bash
+student   2952  2126  0  9919  3696   3 15:49 pts/1	00:00:00 ps -F
+
+student@lab2-36:~$ ps -AF
+UID    	PID  PPID  C	SZ   RSS PSR STIME TTY      	TIME CMD
+root     	1 	0  0 56318  8940   3 15:44 ?    	00:00:00 /sbin/init splas
+root     	2 	0  0 	0 	0   2 15:44 ?    	00:00:00 [kthreadd]
+dst
+
+student@lab1-46:~$ ps -L
+	PID 	LWP TTY      	TIME CMD
+  11143   11143 pts/0	00:00:00 bash
+  11343   11343 pts/0	00:00:00 ps
+
+pstree
+Menampilkan pohon proses.
+pstree [OPTION] [PID,USER]
+•	-n: numeric; urutkan berdasarkan PID
+•	-p: tampilkan PID
+student@lab2-36:~$ pstree
+systemd─┬─ModemManager───2*[{ModemManager}]
+    	├─NetworkManager───2*[{NetworkManager}]
+    	├─Thunar
+    	├─accounts-daemon───2*[{accounts-daemon}]
+    	├─acpid
+    	├─anacron───sh───run-parts───logrotate───logrotate───sh───invoke-rc.d──+++
+    	├─apache2───5*[apache2]
+    	├─avahi-daemon───avahi-daemon
+    	├─cron
+    	├─cups-browsed───2*[{cups-browsed}]
+    	├─cupsd
+    	├─dbus-daemon
+    	├─gnome-keyring-d───3*[{gnome-keyring-d}]
+    	├─irqbalance───{irqbalance}
+    	├─java───42*[{java}]
+    	├─2*[kerneloops]
+    	├─lightdm─┬─Xorg───6*[{Xorg}]
+    	│     	├─lightdm─┬─sh─┬─ssh-agent
+    	│     	│     	│	└─xfce4-session─┬─applet.py───{applet.py}
+    	│     	│     	│                	├─light-locker───3*[{light-loc+
+    	│     	│     	│                	├─polkit-gnome-au───2*[{polkit+
+    	│     	│     	│                	├─socat───sh
+    	│     	│     	│                	└─2*[{xfce4-session}]
+    	│     	│     	└─2*[{lightdm}]
+    	│     	└─2*[{lightdm}]
+    	├─mongod───22*[{mongod}]
+    	├─networkd-dispat───{networkd-dispat}
+    	├─packagekitd───2*[{packagekitd}]
+    	├─polkitd───2*[{polkitd}]
+    	├─postgres───6*[postgres]
+    	├─pulseaudio───2*[{pulseaudio}]
+    	├─rc.local───socat───sh
+    	├─rsyslogd───3*[{rsyslogd}]
+    	├─rtkit-daemon───2*[{rtkit-daemon}]
+    	├─sshd
+    	├─systemd─┬─(sd-pam)
+    	│     	├─at-spi-bus-laun─┬─dbus-daemon
+    	│     	│             	└─3*[{at-spi-bus-laun}]
+    	│     	├─at-spi2-registr───2*[{at-spi2-registr}]
+    	│     	├─dbus-daemon
+    	│     	├─dconf-service───2*[{dconf-service}]
+    	│     	├─gvfs-afc-volume───3*[{gvfs-afc-volume}]
+    	│     	├─gvfs-goa-volume───2*[{gvfs-goa-volume}]
+    	│     	├─gvfs-gphoto2-vo───2*[{gvfs-gphoto2-vo}]
+    	│     	├─gvfs-mtp-volume───2*[{gvfs-mtp-volume}]
+    	│     	├─gvfs-udisks2-vo───2*[{gvfs-udisks2-vo}]
+    	│     	├─gvfsd─┬─gvfsd-trash───2*[{gvfsd-trash}]
+    	│     	│   	└─2*[{gvfsd}]
+    	│     	├─gvfsd-fuse───5*[{gvfsd-fuse}]
+    	│     	├─gvfsd-metadata───2*[{gvfsd-metadata}]
+    	│     	├─indicator-messa───3*[{indicator-messa}]
+    	│     	├─tumblerd───4*[{tumblerd}]
+    	│     	├─xfce4-notifyd───2*[{xfce4-notifyd}]
+    	│     	└─xfconfd
+    	├─systemd-journal
+    	├─systemd-logind
+    	├─systemd-network
+    	├─systemd-resolve
+    	├─systemd-timesyn───{systemd-timesyn}
+    	├─systemd-udevd
+    	├─thermald───{thermald}
+    	├─udisksd───4*[{udisksd}]
+    	├─unattended-upgr───{unattended-upgr}
+    	├─upowerd───2*[{upowerd}]
+    	├─whoopsie───2*[{whoopsie}]
+    	├─wpa_supplicant
+    	├─xfce4-panel─┬─panel-1-whisker─┬─firefox─┬─Isolated Web Co───20*[{Isol+
+    	│         	│             	│     	├─Isolated Web Co───21*[{Isol+
+    	│         	│             	│     	├─Privileged Cont───19*[{Priv+
+    	│         	│             	│     	├─RDD Process───3*[{RDD Proce+
+    	│         	│             	│     	├─Socket Process───5*[{Socket+
+    	│         	│             	│     	├─Utility Process───3*[{Utili+
+    	│         	│             	│     	├─Web Content───15*[{Web Cont+
+    	│         	│             	│     	├─2*[Web Content───16*[{Web C+
+    	│         	│             	│     	├─WebExtensions───19*[{WebExt+
+    	│         	│             	│     	└─105*[{firefox}]
+    	│         	│             	└─2*[{panel-1-whisker}]
+    	│         	├─panel-4-systray
+    	│         	├─panel-5-notific───2*[{panel-5-notific}]
+    	│         	├─panel-6-indicat───2*[{panel-6-indicat}]
+    	│         	├─panel-7-statusn───2*[{panel-7-statusn}]
+    	│         	├─panel-8-power-m───2*[{panel-8-power-m}]
+    	│         	├─panel-9-pulseau───2*[{panel-9-pulseau}]
+    	│         	└─{xfce4-panel}
+    	├─xfce4-power-man───2*[{xfce4-power-man}]
+    	├─xfce4-terminal─┬─bash───pstree
+    	│            	└─2*[{xfce4-terminal}]
+    	├─xfdesktop───2*[{xfdesktop}]
+    	├─xfsettingsd───2*[{xfsettingsd}]
+    	└─xfwm4
+
+student@lab2-36:~$ pstree -n
+systemd─┬─systemd-journal
+    	├─systemd-udevd
+    	├─systemd-network
+    	├─systemd-resolve
+    	├─systemd-timesyn───{systemd-timesyn}
+    	├─thermald───{thermald}
+    	├─networkd-dispat───{networkd-dispat}
+    	├─dbus-daemon
+    	├─NetworkManager───2*[{NetworkManager}]
+    	├─rsyslogd───3*[{rsyslogd}]
+    	├─wpa_supplicant
+    	├─irqbalance───{irqbalance}
+    	├─systemd-logind
+    	├─acpid
+    	├─udisksd───4*[{udisksd}]
+    	├─anacron───sh───run-parts───mlocate───flock───updatedb.mlocat
+    	├─cron
+    	├─avahi-daemon───avahi-daemon
+    	├─ModemManager───2*[{ModemManager}]
+    	├─accounts-daemon───2*[{accounts-daemon}]
+    	├─cups-browsed───2*[{cups-browsed}]
+    	├─polkitd───2*[{polkitd}]
+    	├─java───42*[{java}]
+    	├─unattended-upgr───{unattended-upgr}
+    	├─mongod───22*[{mongod}]
+    	├─lightdm─┬─2*[{lightdm}]
+    	│     	├─Xorg───6*[{Xorg}]
+    	│     	└─lightdm─┬─2*[{lightdm}]
+    	│               	└─sh─┬─ssh-agent
+    	│                    	└─xfce4-session─┬─2*[{xfce4-session}]
+    	│                                    	├─socat───sh
+    	│                                    	├─polkit-gnome-au───2*[{polkit+
+    	│                                    	├─applet.py───{applet.py}
+    	│                                    	└─light-locker───3*[{light-loc+
+    	├─sshd
+    	├─postgres───6*[postgres]
+    	├─whoopsie───2*[{whoopsie}]
+    	├─rc.local───socat───sh
+    	├─2*[kerneloops]
+    	├─apache2───5*[apache2]
+    	├─systemd─┬─(sd-pam)
+    	│     	├─dbus-daemon
+    	│     	├─xfconfd
+    	│     	├─at-spi-bus-laun─┬─3*[{at-spi-bus-laun}]
+    	│     	│             	└─dbus-daemon
+    	│     	├─at-spi2-registr───2*[{at-spi2-registr}]
+    	│     	├─dconf-service───2*[{dconf-service}]
+    	│     	├─gvfsd─┬─2*[{gvfsd}]
+    	│     	│   	└─gvfsd-trash───2*[{gvfsd-trash}]
+    	│     	├─gvfsd-fuse───5*[{gvfsd-fuse}]
+    	│     	├─tumblerd───4*[{tumblerd}]
+    	│     	├─xfce4-notifyd───2*[{xfce4-notifyd}]
+    	│     	├─gvfs-udisks2-vo───2*[{gvfs-udisks2-vo}]
+    	│     	├─indicator-messa───3*[{indicator-messa}]
+    	│     	├─gvfs-gphoto2-vo───2*[{gvfs-gphoto2-vo}]
+    	│     	├─gvfs-afc-volume───3*[{gvfs-afc-volume}]
+    	│     	├─gvfs-mtp-volume───2*[{gvfs-mtp-volume}]
+    	│     	├─gvfs-goa-volume───2*[{gvfs-goa-volume}]
+    	│     	└─gvfsd-metadata───2*[{gvfsd-metadata}]
+    	├─gnome-keyring-d───3*[{gnome-keyring-d}]
+    	├─xfwm4
+    	├─xfce4-panel─┬─panel-1-whisker─┬─2*[{panel-1-whisker}]
+    	│         	│             	└─firefox─┬─107*[{firefox}]
+    	│         	│                       	├─Socket Process───5*[{Socket+
+    	│         	│                       	├─Privileged Cont───19*[{Priv+
+    	│         	│                       	├─WebExtensions───19*[{WebExt+
+    	│         	│                       	├─Isolated Web Co───20*[{Isol+
+    	│         	│                       	├─Isolated Web Co───22*[{Isol+
+    	│         	│                       	├─RDD Process───3*[{RDD Proce+
+    	│         	│                       	├─Utility Process───3*[{Utili+
+    	│         	│                       	└─3*[Web Content───15*[{Web C+
+    	│         	├─{xfce4-panel}
+    	│         	├─panel-4-systray
+    	│         	├─panel-5-notific───2*[{panel-5-notific}]
+    	│         	├─panel-6-indicat───2*[{panel-6-indicat}]
+    	│         	├─panel-7-statusn───2*[{panel-7-statusn}]
+    	│         	├─panel-8-power-m───2*[{panel-8-power-m}]
+    	│         	└─panel-9-pulseau───2*[{panel-9-pulseau}]
+    	├─Thunar
+    	├─xfdesktop───2*[{xfdesktop}]
+    	├─xfsettingsd───2*[{xfsettingsd}]
+    	├─packagekitd───2*[{packagekitd}]
+    	├─xfce4-power-man───2*[{xfce4-power-man}]
+    	├─pulseaudio───2*[{pulseaudio}]
+    	├─rtkit-daemon───2*[{rtkit-daemon}]
+    	├─upowerd───2*[{upowerd}]
+    	├─xfce4-terminal─┬─3*[{xfce4-terminal}]
+    	│            	├─bash
+    	│            	└─bash───pstree
+    	└─cupsd───dbus
+
+student@lab2-36:~$ pstree -p
+systemd(1)─┬─ModemManager(703)─┬─{ModemManager}(774)
+       	│               	└─{ModemManager}(777)
+       	├─NetworkManager(679)─┬─{NetworkManager}(809)
+       	│                 	└─{NetworkManager}(811)
+       	├─Thunar(1587)
+       	├─accounts-daemon(704)─┬─{accounts-daemon}(755)
+       	│                  	└─{accounts-daemon}(760)
+       	├─acpid(687)
+       	├─anacron(690)───sh(3057)───run-parts(3058)───mlocate(3240)───flock(+
+       	├─apache2(1010)─┬─apache2(3201)
+       	│           	├─apache2(3202)
+       	│           	├─apache2(3203)
+       	│           	├─apache2(3204)
+       	│           	└─apache2(3205)
+       	├─avahi-daemon(695)───avahi-daemon(753)
+       	├─cron(692)
+       	├─cups-browsed(754)─┬─{cups-browsed}(843)
+       	│               	└─{cups-browsed}(844)
+       	├─cupsd(3219)───dbus(3220)
+       	├─dbus-daemon(636)
+       	├─gnome-keyring-d(1358)─┬─{gnome-keyring-d}(1359)
+       	│                   	├─{gnome-keyring-d}(1360)
+       	│                   	└─{gnome-keyring-d}(1576)
+       	├─irqbalance(685)───{irqbalance}(716)
+       	├─java(830)─┬─{java}(925)
+       	│       	├─{java}(949)
+       	│       	├─{java}(950)
+       	│       	├─{java}(951)
+       	│       	├─{java}(952)
+       	│       	├─{java}(1097)
+       	│       	├─{java}(1098)
+       	│       	├─{java}(1099)
+       	│       	├─{java}(1101)
+       	│       	├─{java}(1102)
+       	│       	├─{java}(1103)
+       	│       	├─{java}(1104)
+       	│       	├─{java}(1105)
+       	│       	├─{java}(1106)
+       	│       	├─{java}(1163)
+       	│       	├─{java}(1164)
+       	│       	├─{java}(1165)
+       	│       	├─{java}(1166)
+       	│       	├─{java}(1167)
+       	│       	├─{java}(1168)
+       	│       	├─{java}(1169)
+       	│       	├─{java}(1170)
+       	│       	├─{java}(1171)
+       	│       	├─{java}(1199)
+       	│       	├─{java}(1240)
+       	│       	├─{java}(1255)
+       	│       	├─{java}(1276)
+       	│       	├─{java}(1302)
+       	│       	├─{java}(1308)
+       	│       	├─{java}(1309)
+       	│       	├─{java}(1310)
+       	│       	├─{java}(1311)
+       	│       	├─{java}(1312)
+       	│       	├─{java}(1313)
+       	│       	├─{java}(1316)
+       	│       	├─{java}(1319)
+       	│       	├─{java}(1322)
+       	│       	├─{java}(1323)
+       	│       	├─{java}(1324)
+       	│       	├─{java}(1325)
+       	│       	├─{java}(1326)
+       	│       	└─{java}(3187)
+       	├─kerneloops(966)
+       	├─kerneloops(968)
+       	├─lightdm(842)─┬─Xorg(869)─┬─{Xorg}(1092)
+       	│          	│       	├─{Xorg}(1093)
+       	│          	│       	├─{Xorg}(1094)
+       	│          	│       	├─{Xorg}(1095)
+       	│          	│       	├─{Xorg}(1096)
+       	│          	│       	└─{Xorg}(1116)
+       	│          	├─lightdm(1251)─┬─sh(1369)─┬─ssh-agent(1482)
+       	│          	│           	│      	└─xfce4-session(1507)─┬─ap+
+       	│          	│           	│                            	├─li+
+       	│          	│           	│                            	├─po+
+       	│          	│           	│                            	├─so+
+       	│          	│           	│                            	├─{x+
+       	│          	│           	│                            	└─{x+
+       	│          	│           	├─{lightdm}(1330)
+       	│          	│           	└─{lightdm}(1331)
+       	│          	├─{lightdm}(852)
+       	│          	└─{lightdm}(854)
+       	├─mongod(834)─┬─{mongod}(1083)
+       	│         	├─{mongod}(1084)
+       	│         	├─{mongod}(1119)
+       	│         	├─{mongod}(1120)
+       	│         	├─{mongod}(1121)
+       	│         	├─{mongod}(1148)
+       	│         	├─{mongod}(1149)
+       	│         	├─{mongod}(1150)
+       	│         	├─{mongod}(1151)
+       	│         	├─{mongod}(1152)
+       	│         	├─{mongod}(1153)
+       	│         	├─{mongod}(1154)
+       	│         	├─{mongod}(1175)
+       	│         	├─{mongod}(1180)
+       	│         	├─{mongod}(1183)
+       	│         	├─{mongod}(1184)
+       	│         	├─{mongod}(1185)
+       	│         	├─{mongod}(1186)
+       	│         	├─{mongod}(1187)
+       	│         	├─{mongod}(1188)
+       	│         	├─{mongod}(1189)
+       	│         	└─{mongod}(1190)
+       	├─networkd-dispat(633)───{networkd-dispat}(780)
+       	├─packagekitd(1769)─┬─{packagekitd}(1807)
+       	│               	└─{packagekitd}(1808)
+       	├─polkitd(761)─┬─{polkitd}(767)
+       	│          	└─{polkitd}(769)
+       	├─postgres(915)─┬─postgres(1086)
+       	│           	├─postgres(1087)
+       	│           	├─postgres(1088)
+       	│           	├─postgres(1089)
+       	│           	├─postgres(1090)
+       	│           	└─postgres(1091)
+       	├─pulseaudio(1848)─┬─{pulseaudio}(1943)
+       	│              	└─{pulseaudio}(1946)
+       	├─rc.local(958)───socat(972)───sh(1011)
+       	├─rsyslogd(681)─┬─{rsyslogd}(711)
+       	│           	├─{rsyslogd}(712)
+       	│           	└─{rsyslogd}(713)
+       	├─rtkit-daemon(1850)─┬─{rtkit-daemon}(1851)
+       	│                	└─{rtkit-daemon}(1852)
+       	├─sshd(850)
+       	├─systemd(1341)─┬─(sd-pam)(1342)
+       	│           	├─at-spi-bus-laun(1825)─┬─dbus-daemon(1830)
+       	│           	│                   	├─{at-spi-bus-laun}(1826)
+       	│           	│                   	├─{at-spi-bus-laun}(1827)
+       	│           	│                   	└─{at-spi-bus-laun}(1829)
+       	│           	├─at-spi2-registr(1833)─┬─{at-spi2-registr}(1835)
+       	│           	│                   	└─{at-spi2-registr}(1836)
+       	│           	├─dbus-daemon(1392)
+       	│           	├─dconf-service(1859)─┬─{dconf-service}(1873)
+       	│           	│                 	└─{dconf-service}(1874)
+       	│           	├─gvfs-afc-volume(1968)─┬─{gvfs-afc-volume}(1969)
+       	│           	│                   	├─{gvfs-afc-volume}(1970)
+       	│           	│                   	└─{gvfs-afc-volume}(1972)
+       	│           	├─gvfs-goa-volume(1977)─┬─{gvfs-goa-volume}(1978)
+       	│           	│                   	└─{gvfs-goa-volume}(1979)
+       	│           	├─gvfs-gphoto2-vo(1964)─┬─{gvfs-gphoto2-vo}(1965)
+       	│           	│                   	└─{gvfs-gphoto2-vo}(1967)
+       	│           	├─gvfs-mtp-volume(1973)─┬─{gvfs-mtp-volume}(1974)
+       	│           	│                   	└─{gvfs-mtp-volume}(1976)
+       	│           	├─gvfs-udisks2-vo(1955)─┬─{gvfs-udisks2-vo}(1961)
+       	│           	│                   	└─{gvfs-udisks2-vo}(1962)
+       	│           	├─gvfsd(1860)─┬─gvfsd-trash(1984)─┬─{gvfsd-trash}(19+
+       	│           	│         	│               	└─{gvfsd-trash}(19+
+       	│           	│         	├─{gvfsd}(1861)
+       	│           	│         	└─{gvfsd}(1862)
+       	│           	├─gvfsd-fuse(1865)─┬─{gvfsd-fuse}(1867)
+       	│           	│              	├─{gvfsd-fuse}(1868)
+       	│           	│              	├─{gvfsd-fuse}(1870)
+       	│           	│              	├─{gvfsd-fuse}(1871)
+       	│           	│              	└─{gvfsd-fuse}(1872)
+       	│           	├─gvfsd-metadata(1989)─┬─{gvfsd-metadata}(1990)
+       	│           	│                  	└─{gvfsd-metadata}(1991)
+       	│           	├─indicator-messa(1956)─┬─{indicator-messa}(1957)
+       	│           	│                   	├─{indicator-messa}(1959)
+       	│           	│                   	└─{indicator-messa}(1960)
+       	│           	├─tumblerd(1893)─┬─{tumblerd}(1900)
+       	│           	│            	├─{tumblerd}(1901)
+       	│           	│            	├─{tumblerd}(1981)
+       	│           	│            	└─{tumblerd}(1982)
+       	│           	├─xfce4-notifyd(1895)─┬─{xfce4-notifyd}(1897)
+       	│           	│                 	└─{xfce4-notifyd}(1899)
+       	│           	└─xfconfd(1542)
+       	├─systemd-journal(276)
+       	├─systemd-logind(686)
+       	├─systemd-network(329)
+       	├─systemd-resolve(615)
+       	├─systemd-timesyn(618)───{systemd-timesyn}(737)
+       	├─systemd-udevd(313)
+       	├─thermald(631)───{thermald}(779)
+       	├─udisksd(689)─┬─{udisksd}(757)
+       	│          	├─{udisksd}(759)
+       	│          	├─{udisksd}(781)
+       	│          	└─{udisksd}(805)
+       	├─unattended-upgr(831)───{unattended-upgr}(953)
+       	├─upowerd(1894)─┬─{upowerd}(1902)
+       	│           	└─{upowerd}(1903)
+       	├─whoopsie(955)─┬─{whoopsie}(1063)
+       	│           	└─{whoopsie}(1064)
+       	├─wpa_supplicant(684)
+       	├─xfce4-panel(1585)─┬─panel-1-whisker(1921)─┬─firefox(2140)─┬─Isolat+
+       	│               	│                   	│           	├─Isolat+
+       	│               	│                   	│           	├─Privil+
+       	│               	│                   	│           	├─RDD Pr+
+       	│               	│                   	│           	├─Socket+
+       	│               	│                   	│           	├─Utilit+
+       	│               	│                   	│           	├─Web Co+
+       	│               	│                   	│           	├─Web Co+
+       	│               	│                   	│           	├─Web Co+
+       	│               	│                   	│           	├─WebExt+
+       	│               	│                   	│           	├─{firef+
+       	│               	│                   	├─{panel-1-whisker}(1944+
+       	│               	│                   	└─{panel-1-whisker}(1945+
+       	│               	├─panel-4-systray(1924)
+       	│               	├─panel-5-notific(1925)─┬─{panel-5-notific}(1932+
+       	│               	│                   	└─{panel-5-notific}(1933+
+       	│               	├─panel-6-indicat(1926)─┬─{panel-6-indicat}(1939+
+       	│               	│                   	└─{panel-6-indicat}(1940+
+       	│               	├─panel-7-statusn(1927)─┬─{panel-7-statusn}(1935+
+       	│               	│                   	└─{panel-7-statusn}(1937+
+       	│               	├─panel-8-power-m(1928)─┬─{panel-8-power-m}(1930+
+       	│               	│                   	└─{panel-8-power-m}(1931+
+       	│               	├─panel-9-pulseau(1929)─┬─{panel-9-pulseau}(1936+
+       	│               	│                   	└─{panel-9-pulseau}(1938+
+       	│               	└─{xfce4-panel}(1923)
+       	├─xfce4-power-man(1843)─┬─{xfce4-power-man}(1844)
+       	│                   	└─{xfce4-power-man}(1845)
+       	├─xfce4-terminal(2104)─┬─bash(2126)
+       	│                  	├─bash(3270)───pstree(3284)
+       	│                  	├─{xfce4-terminal}(2105)
+       	│                  	├─{xfce4-terminal}(2106)
+       	│                  	└─{xfce4-terminal}(3269)
+       	├─xfdesktop(1589)─┬─{xfdesktop}(1702)
+       	│             	└─{xfdesktop}(1703)
+       	├─xfsettingsd(1604)─┬─{xfsettingsd}(1890)
+       	│               	└─{xfsettingsd}(1891)
+       	└─xfwm4(1581)
+
+top, htop
+Memonitor proses secara interaktif.
+htop [OPTION]
+•	-u USER: tampilkan proses milik USER
+•	-p PID: tampilkan proses PID
+: Atribut proses1
+Atribut Keterangan
+PID ID proses USER pemilik proses PR, NI prioritas, nilai nice VIRT ukuran memori virtual RES ukuran memori residen (fisik) SHR ukuran memori shared S status proses - R: running - S: sleeping - D: waiting for disk - T: stopped
+
+student@lab2-36:~$ top
+
+Perintah `top` akan menampilkan daftar proses secara dinamis dengan informasi seperti penggunaan CPU, penggunaan memori, ID proses (PID), waktu aktif, dan lainnya.
+
+student@lab2-36:~$ htop (Versi yang ditingkatkan dari `top`, dengan antarmuka yang lebih interaktif dan lebih banyak opsi yang tersedia.)
+
+
+student@lab2-36:~$ htop -u (Opsi `-u` pada `htop` akan menampilkan hanya proses-proses yang dimiliki oleh pengguna yang ditentukan.)
+
+htop: option requires an argument -- 'u'
+
+student@lab2-36:~$ htop -u g6401211110
+Error: invalid user "g6401211110".
+
+student@lab2-36:~$ htop -p PID (Opsi `-p` pada `htop` memungkinkan Anda untuk menampilkan informasi khusus tentang proses dengan PID tertentu.)
+
+student@lab2-36:~$ htop -u USER
+Error: invalid user "USER".
+
+
+pidof
+Mendapatkan PID dari nama program yang sedang berjalan.
+pidof PROGRAM
+student@lab2-36:~$ pidof bash
+3783 3270 2126
+
+student@lab2-36:~$ pidof chrome
+
+student@lab1-46:~$ pidof firefox (Perintah `pidof` digunakan udntuk mendapatkan PID (Process ID) dari sebuah program yang sedang berjalan)
+11368 6718 6674 6649 6581 6497 2465 2213 2165 2130 2051 2029 1841
+
+
+pgrep
+Mendapatkan PID dari nama program yang sedang berjalan.
+pgrep [OPTION] PROGRAM...
+•	-u USER: pilih proses milik USER
+•	-g GROUP: pilih proses milik GROUP
+•	-l: tampilkan nama proses
+student@lab2-36:~$ pgrep -u student
+1341
+1342
+1358
+1369
+1392
+1482
+1507
+1542
+1581
+1585
+1587
+1589
+1604
+1760
+1775
+1824
+1825
+1830
+1833
+1837
+1843
+1848
+1849
+1859
+1860
+1865
+1895
+1921
+1924
+1925
+1926
+1927
+1928
+1929
+1955
+1956
+1964
+1968
+1973
+1977
+1984
+1989
+2104
+2126
+2140
+2211
+2266
+2305
+2757
+2792
+2834
+2837
+2979
+3005
+3034
+3270
+3783
+
+student@lab2-36:~$ pgrep -u student | wc
+ 	58  	58 	290
+student@lab2-36:~$ pgrep -u student chrome
+
+student@lab2-36:~$ pgrep -l student
+
+student@lab2-36:~$ pgrep -l firefox
+2140 firefox
+
+kill
+Mengirim sinyal ke proses (default: SIGTERM).
+kill [OPTION] PID...
+•	-INT
+•	-KILL
+•	-STOP
+•	-CONT
+student@lab2-36:~$ geany &
+[1] 4033
+
+student@lab2-36:~$ geany &
+[2] 4050
+[1]   Done                	geany
+student@lab2-36:~$ kill 4050
+
+student@lab2-36:~$ geany &
+[3] 4071
+[2]   Done                	geany
+
+pkill
+Mengirim sinyal ke proses (default: SIGTERM) berdasarkan namanya.
+pkill [OPTION] PROGRAM...
+•	-INT
+•	-KILL
+•	-STOP
+•	-CONT
+•	-u USER: pilih proses milik USER
+•	-g GROUP: pilih proses milik GROUP
+student@lab2-36:~$ pkill geany
+
+student@lab2-36:~$ geany &
+[4] 4107
+[3]   Done                	geany
+
+student@lab2-36:~$ pkill geany
+
+student@lab2-36:~$ geany *
+
+student@lab2-36:~$ geany &
+[3] 4071
+[2]   Done                	geany
+
+student@lab2-36:~$ pkill geany
+
+student@lab2-36:~$ geany &
+[4] 4107
+[3]   Done                	geany
+
+student@lab2-36:~$ pkill geany
+
+student@lab2-36:~$ geany *
+[4]+  Done                	geany
+
+student@lab2-36:~$ geany &
+[1] 4163
+
+student@lab2-36:~$ pkill -KILL geany
+
+student@lab2-36:~$ geany &
+[2] 4189
+[1]   Killed              	geany
+
+student@lab2-36:~$ pkill -STOP geany
+[2]+  Stopped             	geany
+
+student@lab2-36:~$ pkill geany
+
+student@lab2-36:~$ geany &
+[3] 4243
+
+student@lab2-36:~$ pkill geany
+
+student@lab2-36:~$ pkill genay
+[3]-  Done                	geany
+
+student@lab2-36:~$ pkill geany
+
+student@lab2-36:~$ pkill -CONT geany
+
+pmap
+Menampilkan memory map sebuah proses.
+pmap [OPTION] PID
+•	-x: tampilkan format extended
+•	-p: tampilkan path lengkap file
+student@lab2-36:~$ pmap -x PID
+
+00007f7c741d4000   2048K ----- libc-2.27.so
+00007f7c743d4000 	16K r---- libc-2.27.so
+00007f7c743d8000  	8K rw--- libc-2.27.so
+00007f7c743da000 	16K rw---   [ anon ]
+00007f7c743de000 	12K r-x-- libdl-2.27.so
+00007f7c743e1000   2044K ----- libdl-2.27.so
+00007f7c745e0000  	4K r---- libdl-2.27.so
+00007f7c745e1000  	4K rw--- libdl-2.27.so
+00007f7c745e2000	152K r-x-- libtinfo.so.5.9
+00007f7c74608000   2044K ----- libtinfo.so.5.9
+00007f7c74807000 	16K r---- libtinfo.so.5.9
+00007f7c7480b000  	4K rw--- libtinfo.so.5.9
+00007f7c7480c000	164K r-x-- ld-2.27.so
+00007f7c749bb000	280K rw---   [ anon ]
+00007f7c74a2e000 	28K r--s- gconv-modules.cache
+00007f7c74a35000  	4K r---- ld-2.27.so
+00007f7c74a36000  	4K rw--- ld-2.27.so
+00007f7c74a37000  	4K rw---   [ anon ]
+00007ffee0a78000	132K rw---   [ stack ]
+00007ffee0bdb000 	12K r----   [ anon ]
+00007ffee0bde000  	8K r-x--   [ anon ]
+ffffffffff600000  	4K r-x--   [ anon ]
+ total        	22988K
+(END)
+
+lsof
+Menampilkan daftar file yang sedang dibuka oleh proses.
+lsof [-p PID] [FILENAME...]
+
+student@lab2-36:~$ lsof -p $$
+COMMAND  PID	USER   FD   TYPE DEVICE SIZE/OFF 	NODE NAME
+bash	4703 student  cwd	DIR	8,1 	4096 42991633 /home/student
+bash	4703 student  255u   CHR  136,1  	0t0    	4 /dev/pts/1
+student@lab2-36:~$
+
+student@lab2-36:~$ nice sleep 100 &
+[1] 4834
+student@lab2-36:~$ htop -p 4758
+student@lab2-36:~$ htop -p 4866 -p 4834
+
+student@lab2-36:~$ nice sleep 100 &
+[2] 4908
+[1]   Done                	nice -n 19 sleep 50
+student@lab2-36:~$ renice 15 4908
+4908 (process ID) old priority 10, new priority 15
+student@lab2-36:~$ renice 12 4908
+renice: failed to set priority for 4908 (process ID): Permission denied
+student@lab2-36:~$ timeout 5 geany
+
+strace
+Menelusuri system call dan sinyal proses.
+strace [OPTION] COMMAND
+•	-c: count; tampilkan ringkasan
+•	-f: fork; telusuri juga proses child
+•	-t: time; tampilkan waktu, gunakan -tt untuk mikrodetik
+•	-e SET: telusuri syscall tertentu saja
+o	SET: file, process, network, signal, ipc, desc, memory
+student@lab2-36:~$ strace -c echo hello
+hello
+% time 	seconds  usecs/call 	calls	errors syscall
+------ ----------- ----------- --------- --------- ----------------
+  0.00	0.000000       	0     	1       	read
+  0.00	0.000000       	0     	1       	write
+  0.00	0.000000       	0     	5       	close
+  0.00	0.000000       	0     	4       	fstat
+  0.00	0.000000       	0     	6       	mmap
+  0.00	0.000000       	0     	4       	mprotect
+  0.00	0.000000       	0     	1       	munmap
+  0.00	0.000000       	0     	3       	brk
+  0.00	0.000000       	0     	3     	3 access
+  0.00	0.000000       	0     	1       	execve
+  0.00	0.000000       	0     	1       	arch_prctl
+  0.00	0.000000       	0     	3       	openat
+------ ----------- ----------- --------- --------- ----------------
+100.00	0.000000                	33     	3 total
+
+
+objdump
+Menampilkan informasi dari file objek.
+objdump [OPTION] FILE
+•	-d: disassemble segmen text
+•	-D: dissasseble semua segmen
+•	-M intel: mode sintaks Intel
+student@lab2-36:~$ which echo
+/bin/echo
+student@lab2-36:~$ objdump /bin/echo
+
+Job
+Job
+Job: kumpulan proses yang berjalan bersama dalam satu shell.
+
+Proses Background
+Untuk menjalankan proses di background, tambahkan tanda & pada akhir perintah.
+COMMAND... &
+jobs
+Menampilkan daftar job yang sedang aktif.
+jobs
+fg
+Memindahkan job ke foreground.
+fg %JOB
+bg
+Memindahkan job ke background.
+bg %JOB
+
+student@lab2-36:~$ man time
+student@lab2-36:~$ jobs
+student@lab2-36:~$ fg
+bash: fg: current: no such job
+student@lab2-36:~$ bg
+bash: bg: current: no such job
+student@lab2-36:~$ kill %i
+bash: kill: %i: no such job
+
+sleep 1000 
+stop 
+bg %i
+
+#13-shell-script
+student@lab2-36:~$ echo $SHELL
+/bin/bash
+
+student@lab2-36:~$ nano hello.sh
+
+Jalankan program hello
+student@lab2-36:~$ ./hello
+bash: ./hello: No such file or directory
+
+student@lab2-36:~$ ./hello.sh
+./hello.sh: line 1: abc: command not found
+
+Berikan permission untuk execute
+student@lab2-36:~$ chmod +x hello.sh
+
+Variabel
+student@lab2-36:~$ fname="Steve"
+student@lab2-36:~$ lname="Bourne"
+student@lab2-36:~$ echo $fname
+Steve
+
+student@lab2-36:~$ echo "$fname $lname"
+Steve Bourne
+
+student@lab2-36:~$ echo "${lname}, ${fname}"
+Bourne, Steve
+
+read
+Membaca satu baris masukan.
+student@lab2-36:~$ read var
+Ronald
+
+student@lab2-36:~$ echo $var
+Ronald
+
+Pathname Expansion
+student@lab2-36:~$ ls /bin/e*
+/bin/echo  /bin/ed  /bin/efibootdump  /bin/efibootmgr  /bin/egrep
+
+student@lab2-36:~$ ls /bin/e?
+/bin/ed
+
+student@lab2-36:~$ ls /bin/[cde]?
+/bin/cp  /bin/dd  /bin/df  /bin/ed
+
+student@lab2-36:~$ ls /bin/[!a-n]?
+/bin/ps  /bin/rm  /bin/sh  /bin/ss  /bin/su
+
+student@lab2-36:~$ ls /bin/[a-n]*
+/bin/bash      	/bin/dd         	/bin/ip      	/bin/mt-gnu
+/bin/brltty    	/bin/df         	/bin/journalctl  /bin/mv
+/bin/bunzip2   	/bin/dir        	/bin/kbd_mode	/bin/nano
+/bin/busybox   	/bin/dmesg      	/bin/kill    	/bin/nc
+/bin/bzcat     	/bin/dnsdomainname  /bin/kmod    	/bin/nc.openbsd
+/bin/bzcmp     	/bin/domainname 	/bin/less    	/bin/netcat
+/bin/bzdiff    	/bin/dumpkeys   	/bin/lessecho	/bin/netstat
+/bin/bzegrep   	/bin/echo       	/bin/lessfile	/bin/networkctl
+/bin/bzexe     	/bin/ed         	/bin/lesskey 	/bin/nisdomainname
+/bin/bzfgrep   	/bin/efibootdump	/bin/lesspipe	/bin/ntfs-3g
+/bin/bzgrep    	/bin/efibootmgr 	/bin/ln      	/bin/ntfs-3g.probe
+/bin/bzip2     	/bin/egrep      	/bin/loadkeys	/bin/ntfscat
+/bin/bzip2recover  /bin/false      	/bin/login   	/bin/ntfscluster
+/bin/bzless    	/bin/fgconsole  	/bin/loginctl	/bin/ntfscmp
+/bin/bzmore    	/bin/fgrep      	/bin/lowntfs-3g  /bin/ntfsfallocate
+/bin/cat       	/bin/findmnt    	/bin/ls      	/bin/ntfsfix
+/bin/chacl     	/bin/fuser      	/bin/lsblk   	/bin/ntfsinfo
+/bin/chgrp     	/bin/fusermount 	/bin/lsmod   	/bin/ntfsls
+/bin/chmod     	/bin/getfacl    	/bin/mkdir   	/bin/ntfsmove
+/bin/chown     	/bin/grep       	/bin/mknod   	/bin/ntfsrecover
+/bin/chvt      	/bin/gunzip     	/bin/mktemp  	/bin/ntfssecaudit
+/bin/cp        	/bin/gzexe      	/bin/more    	/bin/ntfstruncate
+/bin/cpio      	/bin/gzip       	/bin/mount   	/bin/ntfsusermap
+/bin/dash      	/bin/hciconfig  	/bin/mountpoint  /bin/ntfswipe
+/bin/date      	/bin/hostname   	/bin/mt
+
+Parameter Expansion
+student@lab2-36:~$ web=”cs.ipb.ac.id”
+
+Command Substitution
+Menjalankan perintah dan mengembalikan keluarannya.
+student@lab2-36:~$ echo $web
+cs.ipb.ac.id
+
+student@lab2-36:~$ echo ${#web}
+12
+
+student@lab2-36:~$ echo ${web%.ac.id}
+cs.ipb
+
+student@lab2-36:~$ echo ${web#cs.}
+ipb.ac.id
+student@lab2-36:~$ echo "I am $(whoami)."
+I am student.
+student@lab2-36:~$ echo "Today is $(date +%A)."
+Today is Selasa.
+
+Arithmetic Expansion
+Mengevaluasi ekspresi aritmatika dan mengembalikan keluarannya.
+student@lab2-36:~$ x=5; y=3
+student@lab2-36:~$ echo $((x + y))  $((x * y))  $((x / y))  $((x % y))
+8 15 1 2
+student@lab2-36:~$ echo $((x > y))  $((x == y))  $((x > y && y > 0))
+1 0 1
+student@lab2-36:~$ echo $((RANDOM%100))
+68
+
+
+Parameter Khusus
+•	$@{.sh}: semua parameter
+o	$0{.sh}: nama program
+o	$1{.sh}: parameter pertama
+o	$2{.sh}: parameter kedua
+o	...
+•	$#{.sh}: jumlah semua parameter
+•	$?{.sh}: status keluaran perintah terakhir
+•	$!{.sh}: PID proses background terakhir
+•	$${.sh}: PID proses shell
+
+student@lab2-36:~$ [ -r /etc/passwd ]; echo $?
+0
+student@lab2-36:~$ [ -w /etc/passwd ]; echo $?
+1
+student@lab2-36:~$ ls -l
+total 76
+-rwxrwxr-x 1 student student	4 Nov 21 16:40  aritmatika.sh
+drwxrwxr-x 2 student student 4096 Nov  9 12:56 'Cisco Packet Tracer 7.3.0'
+drwxr-xr-x 2 student student 4096 Okt 18 12:18  Desktop
+drwxr-xr-x 2 student student 4096 Okt 28 13:10  Documents
+drwxr-xr-x 2 student student 4096 Nov 15 14:09  Downloads
+-rw-rw-r-- 1 student student  837 Nov 15 13:59  formatjuduliky.c
+-rw-rw-r-- 1 student student  402 Nov 15 14:09  FORMATJUDULIKY.C
+-rw-rw-r-- 1 student student  531 Nov 15 14:10  GANTIHURUF.C
+-rwxrwxr-x 1 student student	4 Nov 21 16:24  hello.sh
+-rw-rw-r-- 1 student student  488 Nov 15 13:58  kemunculanhurufiky.c
+drwxr-xr-x 2 student student 4096 Okt 18 12:18  Music
+-rw-rw-r-- 1 student student  129 Nov 21 16:40  parameter.sh
+drwxr-xr-x 2 student student 4096 Nov  2 14:27  Pictures
+drwxrwxr-x 6 student student 4096 Okt 19 13:19  pt
+drwxr-xr-x 2 student student 4096 Okt 13 15:18  Public
+drwxr-xr-x 2 student student 4096 Okt 13 15:18  public_html
+-rw-rw-r-- 1 student student  624 Nov 15 13:57  SEGTIGAHURUFIKY.C
+drwxr-xr-x 2 student student 4096 Okt 18 12:19  Templates
+drwxr-xr-x 2 student student 4096 Okt 18 12:18  Videos
+student@lab2-36:~$ ls -l /etc/passwd
+-rw-r--r-- 1 root root 2683 Agu 11  2022 /etc/passwd
+
+student@lab2-36:~$ [ -w /etc/passwd ]; echo $?
+1
+student@lab2-36:~$ [ -r /etc/passwd ]; echo $?
+0
+
+
+seq
+Mencetak sekuens angka, berguna untuk perulangan for.
+
+student@lab2-36:~$ seq 10
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+student@lab2-36:~$ seq 1 2 10
+1
+3
+5
+7
+9
+student@lab2-36:~$ seq 1 3 10
+1
+4
+7
+10
+
+
+  GNU nano 2.9.3                 	pemilihan.sh                 	Modified  
+
+#!/bin/sh
+# create public_html directory if not exist
+
+webdir="~/public_html"
+
+if [ ! -d $webdir ]; then
+	mkdir $webdir
+fi
+
+exit 0
+
+ 
+#14-misc
+Kompresi File
+tar
+Menggabung beberapa file ke dalam satu file arsip (tape archive).
+tar [OPTION] [FILE...]
+•	-c: create; buat arsip baru
+•	-x: extract; ekstrak arsip
+•	-f: file; gunakan file berikut
+•	-z: zip; gunakan kompresi gzip
+•	-C: chdir; ekstrak ke direktori berikut
+gzip
+Mengompres file.
+gzip [FILE...]
+gunzip
+Mengekstrak file.
+gunzip [FILE...]
+tar.gz
+ \
+\centering\tiny (sumber: https://commons.wikimedia.org/wiki/File%3ATargzip.svg)
+\normalsize
+# compress
+tar -c FILE... | gzip > ARCHIVE.tar.gz
+
+# extract
+gunzip < ARCHIVE.tar.gz | tar -x
+tar.gz
+ \
+\centering\tiny (sumber: https://commons.wikimedia.org/wiki/File%3ATargzip.svg)
+\normalsize
+# compress
+tar -czf ARCHIVE.tar.gz FILE...
+
+# extract
+tar -xzf ARCHIVE.tar.gz
+zip
+Membungkus dan mengkompresi file.
+zip [OPTION] ARCHIVE FILE...
+•	-e: encrypt; kunci dengan password
+•	-r: recursive; direktori seisinya
+unzip
+Mengekstrak file arsip ZIP.
+unzip ARCHIVE [-d DIR]
+•	-d: directory; ekstrak ke direktori berikut
+Konversi File
+convert
+Konversi citra: format, ukuran, efek, dan sebagainya.
+convert INFILE [OPTION] OUTFILE
+•	-blur WIDTHxHEIGHT: menyamarkan detail
+•	-canny WIDTHxHEIGHT: deteksi tepi
+•	-equalize : ekualisasi histogram
+•	-negate : negatif
+•	-normalize : normalisasi warna
+•	-paint RADIUS : efek lukisan minyak
+•	-resize WIDTHxHEIGHT: mengubah ukuran
+________________________________________
+\small \centering
+convert rpi.jpg -canny 2x2 -negate rpi-edge.png
+
+convert rpi.jpg -paint 5 rpi-paint.jpg
+ {width=45%}  {width=45%}\
+ffmpeg
+Konversi audio dan video.
+ffmpeg -i INFILE [OPTION] OUTFILE
+•	-b: bitrate
+•	-c: codec
+•	-ss: seek start; waktu awal
+•	-to: waktu akhir
+________________________________________
+# cut video from 2:00 to 4:00
+ffmpeg -i IN.mp4 -c copy -ss 2:00 -to 4:00 OUT.mp4
+
+# extract audio from video (MP4 -> M4A)
+ffmpeg -i IN.mp4 -vn -c:a copy OUT.m4a
+
+# extract audio from video (MP4 -> MP3)
+ffmpeg -i IN.mp4 -c:a mp3 OUT.mp3
+pandoc
+Konversi Markdown ke format lain (HTML, LaTeX, PDF).
+pandoc [OPTION] [INFILE...] -o OUTFILE
+•	-s: standalone; dokumen HTML utuh
+•	-t: to; format keluaran
+________________________________________
+# HTML
+pandoc file.md -o file.html -s
+
+# PDF
+pandoc file.md -o file.pdf
+
+# HTML slide
+pandoc slide.md -t slidy  -o slide.html -s
+
+# PDF slide
+pandoc slide.md -t beamer -o slide.pdf
+tesseract
+Konversi citra ke teks (optical character recognition).
+tesseract [OPTION] INFILE OUTFILE
+•	-l: language; gunakan bahasa berikut
+________________________________________
+\centering  {width=30%}\
+\tiny(https://raw.githubusercontent.com/auriza/os-lab/master/img/shalat.jpg) \normalsize
+tesseract shalat.jpg stdout
+# Jagalah shalat wajib dan (terutama) shalat ‘Ashr
+# quran. com/2/238
+
+tesseract -l ara shalat.jpg stdout
+\textarabic{حافظوا على الصلوات}
+\textarabic{والصلاة الوسطى}
+espeak
+Konversi teks ke suara (speech synthesizer).
+espeak [OPTION] [WORDS]
+•	-p: pitch; ketebalan suara (0--99)
+•	-s: speed; kecepatan kata per menit
+•	-v: voice; jenis suara (en, id, fr, ...)
+________________________________________
+# default English voice
+espeak "Hello world"
+
+# Indonesian voice
+espeak -v id "Institut Pertanian Bogor"
+
+# create audiobook
+man gittutorial | espeak --stdout | ffmpeg -i - git.mp3
+dot
+Konversi teks ke graf.
+dot [OPTION] [FILE]
+•	-Tpng: format keluaran PNG
+•	-Tsvg: format keluaran SVG
+________________________________________
+echo "digraph unix {
+    node [shape=box]
+    UNIX -> {SysV BSD}
+    SysV -> {AIX HPUX Solaris}
+    BSD  -> {FreeBSD MacOSX}
+    UNIX -> Linux [style=dashed]
+    {rank=same Linux MacOSX}
+}" | dot -Tpng > unix.png
+\begingroup\centering  {width=60%}
+\endgroup
+________________________________________
+ \
+Info Sistem
+lscpu
+Menampilkan informasi tentang arsitektur CPU.
+lscpu
+lshw
+Menampilkan informasi konfigurasi perangkat keras.
+lshw [OPTION]
+•	-short: format pendek
+•	-html: format HTML
+lspci
+Menampilkan informasi perangkat PCI.
+lspci [OPTION]
+•	-k: kernel; nama driver kernel
+•	-v: verbose; info detail
+lsusb
+Menampilkan informasi perangkat USB.
+lsusb [OPTION]
+•	-t: tree; pohon hierarki
+•	-v: verbose; info detail
+lsblk
+Menampilkan informasi perangkat blok.
+lsblk [OPTION]
+•	-m: mode; pemilik dan mode permission
+•	-t: topology; topologi perangkat blok
+lslocks
+Menampilkan daftar kunci yang sedang dipegang.
+lslocks [OPTION]
+•	-p: PID; proses dengan PID berikut saja
+lsof
+Menampilkan daftar file yang sedang dibuka.
+lsof [OPTION] [FILENAME]
+•	-p: PID; proses dengan PID berikut saja
+•	-u: user; proses dari user berikut saja
+•	-i: Internet socket
+•	-U: UNIX socket
+df
+Menampilkan sisa ruang disk.
+df [OPTION]
+•	-a: all; semua filesystem
+•	-h: human-readable; format ukuran
+•	-i: inode; info inode
+•	-T: type; jenis filesystem
+du
+Menampilkan penggunaan disk.
+du [OPTION] [FILE]
+•	-d: depth; kedalaman direktori
+•	-h: human-readable; format ukuran
+•	-s: summary; total ukuran
+•	--inodes: info pemakaian inode
+free
+Menampilkan besar memori yang kosong dan terpakai.
+free [OPTION]
+•	-h: human-readable; format ukuran
+vmstat
+Menampilkan statistik virtual memory.
+vmstat [OPTION] [DELAY]
+•	-d: disk; statistik disk
+•	-s: stat; statistik memori
+•	-w: wide; mode tampilan lebar
+•	-S M: satuan dalam MiB
+sensors
+Menampilkan info sensor.
+sensors
+
