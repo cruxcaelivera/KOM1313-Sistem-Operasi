@@ -1,0 +1,888 @@
+ student@lab2-46:~$ ls
+ baru.txt                 	Downloads   Pictures  	R
+'Cisco Packet Tracer 7.3.0'   hello.c 	pt        	rstudio
+ Desktop                  	Music   	Public    	Templates
+ Documents                	new.txt 	public_html   Videos
+
+pwd
+Mencetak nama direktori saat ini.
+pwd
+
+student@lab2-46:~$ pwd
+/home/student
+
+
+student@lab2-27:~$ ls
+'Cisco Packet Tracer 7.3.0'   Downloads   pt        	Templates
+ Desktop                  	Music   	Public    	Videos
+ Documents                	Pictures	public_html
+
+cd
+Mengganti direktori (default ke direktori home).
+cd [DIR]
+
+~$ berarti berada di direktori home pengguna “student”
+
+student@lab2-27:~$ cd /
+
+/$ berarti berada di direktori root 
+
+student@lab2-27:/$ ls
+bin	etc         	lib 	lost+found  proc  snap  	tmp  	vmlinuz.old
+boot   home        	lib32   media   	root  srv   	usr
+cdrom  initrd.img  	lib64   mnt     	run   swapfile  var
+dev	initrd.img.old  libx32  opt     	sbin  sys   	vmlinuz
+
+
+file
+Menentukan jenis file.
+file FILE...
+
+student@lab2-27:/$ file vmlinuz
+vmlinuz: symbolic link to boot/vmlinuz-4.15.0-213-generic
+
+student@lab2-27:/$ ls
+bin	etc         	lib 	lost+found  proc  snap  	tmp  	vmlinuz.old
+boot   home        	lib32   media   	root  srv   	usr
+cdrom  initrd.img  	lib64   mnt     	run   swapfile  var
+dev	initrd.img.old  libx32  opt     	sbin  sys   	vmlinuz
+
+student@lab2-46:/$ cd ~ (Kembali ke direktori home)
+
+student@lab2-46:~$ cd Desktop (Masuk ke direktori Desktop)
+
+student@lab2-46:~/Desktop$ cd / (Masuk ke direktori root)
+
+student@lab2-46:/$ cd ~ (Kembali ke direktori home)
+
+student@lab2-46:~$ ls
+ baru.txt                 	Downloads   Pictures  	R
+'Cisco Packet Tracer 7.3.0'   hello.c 	pt        	rstudio
+ Desktop                  	Music   	Public    	Templates
+ Documents                	new.txt 	public_html   Videos
+
+student@lab2-27:/$ file swapfile
+swapfile: regular file, no read permission
+
+student@lab2-27:/$ pwd
+/
+
+student@lab2-27:/$ cd home
+
+student@lab2-27:/home$ pwd (Berada dalam direktori home)
+/home
+
+student@lab2-27:/home$ cd
+
+student@lab2-27:~$ pwd (Berada dalam direktori home pengguna “student”)
+/home/student
+ls
+Menampilkan daftar isi direktori.
+ls [OPTION] [FILE]
+•	-a: all; tampilkan semua
+•	-l: long; format panjang
+•	-h: human-readable; format ukuran
+•	-i: inode; cetak nomor inode file
+
+student@lab2-46:~$ ls
+ baru.txt                 	Downloads   Pictures  	R
+'Cisco Packet Tracer 7.3.0'   hello.c 	pt        	rstudio
+ Desktop                  	Music   	Public    	Templates
+ Documents                	new.txt 	public_html   Videos
+
+student@lab2-46:~$ ls -a Downloads (Semua isi direktori downloads)
+ .                                  	'UNIX_badge(1).png'
+ ..                                 	'UNIX_badge(2).png'
+ 1.txt                              	'UNIX_badge(3).png'
+ 2.txt                              	'UNIX_badge(4).png'
+ 3.txt                              	'UNIX_badge(5).png'
+ 4.txt                               	UNIX_badge.png
+'Faisal Maulana.fig'                 	unixv2.txt
+'G6401211011_Muhamad Surya Fauzan.png'   unixv.csv
+ gabung.txt                          	unixv.txt
+ numbers.txt
+
+student@lab2-46:~$ ls -h Downloads
+ 1.txt   4.txt                               	gabung.txt	unixv.csv
+ 2.txt  'Faisal Maulana.fig'                 	numbers.txt   unixv.txt
+ 3.txt  'G6401211011_Muhamad Surya Fauzan.png'   unixv2.txt
+
+student@lab2-46:~$ ls -l Downloads
+total 4028
+-rw-rw-r-- 1 student student   	6 Okt 31 16:09  1.txt
+-rw-rw-r-- 1 student student   	6 Okt 31 16:09  2.txt
+-rw-rw-r-- 1 student student   	5 Okt 31 16:10  3.txt
+-rw-rw-r-- 1 student student   	9 Okt 31 16:10  4.txt
+-rw-rw-r-- 1 student student 3943010 Okt 28 10:41 'Faisal Maulana.fig'
+-rw-rw-r-- 1 student student  141586 Nov  2 14:30 'G6401211011_Muhamad Surya Fauzan.png'
+-rw-rw-r-- 1 student student  	26 Okt 31 16:11  gabung.txt
+-rw-rw-r-- 1 student student  	53 Okt 31 16:17  numbers.txt
+-rw-rw-r-- 1 student student 	365 Okt 31 16:42  unixv2.txt
+-rw-rw-r-- 1 student student 	334 Okt 31 16:35  unixv.csv
+-rw-rw-r-- 1 student student 	334 Okt 31 16:04  unixv.txt
+
+student@lab2-46:~$ ls -i Downloads
+7743932  1.txt                              	7735609  gabung.txt
+7744650  2.txt                              	7744601  numbers.txt
+7744649  3.txt                              	7744658  unixv2.txt
+7744654  4.txt                              	7744659  unixv.csv
+7743324 'Faisal Maulana.fig'                	7744646  unixv.txt
+7747708 'G6401211011_Muhamad Surya Fauzan.png'
+
+mkdir
+Membuat direktori.
+mkdir [OPTION] DIR
+•	-p: parent; buat direktori parent jika diperlukan
+
+student@lab2-46:~$ mkdir nama_direktori
+student@lab2-46:~$ mkdir nama_direktori
+mkdir: cannot create directory ‘nama_direktori’: File exists
+
+ 
+Harus touch dulu baru bisa menggunakan perintah cp
+
+tree
+Menampilkan isi direktori dalam format tree.
+tree [OPTION] [DIR...]
+•	-L N: level kedalaman direktori
+•	-h: human-readable; format ukuran
+
+student@lab2-46:~/so$ tree
+.
+├── baru.txt
+└── so
+
+0 directories, 2 files
+
+student@lab2-46:~$ tree
+.
+├── baru.txt
+├── Cisco Packet Tracer 7.3.0
+│   └── ptsaplayer-log-1698903580772.txt
+├── Desktop
+├── Documents
+│   ├── 9a.c
+│   ├── flip vertikal
+│   ├── flip vertikal.c
+│   ├── frekuensi bilangan
+│   ├── frekuensi bilangan.c
+│   ├── jkdb.c
+│   ├── Merge
+│   ├── Merge.c
+│   ├── Untitled 1.odt
+│   └── UTSP1.c
+├── Downloads
+│   ├── 1.txt
+│   ├── 2.txt
+│   ├── 3.txt
+│   ├── 4.txt
+│   ├── Faisal Maulana.fig
+│   ├── G6401211011_Muhamad Surya Fauzan.png
+│   ├── gabung.txt
+│   ├── numbers.txt
+│   ├── unixv2.txt
+│   ├── unixv.csv
+│   └── unixv.txt
+├── hello.c
+├── Music
+├── new.txt
+├── Pictures
+│   └── G6401211011_Muhamad Surya Fauzan.png
+├── pt
+│   ├── extensions
+│   ├── logs
+│   │   ├── pt_11.02.2023_12.39.38.189.log
+│   │   ├── pt_11.02.2023_12.39.59.822.log
+│   │   └── pt_11.02.2023_12.41.21.605.log
+│   ├── nets
+│   ├── PT.conf
+│   ├── saves
+│   ├── templates
+│   └── uuid
+├── Public
+├── public_html
+├── R
+│   └── x86_64-pc-linux-gnu-library
+│   	└── 3.6
+├── rstudio
+├── so
+│   ├── baru.txt
+│   └── so
+├── Templates
+│   ├── OpenDocument Spreadsheet.ods
+│   ├── OpenDocument Text.odt
+│   └── Plain Text.txt
+└── Videos
+
+19 directories, 38 files (Sulit membedakan mana direktori dan files tanpa mengetahui adanya format file)
+
+
+student@lab2-46:~$ mkdir baru
+
+student@lab2-46:~$ cd baru
+
+student@lab2-46:~/baru$ mkdir so
+
+cp
+Menyalin file dan direktori.
+cp [OPTION] SOURCE DEST
+cp [OPTION] SOURCES... DIR
+•	-r: recursive; salin direktori seisinya
+•	-f: force; tanpa konfirmasi jika overwrite
+•	-i: interactive; konfirmasi sebelum overwrite
+
+student@lab2-46:~/baru$ cp -r so baru (Didalam direktori so ada direktori baru), yaitu direktori yang sama isinya dengan direktori baru
+ 
+
+touch
+Meng-update waktu akses dan modifikasi suatu FILE. Jika FILE belum ada, maka touch akan membuat FILE kosong.
+touch FILE
+
+student@lab2-46:~/baru$ touch new.txt
+ 
+
+
+mv
+Memindahkan (mengganti nama) file.
+mv [OPTION] SOURCE DEST
+mv [OPTION] SOURCES... DIR
+•	-f: force; tanpa konfirmasi jika overwrite
+•	-i: interactive; konfirmasi sebelum overwrite
+
+student@lab2-46:~/baru$ mv new.txt so
+ 
+File new.txt sekarang ada di direktori so
+
+student@lab2-27:~$ ls -a
+ .                        	.ICEauthority   Templates
+ ..                       	.local      	.thumbnails
+ .bash_history            	.mozilla    	Videos
+ .bash_logout             	Music       	.vm
+ .bashrc                  	.packettracer   .vscode
+ .cache                   	Pictures    	.Xauthority
+'Cisco Packet Tracer 7.3.0'   .pki        	.Xdefaults
+ .config                  	.profile    	.xscreensaver
+ Desktop                  	pt          	.xsession-errors
+ Documents                	Public      	.xsession-errors.old
+ Downloads                	public_html
+ .gnupg                   	.ssh
+
+student@lab2-27:~$ ls
+'Cisco Packet Tracer 7.3.0'   Downloads   pt        	Templates
+ Desktop                  	Music   	Public    	Videos
+ Documents                	Pictures	public_html
+
+student@lab2-27:~$ ls -a
+ .                        	.ICEauthority   Templates
+ ..                       	.local      	.thumbnails
+ .bash_history            	.mozilla    	Videos
+ .bash_logout             	Music       	.vm
+ .bashrc                  	.packettracer   .vscode
+ .cache                   	Pictures    	.Xauthority
+'Cisco Packet Tracer 7.3.0'   .pki        	.Xdefaults
+ .config                  	.profile    	.xscreensaver
+ Desktop                  	pt          	.xsession-errors
+ Documents                	Public      	.xsession-errors.old
+ Downloads                	public_html
+ .gnupg                   	.ssh
+
+student@lab2-27:~$ ls -l
+total 44
+drwxrwxr-x 2 student student 4096 Okt 19 13:21 'Cisco Packet Tracer 7.3.0'
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Desktop
+drwxr-xr-x 2 student student 4096 Okt 18 15:59  Documents
+drwxr-xr-x 3 student student 4096 Okt 18 14:46  Downloads
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Music
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Pictures
+drwxrwxr-x 6 student student 4096 Okt 19 13:23  pt
+drwxr-xr-x 2 student student 4096 Okt 13 15:18  Public
+drwxr-xr-x 2 student student 4096 Okt 13 15:18  public_html
+drwxr-xr-x 2 student student 4096 Okt 17 15:12  Templates
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Videos
+
+student@lab2-27:~$ ls -h
+'Cisco Packet Tracer 7.3.0'   Downloads   pt        	Templates
+ Desktop                  	Music   	Public    	Videos
+ Documents                	Pictures	public_html
+
+student@lab2-27:~$ ls -lh
+total 44K
+drwxrwxr-x 2 student student 4,0K Okt 19 13:21 'Cisco Packet Tracer 7.3.0'
+drwxr-xr-x 2 student student 4,0K Okt 17 15:11  Desktop
+drwxr-xr-x 2 student student 4,0K Okt 18 15:59  Documents
+drwxr-xr-x 3 student student 4,0K Okt 18 14:46  Downloads
+drwxr-xr-x 2 student student 4,0K Okt 17 15:11  Music
+drwxr-xr-x 2 student student 4,0K Okt 17 15:11  Pictures
+drwxrwxr-x 6 student student 4,0K Okt 19 13:23  pt
+drwxr-xr-x 2 student student 4,0K Okt 13 15:18  Public
+drwxr-xr-x 2 student student 4,0K Okt 13 15:18  public_html
+drwxr-xr-x 2 student student 4,0K Okt 17 15:12  Templates
+drwxr-xr-x 2 student student 4,0K Okt 17 15:11  Videos
+
+student@lab2-27:~$ ls -i
+1442217 'Cisco Packet Tracer 7.3.0'  1310787  Music 	1310753  public_html
+1310783  Desktop                 	1310788  Pictures  1310785  Templates
+1310786  Documents               	1442207  pt    	1310789  Videos
+1310784  Downloads               	1310754  Public
+
+student@lab2-27:~$ cd Documents
+
+student@lab2-27:~/Documents$ ls
+'G1401221035 NO 1.c'          	'G1401221035 NO 2 revisi lagi'
+'G1401221035 no 2 afi.c'      	'G1401221035 NO 2 revisi LAGI 6.c'
+'G1401221035 NO 2.c'          	'G1401221035 NO 2 revisi lagi.c'
+'G1401221035 NO 2 revisi.c'   	'G1401221035 no 2 revisi lagi ke 3.c'
+'G1401221035 NO 2 revisi ke 4.c'  'G1401221035 NO 2 revisi lagi lagi.c'
+'G1401221035 no 2 revisi ke 5.c'
+
+student@lab2-27:~/Documents$ cd .. (Kembali ke direktori di atasnya, yaitu direktori home)
+
+student@lab2-27:~$ ls
+'Cisco Packet Tracer 7.3.0'   Downloads   pt        	Templates
+ Desktop                  	Music   	Public    	Videos
+ Documents                	Pictures	public_html
+
+student@lab2-27:~$ touch baru.txt
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents   Pictures   public_html
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	Templates
+ Desktop                  	Music   	Public 	Videos
+
+student@lab2-27:~$ ls -l
+total 44
+-rw-rw-r-- 1 student student	0 Okt 24 15:59  baru.txt
+drwxrwxr-x 2 student student 4096 Okt 19 13:21 'Cisco Packet Tracer 7.3.0'
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Desktop
+drwxr-xr-x 2 student student 4096 Okt 18 15:59  Documents
+drwxr-xr-x 3 student student 4096 Okt 18 14:46  Downloads
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Music
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Pictures
+drwxrwxr-x 6 student student 4096 Okt 19 13:23  pt
+drwxr-xr-x 2 student student 4096 Okt 13 15:18  Public
+drwxr-xr-x 2 student student 4096 Okt 13 15:18  public_html
+drwxr-xr-x 2 student student 4096 Okt 17 15:12  Templates
+drwxr-xr-x 2 student student 4096 Okt 17 15:11  Videos
+
+student@lab2-27:~$ ls -l baru.txt
+-rw-rw-r-- 1 student student 0 Okt 24 15:59 baru.txt
+
+student@lab2-27:~$ touch baru.txt
+
+student@lab2-27:~$ ls -l baru.txt
+-rw-rw-r-- 1 student student 0 Okt 24 16:00 baru.txt
+student@lab2-27:~$ mkdir nama_direktori
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents   nama_direktori   Public    	Videos
+'Cisco Packet Tracer 7.3.0'   Downloads   Pictures     	public_html
+ Desktop                  	Music   	pt           	Templates
+
+student@lab2-27:~$ mkdir nama_direktori
+mkdir: cannot create directory ‘nama_direktori’: File exists
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents   nama_direktori   Public    	Videos
+'Cisco Packet Tracer 7.3.0'   Downloads   Pictures     	public_html
+ Desktop                  	Music   	pt           	Templates
+
+student@lab2-27:~$ mkdir nama direktori (Otomatis ada underline)
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents   nama_direktori   public_html
+'Cisco Packet Tracer 7.3.0'   Downloads   Pictures     	Templates
+ Desktop                  	Music   	pt           	Videos
+ direktori                	nama    	Public
+
+student@lab2-27:~$ mkdir "nama direktori"
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents  'nama direktori'   Public
+'Cisco Packet Tracer 7.3.0'   Downloads   nama_direktori	public_html
+ Desktop                  	Music   	Pictures      	Templates
+ direktori                	nama    	pt            	Videos
+
+rmdir
+Menghapus direktori kosong.
+rmdir [OPTION] DIR...
+•	-p: parent; hapus beserta direktori parent-nya
+
+student@lab2-27:~$ rmdir nama_direktori (Menghapus direktori nama_direktori)
+student@lab2-27:~$ ls
+ baru.txt                 	Documents  'nama direktori'   public_html
+'Cisco Packet Tracer 7.3.0'   Downloads   Pictures      	Templates
+ Desktop                  	Music   	pt            	Videos
+ direktori                	nama    	Public
+
+student@lab2-27:~$ rmdir nama direktori "nama direktori" (Menghapus direktori ‘nama direktori’)
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents   Pictures   public_html
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	Templates
+ Desktop                  	Music   	Public 	Videos
+
+student@lab2-27:~$ cp baru.txt so
+
+student@lab2-27:~$ cd so
+bash: cd: so: Not a directory
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents   Pictures   public_html   Videos
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	so
+ Desktop                  	Music   	Public 	Templates
+
+student@lab2-27:~$ cp baru.txt so
+
+student@lab2-27:~$ ls
+ baru.txt                 	Documents   Pictures   public_html   Videos
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	so
+ Desktop                  	Music   	Public 	Templates
+
+student@lab2-27:~$ mkdir si
+
+student@lab2-27:~$ cp index.html baru.txt si
+cp: cannot stat 'index.html': No such file or directory
+
+student@lab2-27:~$ cd so
+bash: cd: so: Not a directory
+
+student@lab2-27:~$ tree
+.
+├── baru.txt
+├── Cisco Packet Tracer 7.3.0
+│   ├── ptsaplayer-log-1697696027775.txt
+│   └── ptsaplayer-log-1697696477427.txt
+├── Desktop
+├── Documents
+│   ├── G1401221035 NO 1.c
+│   ├── G1401221035 no 2 afi.c
+│   ├── G1401221035 NO 2.c
+│   ├── G1401221035 NO 2 revisi.c
+│   ├── G1401221035 NO 2 revisi ke 4.c
+│   ├── G1401221035 no 2 revisi ke 5.c
+│   ├── G1401221035 NO 2 revisi lagi
+│   ├── G1401221035 NO 2 revisi LAGI 6.c
+│   ├── G1401221035 NO 2 revisi lagi.c
+│   ├── G1401221035 no 2 revisi lagi ke 3.c
+│   └── G1401221035 NO 2 revisi lagi lagi.c
+├── Downloads
+│   ├── G1401221035 NO 2 revisi.c
+│   └── G1401221035 NO 2 revisi_files
+│   	├── ace.js
+│   	├── final.js
+│   	├── jquery.min.js
+│   	├── logo.svg
+│   	├── mode-c_cpp.js
+│   	├── mousetrap.min.js
+│   	├── playground.css
+│   	├── play.svg
+│   	└── socket.io.min.js
+├── Music
+├── Pictures
+├── pt
+│   ├── extensions
+│   ├── logs
+│   │   ├── pt_10.19.2023_13.13.45.093.log
+│   │   ├── pt_10.19.2023_13.21.15.604.log
+│   │   └── pt_10.19.2023_13.23.48.874.log
+│   ├── PT.conf
+│   ├── saves
+│   ├── templates
+│   └── uuid
+├── Public
+├── public_html
+├── si
+│   └── baru.txt
+├── so
+├── Templates
+│   ├── OpenDocument Spreadsheet.ods
+│   ├── OpenDocument Text.odt
+│   └── Plain Text.txt
+└── Videos
+
+17 directories, 34 files
+
+student@lab2-27:~$ cd so/
+bash: cd: so/: Not a directory
+student@lab2-27:~$ cd /so
+bash: cd: /so: No such file or directory
+student@lab2-27:~$ cd so
+bash: cd: so: Not a directory
+
+student@lab2-27:~$ mkdir so
+mkdir: cannot create directory ‘so’: File exists
+student@lab2-27:~$ cd so
+bash: cd: so: Not a directory
+
+student@lab2-27:~$ mkdir baru
+
+student@lab2-27:~$ cp -r si baru
+student@lab2-27:~$ ls
+ baru                     	Desktop 		Music  	Public    	so
+ baru.txt                 	Documents   Pictures   public_html   Templates
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	si        	Videos
+student@lab2-27:~$ tree
+.
+├── baru
+│   └── si
+│   	└── baru.txt
+├── baru.txt
+├── Cisco Packet Tracer 7.3.0
+│   ├── ptsaplayer-log-1697696027775.txt
+│   └── ptsaplayer-log-1697696477427.txt
+├── Desktop
+├── Documents
+│   ├── G1401221035 NO 1.c
+│   ├── G1401221035 no 2 afi.c
+│   ├── G1401221035 NO 2.c
+│   ├── G1401221035 NO 2 revisi.c
+│   ├── G1401221035 NO 2 revisi ke 4.c
+│   ├── G1401221035 no 2 revisi ke 5.c
+│   ├── G1401221035 NO 2 revisi lagi
+│   ├── G1401221035 NO 2 revisi LAGI 6.c
+│   ├── G1401221035 NO 2 revisi lagi.c
+│   ├── G1401221035 no 2 revisi lagi ke 3.c
+│   └── G1401221035 NO 2 revisi lagi lagi.c
+├── Downloads
+│   ├── G1401221035 NO 2 revisi.c
+│   └── G1401221035 NO 2 revisi_files
+│   	├── ace.js
+│   	├── final.js
+│   	├── jquery.min.js
+│   	├── logo.svg
+│   	├── mode-c_cpp.js
+│   	├── mousetrap.min.js
+│   	├── playground.css
+│   	├── play.svg
+│   	└── socket.io.min.js
+├── Music
+├── Pictures
+├── pt
+│   ├── extensions
+│   ├── logs
+│   │   ├── pt_10.19.2023_13.13.45.093.log
+│   │   ├── pt_10.19.2023_13.21.15.604.log
+│   │   └── pt_10.19.2023_13.23.48.874.log
+│   ├── PT.conf
+│   ├── saves
+│   ├── templates
+│   └── uuid
+├── Public
+├── public_html
+├── si
+│   └── baru.txt
+├── so
+├── Templates
+│   ├── OpenDocument Spreadsheet.ods
+│   ├── OpenDocument Text.odt
+│   └── Plain Text.txt
+└── Videos
+
+19 directories, 35 files
+
+student@lab2-27:~$ ls
+ baru                     	Desktop 	Music  	Public    	so
+ baru.txt                 	Documents   Pictures   public_html   Templates
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	si        	Videos
+
+student@lab2-27:~$ mv baru.txt new.txt
+
+student@lab2-27:~$ ls
+ baru                     	Documents   new.txt	Public    	so
+'Cisco Packet Tracer 7.3.0'   Downloads   Pictures   public_html   Templates
+ Desktop                  	Music   	pt     	si        	Videos
+
+student@lab2-27:~$ mv new.txt si
+
+student@lab2-27:~$ tree
+.
+├── baru
+│   └── si
+│   	└── baru.txt
+├── Cisco Packet Tracer 7.3.0
+│   ├── ptsaplayer-log-1697696027775.txt
+│   └── ptsaplayer-log-1697696477427.txt
+├── Desktop
+├── Documents
+│   ├── G1401221035 NO 1.c
+│   ├── G1401221035 no 2 afi.c
+│   ├── G1401221035 NO 2.c
+│   ├── G1401221035 NO 2 revisi.c
+│   ├── G1401221035 NO 2 revisi ke 4.c
+│   ├── G1401221035 no 2 revisi ke 5.c
+│   ├── G1401221035 NO 2 revisi lagi
+│   ├── G1401221035 NO 2 revisi LAGI 6.c
+│   ├── G1401221035 NO 2 revisi lagi.c
+│   ├── G1401221035 no 2 revisi lagi ke 3.c
+│   └── G1401221035 NO 2 revisi lagi lagi.c
+├── Downloads
+│   ├── G1401221035 NO 2 revisi.c
+│   └── G1401221035 NO 2 revisi_files
+│   	├── ace.js
+│   	├── final.js
+│   	├── jquery.min.js
+│   	├── logo.svg
+│   	├── mode-c_cpp.js
+│   	├── mousetrap.min.js
+│   	├── playground.css
+│   	├── play.svg
+│   	└── socket.io.min.js
+├── Music
+├── Pictures
+├── pt
+│   ├── extensions
+│   ├── logs
+│   │   ├── pt_10.19.2023_13.13.45.093.log
+│   │   ├── pt_10.19.2023_13.21.15.604.log
+│   │   └── pt_10.19.2023_13.23.48.874.log
+│   ├── PT.conf
+│   ├── saves
+│   ├── templates
+│   └── uuid
+├── Public
+├── public_html
+├── si
+│   ├── baru.txt
+│   └── new.txt
+├── so
+├── Templates
+│   ├── OpenDocument Spreadsheet.ods
+│   ├── OpenDocument Text.odt
+│   └── Plain Text.txt
+└── Videos
+
+19 directories, 35 files
+
+student@lab2-27:~$ ls
+ baru                     	Documents   Pictures   public_html   Templates
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	si        	Videos
+ Desktop                  	Music   	Public 	so
+
+student@lab2-27:~$ rmdir si
+rmdir: failed to remove 'si': Directory not empty
+
+rm
+Menghapus file atau direktori.
+rm [OPTION] FILE...
+•	-r: recursive; hapus direktori seisinya
+•	-f: force; tanpa konfirmasi jika error
+•	-i: interactive; konfirmasi sebelum menghapus
+
+student@lab2-27:~$ rm -r si
+student@lab2-27:~$ ls
+ baru                     	Documents   Pictures   public_html   Videos
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	so
+ Desktop                  	Music   	Public 	Templates
+
+student@lab2-27:~$ rm baru/si/baru.txt
+
+student@lab2-27:~$ tree
+.
+├── baru
+│   └── si
+├── Cisco Packet Tracer 7.3.0
+│   ├── ptsaplayer-log-1697696027775.txt
+│   └── ptsaplayer-log-1697696477427.txt
+├── Desktop
+├── Documents
+│   ├── G1401221035 NO 1.c
+│   ├── G1401221035 no 2 afi.c
+│   ├── G1401221035 NO 2.c
+│   ├── G1401221035 NO 2 revisi.c
+│   ├── G1401221035 NO 2 revisi ke 4.c
+│   ├── G1401221035 no 2 revisi ke 5.c
+│   ├── G1401221035 NO 2 revisi lagi
+│   ├── G1401221035 NO 2 revisi LAGI 6.c
+│   ├── G1401221035 NO 2 revisi lagi.c
+│   ├── G1401221035 no 2 revisi lagi ke 3.c
+│   └── G1401221035 NO 2 revisi lagi lagi.c
+├── Downloads
+│   ├── G1401221035 NO 2 revisi.c
+│   └── G1401221035 NO 2 revisi_files
+│   	├── ace.js
+│   	├── final.js
+│   	├── jquery.min.js
+│   	├── logo.svg
+│   	├── mode-c_cpp.js
+│   	├── mousetrap.min.js
+│   	├── playground.css
+│   	├── play.svg
+│   	└── socket.io.min.js
+├── Music
+├── Pictures
+├── pt
+│   ├── extensions
+│   ├── logs
+│   │   ├── pt_10.19.2023_13.13.45.093.log
+│   │   ├── pt_10.19.2023_13.21.15.604.log
+│   │   └── pt_10.19.2023_13.23.48.874.log
+│   ├── PT.conf
+│   ├── saves
+│   ├── templates
+│   └── uuid
+├── Public
+├── public_html
+├── so
+├── Templates
+│   ├── OpenDocument Spreadsheet.ods
+│   ├── OpenDocument Text.odt
+│   └── Plain Text.txt
+└── Videos
+
+18 directories, 32 files
+student@lab2-27:~$ tree -L 2
+.
+├── baru
+│   └── si
+├── Cisco Packet Tracer 7.3.0
+│   ├── ptsaplayer-log-1697696027775.txt
+│   └── ptsaplayer-log-1697696477427.txt
+├── Desktop
+├── Documents
+│   ├── G1401221035 NO 1.c
+│   ├── G1401221035 no 2 afi.c
+│   ├── G1401221035 NO 2.c
+│   ├── G1401221035 NO 2 revisi.c
+│   ├── G1401221035 NO 2 revisi ke 4.c
+│   ├── G1401221035 no 2 revisi ke 5.c
+│   ├── G1401221035 NO 2 revisi lagi
+│   ├── G1401221035 NO 2 revisi LAGI 6.c
+│   ├── G1401221035 NO 2 revisi lagi.c
+│   ├── G1401221035 no 2 revisi lagi ke 3.c
+│   └── G1401221035 NO 2 revisi lagi lagi.c
+├── Downloads
+│   ├── G1401221035 NO 2 revisi.c
+│   └── G1401221035 NO 2 revisi_files
+├── Music
+├── Pictures
+├── pt
+│   ├── extensions
+│   ├── logs
+│   ├── PT.conf
+│   ├── saves
+│   ├── templates
+│   └── uuid
+├── Public
+├── public_html
+├── so
+├── Templates
+│   ├── OpenDocument Spreadsheet.ods
+│   ├── OpenDocument Text.odt
+│   └── Plain Text.txt
+└── Videos
+
+18 directories, 20 files
+
+student@lab2-27:~$ tree -L 1
+.
+├── baru
+├── Cisco Packet Tracer 7.3.0
+├── Desktop
+├── Documents
+├── Downloads
+├── Music
+├── Pictures
+├── pt
+├── Public
+├── public_html
+├── so
+├── Templates
+└── Videos
+
+12 directories, 1 file
+
+student@lab2-27:~$ cd so
+bash: cd: so: Not a directory
+
+student@lab2-27:~$ ls
+ baru                     	Documents   Pictures   public_html   Videos
+'Cisco Packet Tracer 7.3.0'   Downloads   pt     	so
+ Desktop                  	Music   	Public 	Templates
+
+student@lab2-27:~$ cd ..
+student@lab2-27:/home$ cd /
+student@lab2-27:/$ cd ~
+student@lab2-27:~$ cd .
+student@lab2-27:~$ cd
+student@lab2-27:~$ ls -a
+ .                        	.gnupg      	so
+ ..                       	.ICEauthority   .ssh
+ baru                     	.local      	Templates
+ .bash_history            	.mozilla    	.thumbnails
+ .bash_logout             	Music       	Videos
+ .bashrc                  	.packettracer   .vm
+ .cache                   	Pictures    	.vscode
+'Cisco Packet Tracer 7.3.0'   .pki        	.Xauthority
+ .config                  	.profile    	.Xdefaults
+ Desktop                  	pt          	.xscreensaver
+ Documents                	Public      	.xsession-errors
+ Downloads                	public_html 	.xsession-errors.old
+
+student@lab2-27:~$ cd so/
+bash: cd: so/: Not a directory
+
+student@lab2-27:~$ cd /
+student@lab2-27:/$ pwd
+/
+student@lab2-27:/$ ls
+bin	etc         	lib 	lost+found  proc  snap  	tmp  	vmlinuz.old
+boot   home        	lib32   media   	root  srv   	usr
+cdrom  initrd.img  	lib64   mnt     	run   swapfile  var
+dev	initrd.img.old  libx32  opt     	sbin  sys   	vmlinuz
+
+ 
+student@lab2-27:/$ cd /etc
+
+student@lab2-27:/etc$ cd ../home/
+
+student@lab2-27:/home$ cd
+
+student@lab2-27:~$ cd ../../etc
+student@lab2-27:/etc$ ssh g6401211110@172.18.14.15
+g6401211110@172.18.14.15's password:
+Welcome to Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-213-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management: 	https://landscape.canonical.com
+ * Support:    	https://ubuntu.com/advantage
+
+Expanded Security Maintenance for Infrastructure is not enabled.
+
+6 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+124 additional security updates can be applied with ESM Infra.
+Learn more about enabling ESM Infra service for Ubuntu 18.04 at
+https://ubuntu.com/18-04
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+No mail.
+Last login: Tue Oct 17 15:43:53 2023 from 172.18.16.231
+
+g6401211110@r1:~$ ls
+dead.letter  latest.tar.gz  latest.tar.gz.1  latest.tar.gz.2  mbox  public_html
+
+g6401211110@r1:~$ mkdir public_html
+mkdir: cannot create directory ‘public_html’: File exists
+g6401211110@r1:~$ cd public_html/
+g6401211110@r1:~/public_html$ touch index.html
+g6401211110@r1:~/public_html$ nano index.html
+g6401211110@r1:~/public_html$ ^C
+g6401211110@r1:~/public_html$ echo Ronald Abner > index.html
+g6401211110@r1:~/public_html$ echo G6401211110 >> index.html
+g6401211110@r1:~/public_html$ cat index.html
+Ronald Abner
+G6401211110
+
+g6401211110@r1:~/public_html$
+
+Lewat nano → nano index.html 
+Bebas mengetik, contoh 
+
+<h1> Ronald Abner </h1>
+<h2> G6401211110 </h2>
+
+
+Lalu CTRL + O, ENTER
+
