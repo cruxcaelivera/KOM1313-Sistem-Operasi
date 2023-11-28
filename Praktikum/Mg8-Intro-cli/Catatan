@@ -1,0 +1,548 @@
+# 08-intro-cli
+Mg8
+
+[OPTION] Diisikan dengan poin dari perintah 
+USER Dalam hal ini NIM
+
+ssh
+Login ke komputer remote.
+ssh [OPTION] USER@HOST
+•	-X: X forwarding untuk aplikasi GUI
+student@lab2-31:~$ ssh g6401211110@172.18.14.15
+The authenticity of host '172.18.14.15 (172.18.14.15)' can't be established.
+ECDSA key fingerprint is SHA256:SnyLwXnr16DeLmNZ2m63eVUQYEnhYxy5ErZCZZYjHzU.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '172.18.14.15' (ECDSA) to the list of known hosts.
+g6401211110@172.18.14.15's password: 211110
+Welcome to Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-213-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management: 	https://landscape.canonical.com
+ * Support:    	https://ubuntu.com/advantage
+
+Expanded Security Maintenance for Infrastructure is not enabled.
+
+5 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+112 additional security updates can be applied with ESM Infra.
+Learn more about enabling ESM Infra service for Ubuntu 18.04 at
+https://ubuntu.com/18-04
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+Last login: Tue Oct 17 15:27:22 2023 from 172.18.31.104, 172.18.16.231
+
+echo
+Menampilkan satu baris teks.
+echo [OPTION] [STRING]
+•	-n: tanpa newline di akhir
+g6401211110@r1:~$ echo teks
+teks
+g6401211110@r1:~$ echo -n "Hello, World!"
+Hello, World!g6401211110@r1:~$
+
+hostname
+Menampilkan nama host sistem.
+hostname [OPTION]
+•	-I: tampilkan alamat IP
+
+g6401211110@r1:~$ hostname -I
+172.18.14.15
+g6401211110@r1:~$ hostname --
+r1
+g6401211110@r1:~$ hostname (atau hostname –)
+r1
+
+uname
+Menampilkan informasi kernel sistem.
+uname [OPTION]
+•	-a: all; semua info
+g6401211110@r1:~$ uname
+Linux
+g6401211110@r1:~$ uname -a
+Linux r1 4.15.0-213-generic #224-Ubuntu SMP Mon Jun 19 13:30:12 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+
+uptime
+Menampilkan berapa lama sistem sudah berjalan.
+uptime
+g6401211110@r1:~$ uptime
+ 15:52:43 up 17 days, 23:18, 88 users,  load average: 0,07, 0,26, 0,19
+
+date
+Mencetak tanggal dan waktu sistem.
+date [+FORMAT]
+g6401211110@r1:~$ date (Tanggal dan Waktu lengkap)
+Sel Okt 17 15:53:21 WIB 2023
+g6401211110@r1:~$ date +%F (Tanggal dalam format YYYY-MM-DD)
+2023-10-17
+g6401211110@r1:~$ date +%H (Menampilkan jam)
+15
+g6401211110@r1:~$ date +%M (Menampilkan menit)
+53
+g6401211110@r1:~$ date +%D (Menampilkan dalam format MM/DD/YY)
+10/17/23
+
+cal
+Menampilkan kalender.
+cal [[MONTH] YEAR]
+
+g6401211110@r1:~$ cal
+	Oktober 2023 	 
+Mi Se Se Ra Ka Ju Sa  
+ 1  2  3  4  5  6  7  
+ 8  9 10 11 12 13 14  
+15 16 17 18 19 20 21  
+22 23 24 25 26 27 28  
+29 30 31         	 
+                 	 
+g6401211110@r1:~$ cal 2024
+                        	2024
+  	Januari           	Februari           	Maret     	 
+Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  
+	1  2  3  4  5  6           	1  2  3              	1  2  
+ 7  8  9 10 11 12 13   4  5  6  7  8  9 10   3  4  5  6  7  8  9  
+14 15 16 17 18 19 20  11 12 13 14 15 16 17  10 11 12 13 14 15 16  
+21 22 23 24 25 26 27  18 19 20 21 22 23 24  17 18 19 20 21 22 23  
+28 29 30 31       	25 26 27 28 29    	24 25 26 27 28 29 30  
+                                        	31               	 
+
+   	April              	Mei               	Juni     	 
+Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  
+	1  2  3  4  5  6        	1  2  3  4                 	1  
+ 7  8  9 10 11 12 13   5  6  7  8  9 10 11   2  3  4  5  6  7  8  
+14 15 16 17 18 19 20  12 13 14 15 16 17 18   9 10 11 12 13 14 15  
+21 22 23 24 25 26 27  19 20 21 22 23 24 25  16 17 18 19 20 21 22  
+28 29 30          	26 27 28 29 30 31 	23 24 25 26 27 28 29  
+                                        	30               	 
+
+    	Juli            	Agustus          	September   	 
+Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  
+	1  2  3  4  5  6           	1  2  3   1  2  3  4  5  6  7  
+ 7  8  9 10 11 12 13   4  5  6  7  8  9 10   8  9 10 11 12 13 14  
+14 15 16 17 18 19 20  11 12 13 14 15 16 17  15 16 17 18 19 20 21  
+21 22 23 24 25 26 27  18 19 20 21 22 23 24  22 23 24 25 26 27 28  
+28 29 30 31       	25 26 27 28 29 30 31  29 30            	 
+                                                             	 
+
+  	Oktober           	November          	Desember   	 
+Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  Mi Se Se Ra Ka Ju Sa  
+   	1  2  3  4  5              	1  2   1  2  3  4  5  6  7  
+ 6  7  8  9 10 11 12   3  4  5  6  7  8  9   8  9 10 11 12 13 14  
+13 14 15 16 17 18 19  10 11 12 13 14 15 16  15 16 17 18 19 20 21  
+20 21 22 23 24 25 26  17 18 19 20 21 22 23  22 23 24 25 26 27 28  
+27 28 29 30 31    	24 25 26 27 28 29 30  29 30 31         	 
+                                                             	 
+g6401211110@r1:~$ cal 2 2024
+   Februari 2024 	 
+Mi Se Se Ra Ka Ju Sa  
+         	1  2  3  
+ 4  5  6  7  8  9 10  
+11 12 13 14 15 16 17  
+18 19 20 21 22 23 24  
+25 26 27 28 29   	 
+              
+
+Akun
+whoami
+Menampilkan nama user efektif.
+whoami
+ 	 
+g6401211110@r1:~$ whoami
+g6401211110
+
+who
+Menampilkan siapa yang sedang login.
+who [OPTION]
+•	-q: quantity; jumlah user yang sedang login
+•	-w: write status untuk pesan (+, -, ?)
+
+g6401211110@r1:~$ who
+g6401211032 pts/0    	2023-10-17 15:26 (172.18.31.104, 172.18.16.249)
+auriza   pts/3    	2023-10-17 15:28 (172.18.31.104, 114.124.176.56)
+g6401211115 pts/72   	2023-10-17 15:54 (172.18.16.110)
+
+g6401211110@r1:~$ who -q
+g6401211032 auriza g6401211110 g6401211059 g6401211094 g6401211044 g6401201109 g6401211097 g6401211038 g6401201025 g6401211045 g6401211118 g6401211114 g6401211075 g6401211085 g6401211146 g6401211085 g6401211019 g6401211139 g6401211086 g6401211117 g6401211048 g6401201025 g6401211036 g6401211087 g6401211112 g6401211045 g6401211016 g6401211029 g6401211111 g6401211114 g6401211021 g6401211074 g6401211001 g6401211017 g6401211038 g6401211114 g6401211078 g6401211037 g6401211044 g6401211013 g6401211041 g6401211113 g6401211005 g6401211060 g6401211001 g6401211062 g6401211005 g6401211098 g6401211119 g6401211036 g6401211068 g6401211032 g6401211059 g6401211142 g6401211065 g6401211096 g6401211031 g6401211061 g6401211063 g6401211072 g6401211014 g6401211110 g6401211034 g6401201109 g6401211049 g6401211057 g6401211056 g6401211081 g6401211101 g6401211146 g6401211033 g6401211130 g6401211068 g6401211103 g6401211015 g6401211098 g6401201109 g6401201112 g6401211094 g6401211116 g6401211084 g6401211091 g6401211038 g6401211089 g6401211077 g6401211002 g6401211118 g6401211115
+# users=89
+
+g6401211110@r1:~$ who -w
+g6401211032 - pts/0    	2023-10-17 15:26 (172.18.31.104, 172.18.16.249)
+auriza   - pts/3    	2023-10-17 15:28 (172.18.31.104, 114.124.176.56)
+g6401211114 + pts/36   	2023-10-17 15:49 (172.18.16.146)
+g6401211118 - pts/77   	2023-10-17 15:51 (172.18.31.104, 172.18.16.142)
+g6401211115 + pts/72   	2023-10-17 15:54 (172.18.16.110)
+*angka dibelakang pts berbeda
+
+w
+Menampilkan siapa yang sedang login dan apa yang dijalankannya.
+w [USER]
+
+g6401211110@r1:~$ w g6401211110
+ 15:57:41 up 17 days, 23:23, 89 users,  load average: 0,16, 0,20, 0,18
+USER 	TTY  	FROM         	LOGIN@   IDLE   JCPU   PCPU WHAT
+g6401211 pts/4	172.18.31.104,-  15:27   29:49   0.04s  0.03s -bash
+g6401211 pts/69   172.18.16.231	15:43	5.00s  0.08s  0.01s w g6401211110
+
+g6401211110@r1:~$ w
+ 15:57:48 up 17 days, 23:23, 89 users,  load average: 0,13, 0,20, 0,18
+USER 	TTY  	FROM         	LOGIN@   IDLE   JCPU   PCPU WHAT
+g6401211 pts/0	172.18.31.104,-  15:26   24:35   0.05s  0.03s -bash
+auriza   pts/3	172.18.31.104,-  15:28   20.00s  0.11s  0.09s -bash
+g6401211 pts/30   172.18.16.138	15:40   16.00s  0.07s  0.01s mail
+g6401201 pts/1	172.18.14.15 	13:49	1:53m  0.11s  0.01s mail auriza
+g6401211 pts/35   172.18.16.132	15:47	4.00s  0.06s  0.01s sshd: g64012110
+g6401211 pts/43   172.18.16.113	15:41	2:55   0.04s  0.02s ssh -X g6401211
+g6401211 pts/57   172.18.31.104,-  15:43   36.00s  0.08s  0.04s ssh g6401211098
+g6401211 pts/56   172.18.16.217	15:43	4.00s  0.06s  0.02s sshd: g64012110
+g6401211 pts/69   172.18.16.231	15:43	0.00s  0.08s  0.01s w
+
+last
+Menampilkan daftar waktu user terakhir kali login.
+last
+
+g6401211110@r1:~$ last
+g6401211 pts/91   	10.1.193.82  	Tue Oct 17 15:57   still logged in
+g6401211 pts/77   	172.18.31.104, 1 Tue Oct 17 15:51   still logged in
+g6401211 pts/4    	172.18.16.138	Mon Oct 16 16:19 - 16:22  (00:03)
+g6401211 pts/7    	172.18.16.138	Mon Oct 16 16:18 - 16:22  (00:04)
+
+wtmp begins Sun Oct  1 11:12:32 2023
+
+passwd
+Mengganti password login.
+passwd
+
+g6401211110@r1:~$ passwd
+Changing password for g6401211110.
+(current) UNIX password:
+Enter new UNIX password:
+Retype new UNIX password:
+Password unchanged
+
+Enter new UNIX password:
+Retype new UNIX password:
+Bad: new and old password are too similar
+
+Enter new UNIX password:
+Retype new UNIX password:
+Sorry, passwords do not match
+
+passwd: Authentication token manipulation error
+passwd: password unchanged
+g6401211110@r1:~$
+
+adduser
+Menambah user baru, atau menambahkan user ke grup tertentu.
+sudo adduser USER
+sudo adduser USER GROUP
+
+g6401211110@r1:~$ sudo adduser USER
+[sudo] password for g6401211110:
+g6401211110 is not in the sudoers file.  This incident will be reported.
+
+g6401211110@r1:~$ sudo adduser USER GROUP
+[sudo] password for g6401211110:
+g6401211110 is not in the sudoers file.  This incident will be reported.
+
+deluser
+Menghapus user dari sistem.
+sudo deluser USER
+•	--remove-home: hapus direktori home
+
+g6401211110@r1:~$ sudo deluser USER
+[sudo] password for g6401211110:
+g6401211110 is not in the sudoers file.  This incident will be reported.
+
+write
+Mengirim pesan ke user lain yang sedang login.
+write USER [TTY]
+
+g6401211110@r1:~$ write g6401211110 tty2
+write: g6401211110 is not logged in on tty2
+
+tty2 = User yang sedang login di terminal tty2
+
+g6401211110@r1:~$ write g6401211059
+halo
+test
+
+mesg
+Mengontrol akses masuk pesan ke terminal anda (ya/tidak).
+mesg [y|n]
+
+g6401211110@r1:~$ mesg n
+g6401211110@r1:~$ write g6401211110
+write: write: you have write permission turned off.
+
+write: g6401211110 has messages disabled
+g6401211110@r1:~$ mesg y
+g6401211110@r1:~$ write g6401211110
+
+Message from g6401211110@r1 on pts/1 at 16:24 ...
+
+mail
+Membaca atau mengirim email ke user lain.
+mail [USER...]
+
+g6401211110@r1:~$ mail g6401211110
+Cc:  
+Subject: Test
+Hello World (CTRL + D)
+
+g6401211110@r1:~$ mail
+"/var/mail/g6401211110": 1 message 1 new
+>N   1 Ronald Abner   	Sel Nov  7 16:25  13/395   Test
+? print 1
+Return-Path: <g6401211110@r1>
+X-Original-To: g6401211110@r1
+Delivered-To: g6401211110@r1
+Received: by r1 (Postfix, from userid 1034)
+    id 875A248009D; Tue,  7 Nov 2023 16:25:26 +0700 (WIB)
+To: <g6401211110@r1>
+Subject: Test
+X-Mailer: mail (GNU Mailutils 3.4)
+Message-Id: <20231107092526.875A248009D@r1>
+Date: Tue,  7 Nov 2023 16:25:26 +0700 (WIB)
+From: Ronald Abner <g6401211110@r1>
+
+Hello World
+? reply 1
+To: g6401211110@r1
+Subject: Re: Test
+
+Hello too
+? delete 1
+New mail has arrived.
+? quit
+Saved 1 message in /home/g6401211110/mbox
+Held 1 message in /var/mail/g6401211110
+g6401211110@r1:~$ mail
+"/var/mail/g6401211110": 1 message 1 unread
+>U   1 Ronald Abner   	Sel Nov  7 16:25  19/585   Re: Test
+? print 1
+Return-Path: <g6401211110@r1>
+X-Original-To: g6401211110@r1
+Delivered-To: g6401211110@r1
+Received: by r1 (Postfix, from userid 1034)
+    id 9F12C48009D; Tue,  7 Nov 2023 16:25:50 +0700 (WIB)
+To: <g6401211110@r1>
+Subject: Re: Test
+In-Reply-To: Your message of Tue,  7 Nov 2023 16:25:26 +0700 (WIB)
+    <20231107092526.875A248009D@r1>
+References: <20231107092526.875A248009D@r1>
+X-Mailer: mail (GNU Mailutils 3.4)
+Message-Id: <20231107092550.9F12C48009D@r1>
+Date: Tue,  7 Nov 2023 16:25:50 +0700 (WIB)
+From: Ronald Abner <g6401211110@r1>
+X-IMAPbase: 1699349131 2
+Status: O
+X-UID: 1
+
+Hello too
+
+
+^Cg6401211110@r1:~$ mail g6401211098
+Cc:
+Subject: bebas apa aja
+isi email
+^C
+(Interrupt -- one more to kill letter)
+
+^Cg6401211110@r1:~$ mail
+Cannot open mailbox /var/mail/g6401211110: Permission denied
+No mail for g6401211110
+
+g6401211110@r1:~$ mail
+Cannot open mailbox /var/mail/g6401211110: Permission denied
+No mail for g6401211110
+
+g6401211110@r1:~$ mail
+Cannot open mailbox /var/mail/g6401211110: Permission denied
+No mail for g6401211110
+
+g6401211110@r1:~$ mail g6401211021
+Cc: faiz
+Subject: faiz
+raja treding
+^C
+(Interrupt -- one more to kill letter)
+
+g6401211110@r1:~$ mail g6401211021
+Cc: faiz
+Subject: faiz
+raja treding
+
+g6401211110@r1:~$ mail
+"/var/mail/g6401211110": 1 message 1 new
+>N   1 Mail Delivery Syst Sel Okt 17 16:05  71/2020  Undelivered Mail Returned
+? print 1
+Return-Path: <>
+X-Original-To: g6401211110@r1
+Delivered-To: g6401211110@r1
+Received: by r1 (Postfix)
+    id CDFA348009D; Tue, 17 Oct 2023 16:05:01 +0700 (WIB)
+Date: Tue, 17 Oct 2023 16:05:01 +0700 (WIB)
+From: MAILER-DAEMON@r1 (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: g6401211110@r1
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+    boundary="CCBE448009C.1697533501/r1"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20231017090501.CDFA348009D@r1>
+
+This is a MIME-encapsulated message.
+
+--CCBE448009C.1697533501/r1
+Content-Description: Notification
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+This is the mail system at host r1.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+               	The mail system
+
+<faiz@r1>: unknown user: "faiz"
+
+--CCBE448009C.1697533501/r1
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; r1
+X-Postfix-Queue-ID: CCBE448009C
+X-Postfix-Sender: rfc822; g6401211110@r1
+Arrival-Date: Tue, 17 Oct 2023 16:05:01 +0700 (WIB)
+
+Final-Recipient: rfc822; faiz@r1
+Original-Recipient: rfc822;faiz@r1
+Action: failed
+Status: 5.1.1
+Diagnostic-Code: X-Postfix; unknown user: "faiz"
+
+--CCBE448009C.1697533501/r1
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 8bit
+
+Return-Path: <g6401211110@r1>
+Received: by r1 (Postfix, from userid 1034)
+    id CCBE448009C; Tue, 17 Oct 2023 16:05:01 +0700 (WIB)
+To: <g6401211021@r1>
+Cc: <faiz@r1>
+Subject: faiz
+X-Mailer: mail (GNU Mailutils 3.4)
+Message-Id: <20231017090501.CCBE448009C@r1>
+Date: Tue, 17 Oct 2023 16:05:01 +0700 (WIB)
+From: Ronald Abner <g6401211110@r1>
+
+raja treding
+
+--CCBE448009C.1697533501/r1--
+?
+Saved 1 message in /home/g6401211110/mbox
+Held 0 messages in /var/mail/g6401211110
+
+g6401211110@r1:~$ uname -a
+Linux r1 4.15.0-213-generic #224-Ubuntu SMP Mon Jun 19 13:30:12 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+
+g6401211110@r1:~$ mail auriza
+Cc: Praktikum Minggu ke-8 Sistem Operasi
+Subject: G6401211110
+Terimakasih bapak
+Cannot parse address `Praktikum Minggu ke-8 Sistem Operasi' (while expanding `Praktikum Minggu ke-8 Sistem Operasi'): Malformed email address
+
+g6401211110@r1:~$ mail auriza
+Cc:
+Subject: G6401211110
+Selamat sore bapak, maaf telah mengganggu waktunya.
+
+g6401211110@r1:~$ Oerjebak
+Oerjebak: command not found
+g6401211110@r1:~$ mail
+No mail for g6401211110
+
+g6401211110@r1:~$ mail
+"/var/mail/g6401211110": 1 message 1 new
+>N   1 Muhamad Yasir Buan Sel Okt 17 16:13  14/433   sdadnadjkna
+? 1
+Return-Path: <g6401211032@r1>
+X-Original-To: g6401211110@r1
+Delivered-To: g6401211110@r1
+Received: by r1 (Postfix, from userid 1013)
+    id 44A4648009C; Tue, 17 Oct 2023 16:13:14 +0700 (WIB)
+To: <g6401211110@r1>
+Cc: <bacoott@r1>
+Subject: sdadnadjkna
+X-Mailer: mail (GNU Mailutils 3.4)
+Message-Id: <20231017091314.44A4648009C@r1>
+Date: Tue, 17 Oct 2023 16:13:14 +0700 (WIB)
+From: Muhamad Yasir Buana Dyva <g6401211032@r1>
+
+asdaskjndasdn
+?
+Saved 1 message in /home/g6401211110/mbox
+Held 0 messages in /var/mail/g6401211110
+
+g6401211110@r1:~$ ^C
+g6401211110@r1:~$ ^C
+g6401211110@r1:~$
+
+send mail
+\scriptsize
+pi@raspi:~ $ mail user
+Cc:
+Subject: Test
+Hello world!
+[Ctrl+D]
+::: ::: {.column width="67%"}
+print, reply, delete mail
+\scriptsize
+user@raspi:~ $ mail
+"/var/mail/user": 1 message 1 new
+>N   1 pi@raspi   Tue Nov  6 14:54  15/422   Test
+
+? print 1
+Subject: Test
+From: pi@raspi
+
+Hello world!
+
+? reply 1
+Hello too.
+[Ctrl+D]
+
+? delete 1
+
+? quit
+::: ::::::
+Lain-Lain
+poweroff
+Mematikan (shutdown) sistem.
+sudo poweroff
+reboot
+Me-restart sistem.
+sudo reboot
+Shortcut
+Tab
+auto-completion
+Up, Down
+mengakses riwayat perintah
+Ctrl+D
+mengakhiri teks (EOF)
+Ctrl+C
+mengakhiri proses
+Ctrl+L
+membersihkan layar
+Ctrl+W
+menghapus satu kata ke belakang
+
