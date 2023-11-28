@@ -1,0 +1,197 @@
+#13-shell-script
+student@lab2-36:~$ echo $SHELL
+/bin/bash
+
+student@lab2-36:~$ nano hello.sh
+
+Jalankan program hello
+student@lab2-36:~$ ./hello
+bash: ./hello: No such file or directory
+
+student@lab2-36:~$ ./hello.sh
+./hello.sh: line 1: abc: command not found
+
+Berikan permission untuk execute
+student@lab2-36:~$ chmod +x hello.sh
+
+Variabel
+student@lab2-36:~$ fname="Steve"
+student@lab2-36:~$ lname="Bourne"
+student@lab2-36:~$ echo $fname
+Steve
+
+student@lab2-36:~$ echo "$fname $lname"
+Steve Bourne
+
+student@lab2-36:~$ echo "${lname}, ${fname}"
+Bourne, Steve
+
+read
+Membaca satu baris masukan.
+student@lab2-36:~$ read var
+Ronald
+
+student@lab2-36:~$ echo $var
+Ronald
+
+Pathname Expansion
+student@lab2-36:~$ ls /bin/e*
+/bin/echo  /bin/ed  /bin/efibootdump  /bin/efibootmgr  /bin/egrep
+
+student@lab2-36:~$ ls /bin/e?
+/bin/ed
+
+student@lab2-36:~$ ls /bin/[cde]?
+/bin/cp  /bin/dd  /bin/df  /bin/ed
+
+student@lab2-36:~$ ls /bin/[!a-n]?
+/bin/ps  /bin/rm  /bin/sh  /bin/ss  /bin/su
+
+student@lab2-36:~$ ls /bin/[a-n]*
+/bin/bash      	/bin/dd         	/bin/ip      	/bin/mt-gnu
+/bin/brltty    	/bin/df         	/bin/journalctl  /bin/mv
+/bin/bunzip2   	/bin/dir        	/bin/kbd_mode	/bin/nano
+/bin/busybox   	/bin/dmesg      	/bin/kill    	/bin/nc
+/bin/bzcat     	/bin/dnsdomainname  /bin/kmod    	/bin/nc.openbsd
+/bin/bzcmp     	/bin/domainname 	/bin/less    	/bin/netcat
+/bin/bzdiff    	/bin/dumpkeys   	/bin/lessecho	/bin/netstat
+/bin/bzegrep   	/bin/echo       	/bin/lessfile	/bin/networkctl
+/bin/bzexe     	/bin/ed         	/bin/lesskey 	/bin/nisdomainname
+/bin/bzfgrep   	/bin/efibootdump	/bin/lesspipe	/bin/ntfs-3g
+/bin/bzgrep    	/bin/efibootmgr 	/bin/ln      	/bin/ntfs-3g.probe
+/bin/bzip2     	/bin/egrep      	/bin/loadkeys	/bin/ntfscat
+/bin/bzip2recover  /bin/false      	/bin/login   	/bin/ntfscluster
+/bin/bzless    	/bin/fgconsole  	/bin/loginctl	/bin/ntfscmp
+/bin/bzmore    	/bin/fgrep      	/bin/lowntfs-3g  /bin/ntfsfallocate
+/bin/cat       	/bin/findmnt    	/bin/ls      	/bin/ntfsfix
+/bin/chacl     	/bin/fuser      	/bin/lsblk   	/bin/ntfsinfo
+/bin/chgrp     	/bin/fusermount 	/bin/lsmod   	/bin/ntfsls
+/bin/chmod     	/bin/getfacl    	/bin/mkdir   	/bin/ntfsmove
+/bin/chown     	/bin/grep       	/bin/mknod   	/bin/ntfsrecover
+/bin/chvt      	/bin/gunzip     	/bin/mktemp  	/bin/ntfssecaudit
+/bin/cp        	/bin/gzexe      	/bin/more    	/bin/ntfstruncate
+/bin/cpio      	/bin/gzip       	/bin/mount   	/bin/ntfsusermap
+/bin/dash      	/bin/hciconfig  	/bin/mountpoint  /bin/ntfswipe
+/bin/date      	/bin/hostname   	/bin/mt
+
+Parameter Expansion
+student@lab2-36:~$ web=”cs.ipb.ac.id”
+
+Command Substitution
+Menjalankan perintah dan mengembalikan keluarannya.
+student@lab2-36:~$ echo $web
+cs.ipb.ac.id
+
+student@lab2-36:~$ echo ${#web}
+12
+
+student@lab2-36:~$ echo ${web%.ac.id}
+cs.ipb
+
+student@lab2-36:~$ echo ${web#cs.}
+ipb.ac.id
+student@lab2-36:~$ echo "I am $(whoami)."
+I am student.
+student@lab2-36:~$ echo "Today is $(date +%A)."
+Today is Selasa.
+
+Arithmetic Expansion
+Mengevaluasi ekspresi aritmatika dan mengembalikan keluarannya.
+student@lab2-36:~$ x=5; y=3
+student@lab2-36:~$ echo $((x + y))  $((x * y))  $((x / y))  $((x % y))
+8 15 1 2
+student@lab2-36:~$ echo $((x > y))  $((x == y))  $((x > y && y > 0))
+1 0 1
+student@lab2-36:~$ echo $((RANDOM%100))
+68
+
+
+Parameter Khusus
+•	$@{.sh}: semua parameter
+o	$0{.sh}: nama program
+o	$1{.sh}: parameter pertama
+o	$2{.sh}: parameter kedua
+o	...
+•	$#{.sh}: jumlah semua parameter
+•	$?{.sh}: status keluaran perintah terakhir
+•	$!{.sh}: PID proses background terakhir
+•	$${.sh}: PID proses shell
+
+student@lab2-36:~$ [ -r /etc/passwd ]; echo $?
+0
+student@lab2-36:~$ [ -w /etc/passwd ]; echo $?
+1
+student@lab2-36:~$ ls -l
+total 76
+-rwxrwxr-x 1 student student	4 Nov 21 16:40  aritmatika.sh
+drwxrwxr-x 2 student student 4096 Nov  9 12:56 'Cisco Packet Tracer 7.3.0'
+drwxr-xr-x 2 student student 4096 Okt 18 12:18  Desktop
+drwxr-xr-x 2 student student 4096 Okt 28 13:10  Documents
+drwxr-xr-x 2 student student 4096 Nov 15 14:09  Downloads
+-rw-rw-r-- 1 student student  837 Nov 15 13:59  formatjuduliky.c
+-rw-rw-r-- 1 student student  402 Nov 15 14:09  FORMATJUDULIKY.C
+-rw-rw-r-- 1 student student  531 Nov 15 14:10  GANTIHURUF.C
+-rwxrwxr-x 1 student student	4 Nov 21 16:24  hello.sh
+-rw-rw-r-- 1 student student  488 Nov 15 13:58  kemunculanhurufiky.c
+drwxr-xr-x 2 student student 4096 Okt 18 12:18  Music
+-rw-rw-r-- 1 student student  129 Nov 21 16:40  parameter.sh
+drwxr-xr-x 2 student student 4096 Nov  2 14:27  Pictures
+drwxrwxr-x 6 student student 4096 Okt 19 13:19  pt
+drwxr-xr-x 2 student student 4096 Okt 13 15:18  Public
+drwxr-xr-x 2 student student 4096 Okt 13 15:18  public_html
+-rw-rw-r-- 1 student student  624 Nov 15 13:57  SEGTIGAHURUFIKY.C
+drwxr-xr-x 2 student student 4096 Okt 18 12:19  Templates
+drwxr-xr-x 2 student student 4096 Okt 18 12:18  Videos
+student@lab2-36:~$ ls -l /etc/passwd
+-rw-r--r-- 1 root root 2683 Agu 11  2022 /etc/passwd
+
+student@lab2-36:~$ [ -w /etc/passwd ]; echo $?
+1
+student@lab2-36:~$ [ -r /etc/passwd ]; echo $?
+0
+
+
+seq
+Mencetak sekuens angka, berguna untuk perulangan for.
+
+student@lab2-36:~$ seq 10
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+student@lab2-36:~$ seq 1 2 10
+1
+3
+5
+7
+9
+student@lab2-36:~$ seq 1 3 10
+1
+4
+7
+10
+
+
+  GNU nano 2.9.3                 	pemilihan.sh                 	Modified  
+
+#!/bin/sh
+# create public_html directory if not exist
+
+webdir="~/public_html"
+
+if [ ! -d $webdir ]; then
+	mkdir $webdir
+fi
+
+exit 0
+
+
+
+
+
